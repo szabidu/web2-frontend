@@ -5,6 +5,7 @@ npm install
 bower update
 gulp build
 cd $DIR/dist
+touch $DIR/build/frontend.zip
 rm $DIR/build/frontend.zip
 zip -r $DIR/build/frontend.zip *
 cd $DIR
