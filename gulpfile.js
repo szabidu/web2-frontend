@@ -18,7 +18,7 @@ gulp.task('views', function() {
 
 gulp.task('scripts', function() {
    gulp.src(["app/scripts/**/*.js"])
-   .pipe(jshint('../.jshintrc'))
+   .pipe(jshint('.jshintrc'))
    .pipe(jshint.reporter('default'))
    .pipe(concat('tilos.js'))
    .pipe(gulp.dest(distDir + "/www/scripts"));
