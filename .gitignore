@@ -52,3 +52,6 @@ vagrant_ansible_inventory_default
 composer.lock
 
 archive
+
+.sass-cache
+bower_components
