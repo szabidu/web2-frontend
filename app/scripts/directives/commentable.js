@@ -24,11 +24,6 @@ angular.module('tilosApp').directive('commentable', [function () {
             });
 
             var commentable = {};
-//            $scope.commentEdit = function(comment) {
-//                comment.interact = comment.body;
-//                comment.editing = true;
-//                comment.replying = false;
-//            };
 
             $scope.commentReply = function (comment) {
                 comment.interact = '';
@@ -43,6 +38,7 @@ angular.module('tilosApp').directive('commentable', [function () {
             $scope.createComment = function () {
                 if ($scope.formComment.comment) {
                     return $http.post(restEndpoint, $scope.formComment).success(function () {
+                        _resetFormComment();
                         $http.get(restEndpoint).success(function (res) {
                             $scope.comments = res;
                         });
@@ -50,13 +46,6 @@ angular.module('tilosApp').directive('commentable', [function () {
                 }
             };
 
-//            $scope.updateComment = function(comment) {
-//                commentable.updateComment(comment.id, comment.interact)
-//                    .success(function(response) {
-//                        _commentResetState(comment);
-//                        Object.merge(comment, response.comment);
-//                    });
-//            };
 
             $scope.replyComment = function (comment) {
 
