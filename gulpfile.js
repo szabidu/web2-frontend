@@ -6,13 +6,20 @@ var concat = require('gulp-concat');
 var jshint = require('gulp-jshint');
 var connect = require('gulp-connect');
 var exec = require('child_process');
+var replace = require('gulp-replace');
+
+var gatoken = process.env.GA_TOKEN;
 
 gulp.task('views', function () {
-  gulp.src('app/*')
+  gulp.src(['app/*', '!app/index.html'])
     .pipe(gulp.dest(distDir + '/www'));
 
   gulp.src('./app/partials/**/*')
     .pipe(gulp.dest(distDir + '/www/partials/'));
+
+  gulp.src('app/index.html')
+    .pipe(replace(/GA_TOKEN/g,gatoken))
+    .pipe(gulp.dest(distDir + "/www"));
 });
 
 
@@ -59,24 +66,6 @@ gulp.task('chat', function () {
 });
 
 
-gulp.task('php', function () {
-  gulp.src([
-    '../backend/init_autoloader.php',
-    '../backend/config/**/*',
-    '../backend/data/**/*',
-    '../backend/module/Radio/**/*',
-    '../backend/module/RadioCommon/**/*',
-    '../backend/vendor/**/*'], {base: '../backend'})
-    .pipe(gulp.dest(distDir + '/'));
-
-  gulp.src([
-    '../backend/www/stream.php',
-    '../backend/www/backend.php'])
-    .pipe(gulp.dest(distDir + '/www'));
-
-
-});
-
 
 gulp.task('bower_components', function () {
   gulp.src(['app/bower_components/**/*'], {base: 'app'})
@@ -95,7 +84,7 @@ gulp.task('build', ['clean'], function () {
 });
 
 gulp.task('default', function () {
-  gulp.start('sass', 'scripts', 'assets', 'chat', 'php', 'bower_components', 'views');
+  gulp.start('sass', 'scripts', 'assets', 'chat', 'bower_components', 'views');
 });
 
 
@@ -122,7 +111,6 @@ gulp.task('watch', function () {
   });
 
   gulp.watch(["app/**/*"], ['default']);
-  gulp.watch(["../backend/**/*"], ['php']);
 });
 
 gulp.task('connect', function () {
