@@ -1000,17 +1000,9 @@ a.icon-star, a.icon-star2{
 //Style of Archive
 
 #archiveTable{
-  .archiveShowName{
-      width:15%;
-  }
-  .archiveAuth{
-      width:30%;
-  }
-  .archiveDesc{
-      width:45%;
-  }
+
   .archiveTime{
-      width:10%;
+      width:40px;
   }
 
 }
@@ -1051,7 +1043,7 @@ a.icon-star, a.icon-star2{
   font-family: "Open Sans",sans-serif;
   font-size: 18px;
   padding:10px;
-  width:175px;
+  width:115px;
   margin-left:-6px;
 }
 
@@ -1065,9 +1057,17 @@ a.icon-star, a.icon-star2{
     color:$primary-color;
   }
 }
-.DatePicker{
-  display: inline-block;
+.DatePicker {
+  position: relative;
   float: left;
+  padding-right: 12px;
+  line-height: 1.428571429;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid #dddddd;
+  margin-left: -1px;
+
+  display: inline-block;
   button.ChooseDate{
     background:transparent none;
   }

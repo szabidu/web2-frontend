@@ -15,8 +15,9 @@ var tilos = angular.module('tilosApp',
 tilos.config(function ($locationProvider) {
     $locationProvider.html5Mode(true);
 });
+
 tilos.weekStart = function (date) {
-    var first = date.getDate() - date.getDay() + 1;
+    var first = date.getDate() - date.retrieveEpisodesForDay() + 1;
     date.setHours(0);
     date.setSeconds(0);
     date.setMinutes(0);
@@ -35,6 +36,66 @@ tilos.factory('Meta', function ($rootScope) {
         }
 
     };
+});
+
+tilos.run(function(){
+  Date.prototype.setToNoon = function () {
+    this.setHours(12, 0, 0, 0);
+  };
+
+  Date.prototype.setToDayStart = function () {
+    this.setHours(0, 0, 0, 0);
+  };
+
+
+  Date.prototype.setToDayEnd = function () {
+    this.setHours(23, 59, 60, 0);
+  };
+
+  Date.prototype.isLeapYear = function (year) {
+    return (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0));
+
+  };
+
+
+  Date.prototype.daysInFebruary = function (year) {
+    if (this.isLeapYear(year)) {
+      // Leap year
+      return 29;
+    } else {
+      // Not a leap year
+      return 28;
+    }
+  };
+
+  Date.prototype.getTimestamp = function () {
+    return this.getTime() / 1000;
+  };
+
+  Date.prototype.dayIndex = function () {
+    var pastYears = 0;
+    for (var i = 1990; i < this.getFullYear(); i++) {
+      pastYears += 365;
+      if (this.isLeapYear(i)) {
+        pastYears++;
+      }
+    }
+    var feb = this.daysInFebruary(this.getFullYear());
+    var aggregateMonths = [0, // January
+      31, // February
+      31 + feb, // March
+      31 + feb + 31, // April
+      31 + feb + 31 + 30, // May
+      31 + feb + 31 + 30 + 31, // June
+      31 + feb + 31 + 30 + 31 + 30, // July
+      31 + feb + 31 + 30 + 31 + 30 + 31, // August
+      31 + feb + 31 + 30 + 31 + 30 + 31 + 31, // September
+      31 + feb + 31 + 30 + 31 + 30 + 31 + 31 + 30, // October
+      31 + feb + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31, // November
+      31 + feb + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30, // December
+    ];
+    return pastYears + aggregateMonths[this.getMonth() - 1] + this.getDate();
+  };
 });
 
 tilos.run(function ($rootScope, Meta, localStorageService, $http, API_SERVER_ENDPOINT) {
