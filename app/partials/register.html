@@ -4,26 +4,43 @@
             <div class="panel-heading"><h3 class="panel-title"><strong>Regisztráció</strong></h3></div>
             <div class="panel-body">
                 <div class=" alert alert-danger" ng-show="errormessage">{{errormessage}}</div>
-                <form role="form">
+                <form role="form" name="regform">
                     <div class="form-group">
                         <label for="username">Felhasználó</label>
-                        <input type="username" class="form-control" id="username" placeholder="Felhasználónév" ng-model="form.username">
+                        <input name="username" type="username" class="form-control" id="username" placeholder="Felhasználónév" ng-model="form.username" ng-minlength="5" required>
+                      <small class="error" ng-show="regform.username.$error.required && regform.username.$dirty">
+                        Felhasználó nevet megadni kötelező.
+                      </small>
+                      <small class="error" ng-show="regform.username.$error.pattern && regform.username.$dirty">
+                        A felhasználó név túl bonyolult.
+                      </small>
+                      <small class="error" ng-show="regform.username.$error.minlength && regform.username.$dirty">
+                        A felhasználó legalább 5 karakter legyen.
+                      </small>
                     </div>
+
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" ng-model="form.email">
+                        <input name="email" type="email" class="form-control" required id="email" placeholder="Email" ng-model="form.email">
                     </div>
+
                     <div class="form-group">
                         <label for="password">Jelszó</label>
-                        <input type="password" class="form-control" id="password" placeholder="Jelszó" ng-model="form.password">
+                        <input name="password" type="password" class="form-control" required id="password" placeholder="Jelszó" ng-model="form.password" ng-minlength="8" />
+                      <small class="error" ng-show="regform.password.$error.required">
+                        Jelszót megadni kötelező.
+                      </small>
+                      <small class="error" ng-show="regform.password.$error.minlength">
+                        A jelszó túl rövid.
+                      </small>
                     </div>
-                    <divre
+                    <div
                             vc-recaptcha
                             key="'6LeJRv0SAAAAABAZlebOuAD9nanyaajQ391jtRKq'"
                             ></div>
 
 
-                    <button type="submit" ng-click="register()" class="btn btn-sm btn-default">Regisztráció</button>
+                    <button type="submit" ng-click="register()" ng-disabled="regform.$invalid" class="btn btn-sm btn-default">Regisztráció</button>
                 </form>
             </div>
         </div>

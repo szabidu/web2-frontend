@@ -1263,3 +1263,7 @@ input.datepicker {
   font-size: 16px;
   line-height: 240%;
 }
+
+input.ng-invalid {
+  border: 2px solid red;
+}
