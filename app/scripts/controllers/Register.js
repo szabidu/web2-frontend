@@ -11,6 +11,9 @@ angular.module('tilosApp').config(function ($stateProvider) {
 });
 
 angular.module('tilosApp').controller('RegisterCtrl', function ($scope, $http, API_SERVER_ENDPOINT, vcRecaptchaService, $rootScope, localStorageService, $location) {
+  if ($scope.user) {
+    $location.path("/me");
+  }
     $scope.form = {};
     $scope.register = function () {
         $scope.errormessage = '';

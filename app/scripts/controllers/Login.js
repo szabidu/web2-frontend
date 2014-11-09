@@ -16,10 +16,11 @@ angular.module('tilosApp').config(function ($stateProvider) {
 
 });
 
-angular.module('tilosApp').run(function ($rootScope, localStorageService) {
+angular.module('tilosApp').run(function ($rootScope, localStorageService, $location) {
     $rootScope.logout = function () {
         $rootScope.user = null;
         localStorageService.remove('jwt');
+        $location.path("/");
     };
     $rootScope.isLoggedIn = function () {
         return $rootScope.user;
@@ -46,8 +47,10 @@ angular.module('tilosApp').controller('PasswordReminderCtrl', function ($scope, 
     };
 });
 
-angular.module('tilosApp')
-    .controller('LoginCtrl', function ($rootScope, $scope, $location, API_SERVER_ENDPOINT, $http, localStorageService) {
+angular.module('tilosApp').controller('LoginCtrl', function ($rootScope, $scope, $location, API_SERVER_ENDPOINT, $http, localStorageService) {
+        if ($scope.user) {
+          $location.path("/me");
+        }
         $scope.logindata = {};
         $scope.loginerror = '';
         $scope.login = function () {

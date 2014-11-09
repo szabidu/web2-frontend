@@ -1,0 +1,14 @@
+<section class="col-md-9 main" role="main">
+  <h1>Felhasználói profil</h1>
+
+  <div ng-show="user">
+    <p>Jelenleg belépett felhasználó: {{user.username}}</p>
+
+    <p>
+      <button class="btn btn-warning" ng-click="logout()">Kilépés</button>
+    </p>
+  </div>
+</section>
+<aside class="col-md-3" 1111>
+  <div ng-include src="'partials/sidebar_right.html'"></div>
+</aside>
