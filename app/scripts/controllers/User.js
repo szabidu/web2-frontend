@@ -12,7 +12,7 @@ angular.module('tilosApp').config(function ($stateProvider) {
 
 angular.module('tilosApp').controller('MeCtrl', function ($scope, $location) {
   if (!$scope.user) {
-    $location.path("/login");
+    $location.path('/login');
   }
 
 

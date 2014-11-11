@@ -20,9 +20,9 @@ angular.module('tilosApp').controller('ProgramCtrl', function ($scope, $state, $
 
 
     $scope.gotoDay = function(date) {
-      var monthStr = ("0" + (date.getMonth() + 1)).slice(-2);
-      var dayStr = ("0" + date.getDate()).slice(-2)
-      $state.go("archive", {"year": date.getFullYear(), "month": monthStr, "day": dayStr});
+      var monthStr = ('0' + (date.getMonth() + 1)).slice(-2);
+      var dayStr = ('0' + date.getDate()).slice(-2);
+      $state.go('archive', {'year': date.getFullYear(), 'month': monthStr, 'day': dayStr});
     };
 
     $scope.prev = function () {
@@ -42,13 +42,6 @@ angular.module('tilosApp').controller('ProgramCtrl', function ($scope, $state, $
       var to = new Date(timestamp * 1000);
       to.setToDayEnd();
       $http.get(API_SERVER_ENDPOINT + '/api/v0/episode?start=' + from.getTimestamp() + '&end=' + to.getTimestamp(), {cache: true}).success(function (data) {
-        for (var i = 0; i < data.length; i++) {
-          var fromDate = new Date(data[i].plannedFrom * 1000);
-          var toDate = new Date(data[i].plannedTo * 1000);
-          var fromDateString = fromDate.getFullYear() + ('0' + (fromDate.getMonth() + 1)).slice(-2) + ('0' + fromDate.getDate()).slice(-2);
-          var fromDateHours = ('0' + fromDate.getHours()).slice(-2) + ('0' + fromDate.getMinutes()).slice(-2);
-          var toDateHours = ('0' + toDate.getHours()).slice(-2) + ('0' + toDate.getMinutes()).slice(-2);
-        }
         $scope.episodes = data;
       });
     };

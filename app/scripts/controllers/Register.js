@@ -11,14 +11,14 @@ angular.module('tilosApp').config(function ($stateProvider) {
 });
 
 angular.module('tilosApp').controller('RegisterCtrl', function ($scope, $http, API_SERVER_ENDPOINT, vcRecaptchaService, $rootScope, localStorageService, $location) {
-  if ($scope.user) {
-    $location.path("/me");
-  }
+    if ($scope.user) {
+        $location.path('/me');
+    }
     $scope.form = {};
     $scope.register = function () {
         $scope.errormessage = '';
         $scope.form.captchaChallenge = vcRecaptchaService.data().challenge;
-        $scope.form.captchaResponse= vcRecaptchaService.data().response;
+        $scope.form.captchaResponse = vcRecaptchaService.data().response;
         $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/register', $scope.form).success(function (data) {
             localStorageService.set('jwt', data);
 
@@ -29,7 +29,7 @@ angular.module('tilosApp').controller('RegisterCtrl', function ($scope, $http, A
         }).error(function (data) {
             vcRecaptchaService.reload();
             if (data.message) {
-                $scope.errormessage = data.message.replace(/\n/g,'<br/>');
+                $scope.errormessage = data.message.replace(/\n/g, '<br/>');
             } else {
                 $scope.errormessage = 'Ismeretlen hiba történt';
 

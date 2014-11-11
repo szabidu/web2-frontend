@@ -105,7 +105,7 @@ tilos.run(function ($rootScope, Meta, localStorageService, $http, API_SERVER_END
 
     });
 
-    if (localStorageService.get("jwt")) {
+    if (localStorageService.get('jwt')) {
         $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
             $rootScope.user = data;
         });
