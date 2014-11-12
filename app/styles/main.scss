@@ -1,4 +1,4 @@
-// $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+$icon-font-path: "fonts/";
 
 @import "color";
 @import "bootstrap-settings";
@@ -1038,6 +1038,14 @@ a.icon-star, a.icon-star2{
   width:20%;
 }
 
+
+#datapicker {
+    .btn-default {
+        background-color: #cacaca;
+        color: #000;
+        border-color: #D0D0D0;
+    }
+}
 .datepicker{
   border:none;
   font-family: "Open Sans",sans-serif;
@@ -1057,6 +1065,7 @@ a.icon-star, a.icon-star2{
     color:$primary-color;
   }
 }
+
 .DatePicker {
   position: relative;
   float: left;

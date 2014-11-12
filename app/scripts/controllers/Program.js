@@ -13,11 +13,7 @@ angular.module('tilosApp').config(function ($stateProvider) {
   });
 });
 angular.module('tilosApp').controller('ProgramCtrl', function ($scope, $state, $stateParams, API_SERVER_ENDPOINT, $http, datepickerPopupConfig, $timeout) {
-    datepickerPopupConfig.closeText = 'Bezár';
-    datepickerPopupConfig.toggleWeeksText = 'Hetek száma';
-    datepickerPopupConfig.currentText = 'Ma';
-    datepickerPopupConfig.clearText = 'Törlés';
-
+    datepickerPopupConfig.showButtonBar = false;
 
     $scope.gotoDay = function(date) {
       var monthStr = ('0' + (date.getMonth() + 1)).slice(-2);

@@ -37,6 +37,7 @@ gulp.task('scripts', function () {
     "app/bower_components/angular-sanitize/angular-sanitize.js",
     "app/bower_components/textAngular/textAngular.js",
     "app/bower_components/angular-ui-bootstrap-bower/ui-bootstrap.js",
+    "app/bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js",
     "app/bower_components/angular-ui-router/release/angular-ui-router.js",
     "app/bower_components/angular-local-storage/dist/angular-local-storage.js",
     "app/bower_components/angular-recaptcha/release/angular-recaptcha.min.js",
@@ -58,6 +59,12 @@ gulp.task('assets', function () {
       'app/jplayer/**/*'],
     {base: 'app'})
     .pipe(gulp.dest(distDir + '/www'));
+
+    gulp.src([
+            'app/bower_components/sass-bootstrap/fonts/**'],
+        {base: 'app/bower_components/sass-bootstrap/fonts'})
+        .pipe(gulp.dest(distDir + '/www/styles/fonts'));
+
 });
 
 gulp.task('chat', function () {

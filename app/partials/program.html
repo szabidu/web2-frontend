@@ -5,17 +5,17 @@
   <nav class="text-center">
     <ul class="pagination pagination-lg">
       <li class="cursorPointer"><a ng-click="prev()">&larr; Előző nap</a></li>
-      <li>
-        <div class="DatePicker form-horizontald">
+      <li class="cursorPointer" ng-click="open()">
+        <div class="DatePicker form-horizontald" id="datapicker">
 
-          <button class="btn ChooseDate" ng-click="open()">
-            <i class="icon-calendar"></i>
+      <button class="btn ChooseDate" ng-click="open()">
+              <i class="icon-calendar"></i>
           </button>
-          <input type="text" class="datepicker" datepicker-popup="yyyy.MM.dd"
+          <input type="text" class="datepicker" datepicker-popup="yyyy.MM.dd" show-weeks="false"
                  ng-model="selectedDate" is-open="opened" min="minDate" max="maxDate"
                  datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
-                 ng-required="true" ng-change="goto();"/>
-          {{selectedDate | date:'EEEE'}}
+                 ng-required="true" ng-change="goto();" ng-click="open($event)">
+             {{selectedDate | date:'EEEE'}}
         </div>
       </li>
       <li class="cursorPointer"><a ng-click="next()">Következő nap &rarr;</a></li>
