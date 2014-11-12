@@ -111,6 +111,8 @@ tilos.run(function ($rootScope, Meta, localStorageService, $http, API_SERVER_END
         });
     }
 
+    $rootScope.now = new Date();
+
 });
 
 tilos.config(function ($routeProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
