@@ -1,9 +1,10 @@
 <section class="col-md-9 main" role="main">
     <h1 class="ubuntu">{{show.name}}</h1>
+    <p class="show-definition">{{show.definition}}</p>
     <ul class="nav nav-tabs" role="tablist">
         <li ui-sref-active="active"><a ui-sref="show.main({id: show.alias})">Archívum</a></li>
         <li ui-sref-active="active"><a ui-sref="show.intro({id: show.alias})">Bemutatkozás</a></li>
-        <li ui-sref-active="active"><a ui-sref="show.mixes({id: show.alias})">Mixek</a></li>
+        <li ui-sref-active="active"><a ui-sref="show.mixes({id: show.alias})">Mixek <span ng-show="show.stats.mixCount > 0" class="badge">{{show.stats.mixCount}}</span></a></li>
         <li ui-sref-active="active"><a ui-sref="show.bookmarks({id: show.alias})">Könyvjelzők</a></li>
     </ul>
 
