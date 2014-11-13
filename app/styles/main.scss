@@ -997,6 +997,32 @@ a.icon-star, a.icon-star2{
   }
 }
 
+
+.listen-component {
+    border-radius: 0.25em;
+}
+
+#archiveTable .listen-button {
+    background-color: $rss;
+}
+
+#archiveTable .download-button {
+    background-color: #dd4c3b
+}
+
+#archiveTable .listen-button, #archiveTable .download-button{
+    color: #FFFFFF;
+    width: 90px;
+    font-weight: bold;
+    border: 0px;
+    &:hover{
+        background: darken($rss, 5%);
+        color: white;
+    }
+}
+
+
+
 //Style of Archive
 
 #archiveTable{
@@ -1175,6 +1201,14 @@ input.datepicker {
 .episode-list {
   border-bottom: 1px solid $gray-light;
 }
+
+.episode-title{
+    font-size: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
 // style singe show page
 
 .episode-tab{
@@ -1184,7 +1218,7 @@ input.datepicker {
   .panel-heading{
     border-bottom: 0;
     overflow: hidden;
-    padding-right: 120px;
+    padding-right: 10px;
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1193,7 +1227,7 @@ input.datepicker {
       right: 15px;
       top: 10px;
     }
-    a{
+    .episode-title a{
       color: $primary-color;
     }
   }
@@ -1275,4 +1309,9 @@ input.datepicker {
 
 input.ng-invalid {
   border: 2px solid red;
+}
+
+
+.main-date{
+    font-weight: bold;
 }

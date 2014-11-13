@@ -1,20 +1,12 @@
 <div class="episode-tab">
     <div class="panel panel-default episode-box" ng-repeat="episode in show.episodes">
         <div class="panel-heading">
-            <b>
+            <listen-button class="pull-right" link="{{episode.m3uUrl}}"> </listen-button>
+            <div class="episode-title">
                 <a ng-show="episode.text" ng-href="{{episode.url}}">{{episode.plannedFrom * 1000| date:
                     'yyyy.MM.dd.'}} {{episode.text.title}}</a></span>
                 <span ng-hide="episode.text">{{episode.plannedFrom * 1000| date: 'yyyy.MM.dd.'}}</span>
-            </b>
-
-            <a ng-show="experimental" class="stream-link pull-right" ng-click="play(episode.resources.stream)"
-               target="_self">
-                <i class="icon-volume-up"></i> online
-            </a>
-            <a ng-show="episode.m3uUrl" class="pull-right listen-show" ng-href="{{episode.m3uUrl}}" target="_self">
-                <i class="icon-volume-up"></i> Meghallgat
-            </a>
-            {{episode.persistent}}
+            </div>
         </div>
     </div>
 

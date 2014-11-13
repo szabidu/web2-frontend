@@ -1,9 +1,11 @@
 <section class="col-md-9 main" role="main">
-            <h2 class="bordered blue top"><a class="label label-default" ng-href="/show/{{currentShow.alias}}">{{currentShow.name}}</a>  :: {{episode.plannedFrom |
-    date:yyyy.MM.dd}}
-            <a ng-show="episode.m3uUrl" class="pull-right listen-show btn btn-warning" ng-href="{{episode.m3uUrl}}" target="_self">
-                <i class="icon-volume-up"></i> Meghallgat
-            </a></h2>
+
+
+
+    <h2 class="bordered top"><a class="label label-default" ng-href="/show/{{currentShow.alias}}">{{currentShow.name}}</a>  {{episode.plannedFrom |
+        date:'yyyy. MMMM dd.'}}
+    <listen-button link="{{episode.m3uUrl}}"/>
+
   <h1 class="ubuntu">{{episode.text.title}}</h1>
 
   <span ng-bind-html="episode.text.formatted"></span>
