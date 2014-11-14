@@ -4,7 +4,7 @@
 
     <h2 class="bordered top"><a class="label label-default" ng-href="/show/{{currentShow.alias}}">{{currentShow.name}}</a>  {{episode.plannedFrom |
         date:'yyyy. MMMM dd.'}}
-    <listen-button link="{{episode.m3uUrl}}"/>
+    <listen-button link="{{episode.m3uUrl}}"/></h2>
 
   <h1 class="ubuntu">{{episode.text.title}}</h1>
 
@@ -14,7 +14,7 @@
          ng-show="isLoggedIn()"
          commentable="{{episode.id}}"
          commentable-type="EPISODE"
-         logged-in="isLoggedIn()" ></div>
+         logged-in="isLoggedIn()"></div>
 
 </section>
 <aside class="col-md-3">
