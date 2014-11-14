@@ -9,7 +9,7 @@ angular.module('tilosApp').config(function ($stateProvider) {
 });
 
 angular.module('tilosApp').controller('AuthorCtrl', function ($scope, $rootScope, $stateParams, API_SERVER_ENDPOINT, $http) {
-    $http.get(API_SERVER_ENDPOINT + '/api/v0/author/' + $stateParams.id, {cache: true}).success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/author/' + $stateParams.id, {cache: true}).success(function (data) {
       $scope.author = data;
       $rootScope.pageTitle = data.name;
 
