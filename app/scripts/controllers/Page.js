@@ -9,7 +9,7 @@ angular.module('tilosApp').config(function ($stateProvider) {
 });
 
 angular.module('tilosApp').controller('PageCtrl', function ($scope, API_SERVER_ENDPOINT, $stateParams, $http) {
-    $http.get(API_SERVER_ENDPOINT + '/api/v0/text/' + $stateParams.id).success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/' + $stateParams.id).success(function (data) {
         $scope.page = data;
     });
 });
