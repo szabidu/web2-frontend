@@ -31,17 +31,17 @@ angular.module('tilosApp').run(function ($rootScope, localStorageService, $locat
 angular.module('tilosApp').controller('PasswordReminderCtrl', function ($scope, $http, API_SERVER_ENDPOINT) {
     $scope.reminderdata = {};
     $scope.reminder = function () {
-        $http.post(API_SERVER_ENDPOINT + '/api/v0/auth/password_reset', $scope.reminderdata).success(function (data) {
+        $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/password_reset', $scope.reminderdata).success(function (data) {
             if (data.success) {
                 $scope.message = data.message;
             } else {
                 $scope.remindererror = 'Password reset error';
             }
         }).error(function (data) {
-            if (data.error) {
-                $scope.remindererror = data.error;
+            if (data.message) {
+                $scope.remindererror = data.message;
             } else {
-                $scope.reminderror = 'Unknown error';
+                $scope.remindererror = 'Unknown error';
             }
         });
     };
