@@ -32,7 +32,7 @@ angular.module('tilosApp').controller('PasswordReminderCtrl', function ($scope, 
     $scope.reminderdata = {};
     $scope.reminder = function () {
         $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/password_reset', $scope.reminderdata).success(function (data) {
-            if (data.success) {
+            if (!data.error) {
                 $scope.message = data.message;
             } else {
                 $scope.remindererror = 'Password reset error';
