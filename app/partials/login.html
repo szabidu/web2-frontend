@@ -2,20 +2,20 @@
     <div class="col-md-4 col-lg-push-3">
         <div class=" alert alert-danger" ng-show="loginerror">{{loginerror}}</div>
         <div class="panel panel-default">
-            <div class="panel-heading"><h3 class="panel-title"><strong>Belépés</strong></h3></div>
+            <div class="panel-heading"><h3 class="panel-title"><strong>belépés</strong></h3></div>
             <div class="panel-body">
                 <form role="form">
                     <div class="form-group">
-                        <label for="username">Felhasználónév</label>
+                        <label for="username">felhasználónév</label>
                         <input type="username" class="form-control" id="username" placeholder="Felhasználónév" ng-model="logindata.username">
                     </div>
                     <div class="form-group">
-                        <label for="password">Jelszó<a href="/password_reminder"> (elfelejtett jelszó)</a></label>
+                        <label for="password">jelszó<a href="/password_reminder"> (elfelejtett jelszó)</a></label>
                         <input type="password" class="form-control" id="password" placeholder="Jelszó" ng-model="logindata.password">
                     </div>
-                    <button type="submit" ng-click="login()" class="btn btn-sm btn-default">Belépés</button>
+                    <button type="submit" ng-click="login()" class="btn btn-sm btn-default">belépés</button>
                 </form>
-                <p>Nem vagy felhasználó? <a href="/register">Regisztrálj</a></p>
+                <p>Nem vagy felhasználó? <a href="/register">Regisztrálj!</a></p>
             </div>
         </div>
     </div>
