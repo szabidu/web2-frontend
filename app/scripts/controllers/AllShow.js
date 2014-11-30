@@ -16,7 +16,7 @@ angular.module('tilosApp').controller('AllshowCtrl', function ($scope, $routePar
         };
         for (var i = 0; i < data.length; i++) {
             var show = data[i];
-            if (show.type) {
+            if (show.type == 'SPEECH') {
                 res.talk.push(data[i]);
             } else {
                 res.sound.push(data[i]);
