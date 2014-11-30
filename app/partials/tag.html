@@ -1,16 +1,16 @@
 <section class="col-md-9 main" role="main">
-    <h1>{{tag.name}}</h1>
+    <h1>{{tag}}</h1>
+
     <p>A címke az alábbi műsorokhoz kapcsolódik:</p>
     <table class="table">
-        <tr ng-repeat="episode in tag.episodes">
-            <td><a ng-href="/episode/{{episode.show.alias}}/{{episode.plannedFrom * 1000 | date:'yyyy/MM/dd'}}">{{episode.plannedFrom
-                * 1000 | date:'yyyy-MM-dd'}}</a>
+        <tr ng-repeat="episode in list.tagged">
+            <td><a ng-href="/episode/{{episode.showAlias}}/{{episode.plannedFrom | date:'yyyy/MM/dd'}}">{{episode.plannedFrom | date:'yyyy-MM-dd'}}</a>
             </td>
             <td>
-                {{episode.text.title}}
+                {{episode.title}}
             </td>
             <td>
-                {{episode.show.name}}
+                {{episode.showName}}
             </td>
         </tr>
     </table>

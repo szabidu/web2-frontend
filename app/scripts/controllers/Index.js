@@ -14,7 +14,7 @@ angular.module('tilosApp').controller('IndexCtrl', function ($scope, $routeParam
 );
 
 angular.module('tilosApp').controller('TagCloudCtrl', function (API_SERVER_ENDPOINT, $http, $scope) {
-    $http.get(API_SERVER_ENDPOINT + '/api/v0/tag?limit=10', {cache: true}).success(function (data) {
-        $scope.tags = data;
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/tag', {cache: true}).success(function (data) {
+        $scope.tags = data.tags;
     });
 });

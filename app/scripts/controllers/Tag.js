@@ -23,8 +23,9 @@ angular.module('tilosApp').config(function ($stateProvider) {
     });
 });
 
-angular.module('tilosApp').controller('TagCtrl', function ($scope, Tags, data) {
-    $scope.tag = data;
+angular.module('tilosApp').controller('TagCtrl', function ($scope, Tags, data, $stateParams) {
+    $scope.list = data;
+    $scope.tag = $stateParams.id;
 });
 
 angular.module('tilosApp').controller('TagListCtrl', function ($scope, Tags, list) {
@@ -33,7 +34,7 @@ angular.module('tilosApp').controller('TagListCtrl', function ($scope, Tags, lis
 });
 
 angular.module('tilosApp').factory('Tags', ['API_SERVER_ENDPOINT', '$resource', function (server, $resource) {
-    return $resource(server + '/api/v0/tag/:id', null, {
+    return $resource(server + '/api/v1/tag/:id', null, {
 
     });
 }]);
