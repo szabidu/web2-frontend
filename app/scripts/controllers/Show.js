@@ -63,20 +63,12 @@ angular.module('tilosApp').controller('ShowIntroCtrl', function () {
 
 angular.module('tilosApp')
     .controller('ShowMixesCtrl', function ($scope, $stateParams, API_SERVER_ENDPOINT, $http) {
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $stateParams.id, {cache: true}).success(function (data) {
-            $scope.show = data;
-        });
+
         $http.get(API_SERVER_ENDPOINT + '/api/v1/mix?show=' + $stateParams.id, {cache: true}).success(function (data) {
             $scope.mixes = data;
         });
     });
 
-angular.module('tilosApp')
-    .controller('ShowMixesCtrl', function ($scope, $stateParams, API_SERVER_ENDPOINT, $http) {
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $stateParams.id, {cache: true}).success(function (data) {
-            $scope.show = data;
-        });
-    });
 
 angular.module('tilosApp')
     .controller('ShowCtrl', function (Player, $scope, $stateParams, API_SERVER_ENDPOINT, $http, validateUrl, $rootScope, $location, Meta) {
