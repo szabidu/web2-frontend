@@ -9,7 +9,7 @@ angular.module('tilosApp').config(function ($stateProvider) {
 });
 
 angular.module('tilosApp').controller('AllshowCtrl', function ($scope, $routeParams, API_SERVER_ENDPOINT, $http) {
-    $http.get(API_SERVER_ENDPOINT + '/api/v0/show', {cache: true}).success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/show', {cache: true}).success(function (data) {
         var res = {
             talk: [],
             sound: []

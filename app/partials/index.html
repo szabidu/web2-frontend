@@ -20,7 +20,7 @@
       <h3><a ng-href="{{episode.url}}">{{episode.text.title}}</a></h3>
       <p>
         <a class="label label-episode label-default" ng-href="/show/{{episode.show.alias}}">{{episode.show.name}}</a>
-        <span class="pull-right main-date">{{episode.plannedFrom * 1000 | date:'MMMM dd. - HH:mm'}}</span>
+        <span class="pull-right main-date">{{episode.plannedFrom | date:'MMMM dd. - HH:mm'}}</span>
 
        </p>
     </div>
@@ -36,7 +36,7 @@
         </p>
         <p>
           <a class="label label-episode label-default" ng-href="/show/{{episode.show.alias}}">{{episode.show.name}}</a>
-          <span class="pull-right main-date">{{episode.plannedFrom * 1000 | date:'yyyy. MMMM dd.'}}</span>
+          <span class="pull-right main-date">{{episode.plannedFrom | date:'yyyy. MMMM dd.'}}</span>
         </p>
     </div>
   </div>

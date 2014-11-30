@@ -92,9 +92,9 @@ angular.module('tilosApp')
             $scope.currentShowPage = 0;
 
 
-            var to = new Date().getTime() / 1000;
-            var from = to - ( 6 * 30 * 24 * 3600);
-            $http.get(API_SERVER_ENDPOINT + '/api/v0/show/' + data.id + '/episodes?from=' + from + '&to=' + to).success(function (data) {
+            var to = new Date().getTime();
+            var from = to - ( 6 * 30 * 24 * 3600 * 1000);
+            $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + data.id + '/episodes?start=' + from + '&end=' + to).success(function (data) {
                 $scope.show.episodes = data;
             });
 
@@ -102,18 +102,18 @@ angular.module('tilosApp')
 
             $scope.prev = function () {
                 $scope.currentShowPage--;
-                var to = $scope.show.episodes[$scope.show.episodes.length - 1].plannedFrom - 60;
-                var from = to - 60 * 24 * 60 * 60;
-                $http.get(API_SERVER_ENDPOINT + '/api/v0/show/' + data.id + '/episodes?from=' + from + '&to=' + to).success(function (data) {
+                var to = $scope.show.episodes[$scope.show.episodes.length - 1].plannedFrom - 60000;
+                var from = to - 60 * 24 * 60 * 60 * 1000;
+                $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + data.id + '/episodes?start=' + from + '&end=' + to).success(function (data) {
                     $scope.show.episodes = data;
                 });
 
             };
             $scope.next = function () {
                 $scope.currentShowPage++;
-                var from = $scope.show.episodes[0].plannedTo + 60;
-                var to = from + 60 * 24 * 60 * 60;
-                $http.get(API_SERVER_ENDPOINT + '/api/v0/show/' + data.id + '/episodes?from=' + from + '&to=' + to).success(function (data) {
+                var from = $scope.show.episodes[0].plannedTo + 60000;
+                var to = from + 60 * 24 * 60 * 60 * 1000;
+                $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + data.id + '/episodes?start=' + from + '&end=' + to).success(function (data) {
                     $scope.show.episodes = data;
                 });
             };

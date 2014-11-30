@@ -18,13 +18,13 @@ angular.module('tilosApp').controller('MainCtrl', function ($scope, FeedService,
     FeedService.parseFeed('http://hirek.tilos.hu/?feed=rss2').then(function (res) {
         $scope.feeds = res.data.responseData.feed.entries;
     });
-    $http.get(API_SERVER_ENDPOINT + '/api/v0/episode/next').success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/next').success(function (data) {
         $scope.next = data;
     });
-    $http.get(API_SERVER_ENDPOINT + '/api/v0/episode/last').success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/last').success(function (data) {
         $scope.last = data;
     });
-    $http.get(API_SERVER_ENDPOINT + '/api/v0/text/lead').success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/text/lead').success(function (data) {
         $scope.lead = data;
     });
 
