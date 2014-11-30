@@ -145,9 +145,9 @@
                         <div class="col-md-6 radio-info">
                             <h3>
                                 <a href="#/show/{{current.show.alias}}" ng-bind="current.show.name"></a>
-										<span class="radio-fromTo" ng-show="current.show.episodes">
-                                            <span ng-bind="current.show.episodes[0].plannedFrom * 1000| date: 'HH:mm'"></span>-<span
-                                                ng-bind="current.show.episodes[0].plannedTo * 1000| date: 'HH:mm'"></span>
+										<span class="radio-fromTo" ng-show="current.show">
+                                            <span ng-bind="current.plannedFrom| date: 'HH:mm'"></span>-<span
+                                                ng-bind="current.plannedTo| date: 'HH:mm'"></span>
 										</span>
                             </h3>
                         </div>

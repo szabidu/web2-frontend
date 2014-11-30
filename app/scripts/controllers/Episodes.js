@@ -4,7 +4,7 @@ angular.module('tilosApp').controller('EpisodesCtrl', function ($scope, $statePa
         $scope.now = new Date();
 
         var nowDate = new Date();
-        var start = Math.round((nowDate / 1000 - 60 * 60 * 3) / 10) * 10;
+        var start = Math.round((nowDate.getTime() - 60 * 60 * 3 * 1000) / 60000) * 60000;
         var now = nowDate.getTime();
         $http.get(API_SERVER_ENDPOINT + '/api/v1/episode?start=' + start + '&end=' + (start + 8 * 60 * 60 * 1000), {cache: true}).success(function (data) {
             for (var i = 0; i < data.length; i++) {

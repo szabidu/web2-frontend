@@ -8,7 +8,7 @@
 		<table class="table actual-shows" >
 			<tr ng-repeat="episode in episodes" class="{{(current.show.id == episode.show.id) && 'actual'|| ''}}" >
 				<td><a href="#/show/{{episode.show.alias}}">{{episode.show.name}}<a></td>
-				<td>{{episode.plannedFrom * 1000| date: 'HH:mm'}}</td>
+				<td>{{episode.plannedFrom | date: 'HH:mm'}}</td>
 			</tr>
 		</table>
 	</div>
