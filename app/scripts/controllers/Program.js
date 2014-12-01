@@ -33,11 +33,11 @@ angular.module('tilosApp').controller('ProgramCtrl', function ($scope, $state, $
     };
 
     $scope.retrieveEpisodesForDay = function (timestamp) {
-      var from = new Date(timestamp * 1000);
+      var from = new Date(timestamp);
       from.setToDayStart();
-      var to = new Date(timestamp * 1000);
+      var to = new Date(timestamp);
       to.setToDayEnd();
-      $http.get(API_SERVER_ENDPOINT + '/api/v1/episode?start=' + from.getTimestamp() + '&end=' + to.getTimestamp(), {cache: true}).success(function (data) {
+      $http.get(API_SERVER_ENDPOINT + '/api/v1/episode?start=' + from.getTime() + '&end=' + to.getTime(), {cache: true}).success(function (data) {
         $scope.episodes = data;
       });
     };
@@ -55,7 +55,7 @@ angular.module('tilosApp').controller('ProgramCtrl', function ($scope, $state, $
     }
 
     //Get today's episodes.
-    $scope.retrieveEpisodesForDay($scope.selectedDate.getTimestamp());
+    $scope.retrieveEpisodesForDay($scope.selectedDate.getTime());
 
     $scope.today = function () {
       $scope.dt = new Date();
