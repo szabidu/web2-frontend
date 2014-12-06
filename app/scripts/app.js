@@ -31,8 +31,8 @@ tilos.factory('Meta', function ($rootScope) {
             $rootScope.pageTitle = newTitle;
         },
         setDescription: function (newDesc) {
-            var metaDesc = angular.element(document.querySelector('#desc'));
-            metaDesc.attr('content', newDesc);
+            //var metaDesc = angular.element(document.querySelector('#desc'));
+            //metaDesc.attr('content', newDesc);
         }
 
     };
