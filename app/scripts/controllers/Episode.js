@@ -34,6 +34,7 @@ angular.module('tilosApp').config(function($stateProvider)
 /*global angular*/
 angular.module('tilosApp').controller('EpisodeCtrl', function ($scope, data, show, $sce, Meta) {
         $scope.episode = data.data;
+        $scope.show = show.data;
         if (data.data.text && data.data.text.formatted) {
             $scope.episode.text.formatted = $sce.trustAsHtml(data.data.text.formatted);
         }
