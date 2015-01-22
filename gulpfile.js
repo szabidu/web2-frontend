@@ -41,10 +41,9 @@ gulp.task('scripts', function () {
     "app/bower_components/angular-ui-router/release/angular-ui-router.js",
     "app/bower_components/angular-local-storage/dist/angular-local-storage.js",
     "app/bower_components/angular-recaptcha/release/angular-recaptcha.min.js",
-//    'app/bower_components/angularitics/dist/angulartics.min.js',
     'app/bower_components/angularitics/src/angulartics.js',
-    'app/bower_components/angularitics/src/angulartics-ga.js'
-
+    'app/bower_components/angularitics/src/angulartics-ga.js',
+    'app/bower_components/angular-easyfb/angular-easyfb.min.js'
   ])
     .pipe(concat('angular.js'))
     .pipe(gulp.dest(distDir + "/www/scripts"));

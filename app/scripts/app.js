@@ -9,6 +9,7 @@ var tilos = angular.module('tilosApp',
     'ui.router',
     'LocalStorageModule',
     'vcRecaptcha',
+    'ezfb',
     'angulartics',
     'angulartics.google.analytics']);
 
@@ -113,6 +114,13 @@ tilos.run(function ($rootScope, Meta, localStorageService, $http, API_SERVER_END
 
     $rootScope.now = new Date();
 
+});
+
+tilos.config(function (ezfbProvider) {
+    ezfbProvider.setInitParams({
+        appId: '1390285161277354',
+        version: 'v2.0'
+    });
 });
 
 tilos.config(function ($routeProvider, $stateProvider, $urlRouterProvider, $httpProvider) {

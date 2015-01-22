@@ -32,7 +32,8 @@ angular.module('tilosApp').config(function($stateProvider)
 
 
 /*global angular*/
-angular.module('tilosApp').controller('EpisodeCtrl', function ($scope, data, show, $sce, Meta) {
+angular.module('tilosApp').controller('EpisodeCtrl', function ($scope, data, show, $sce, Meta, $location) {
+        $scope.absUrl = $location.absUrl();
         $scope.episode = data.data;
         $scope.show = show.data;
         if (data.data.text && data.data.text.formatted) {
