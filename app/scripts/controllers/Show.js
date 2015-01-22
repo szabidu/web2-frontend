@@ -79,7 +79,7 @@ angular.module('tilosApp')
             if (data.definition) {
                 Meta.setDescription(data.definition);
             } else if ($scope.show.description) {
-                Meta.setDescription($scope.show.description.substring(0,100));
+                Meta.setDescription($scope.show.description.substring(0, 400));
             }
 
             $scope.show.sharecount = 0;

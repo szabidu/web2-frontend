@@ -46,7 +46,7 @@ angular.module('tilosApp').controller('EpisodeCtrl', function ($scope, data, sho
             Meta.setTitle($scope.currentShow.name + ' adásnapló');
         }
         if ($scope.episode.text.content) {
-            Meta.setDescription($scope.episode.text.content.substring(0,100));
+            Meta.setDescription($scope.episode.text.content.substring(0,400));
         }
     }
 );
