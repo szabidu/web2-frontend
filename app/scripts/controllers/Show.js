@@ -76,7 +76,11 @@ angular.module('tilosApp')
             $scope.show = data;
             $scope.server = API_SERVER_ENDPOINT;
             Meta.setTitle(data.name);
-            Meta.setDescription(data.definition);
+            if (data.definition) {
+                Meta.setDescription(data.definition);
+            } else if ($scope.show.description) {
+                Meta.setDescription($scope.show.description.substring(0,100));
+            }
 
             $scope.show.sharecount = 0;
             $scope.likeURL = validateUrl.getValidUrl('http://www.facebook.com/plugins/like.php?href=http%3A%2F%2F' + API_SERVER_ENDPOINT+ '%2Fshow%2F' + $scope.show.alias + '&width&layout=standard&action=like&show_faces=true&share=true');

@@ -40,14 +40,13 @@ angular.module('tilosApp').controller('EpisodeCtrl', function ($scope, data, sho
             $scope.episode.text.formatted = $sce.trustAsHtml(data.data.text.formatted);
         }
         $scope.currentShow = show.data;
-        var start = new Date();
-        start.setTime($scope.episode.plannedFrom * 1000);
-        var dateStr = start.format('yyyy.mm.dd');
         if ($scope.episode.text && $scope.episode.text.title) {
-            Meta.setDescription(dateStr + ' - ' + $scope.episode.text.title);
+            Meta.setTitle($scope.episode.text.title);
         } else {
-            Meta.setDescription(dateStr + ' - ' + $scope.currentShow.name + ' adás');
+            Meta.setTitle($scope.currentShow.name + ' adásnapló');
         }
-        Meta.setTitle($scope.currentShow.name + ' adásnapló');
+        if ($scope.episode.text.content) {
+            Meta.setDescription($scope.episode.text.content.substring(0,100));
+        }
     }
 );
