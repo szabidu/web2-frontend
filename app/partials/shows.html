@@ -12,17 +12,17 @@
         <table class="table">
             <tr ng-repeat="show in shows['talk'] | filter:simpleShowSearch">
                 <td><a href="#/show/{{show.alias}}">{{show.name}}</a></td>
-                <td>{{show.definition}}</td>
+                <td><i>{{show.definition}}</i></td>
             </tr>
         </table>
 
     </section>
-    <section class="col-md-6 main" role="main" >   
+    <section class="col-md-6 main" role="main" >
         <h1>Zenés műsorok</h1>
         <table class="table">
             <tr ng-repeat="show in shows['sound'] | filter:simpleShowSearch">
                 <td><a href="#/show/{{show.alias}}">{{show.name}}</a></td>
-                <td>{{show.definition}}</td>
+                <td><i>{{show.definition}}</i></td>
             </tr>
         </table>
     </section>
