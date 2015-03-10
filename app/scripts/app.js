@@ -10,6 +10,7 @@ var tilos = angular.module('tilosApp',
     'LocalStorageModule',
     'vcRecaptcha',
     'ezfb',
+    'satellizer',
     'angulartics',
     'angulartics.google.analytics']);
 
@@ -98,14 +99,14 @@ tilos.run(function(){
   };
 });
 
-tilos.run(function ($rootScope, Meta, localStorageService, $http, API_SERVER_ENDPOINT) {
+tilos.run(['$rootScope', 'Meta', 'localStorageService', '$http', 'API_SERVER_ENDPOINT', 'satellizer.shared', function ($rootScope, Meta, localStorageService, $http, API_SERVER_ENDPOINT, satellizer) {
     $rootScope.$on('$locationChangeStart', function () {
         Meta.setTitle('');
         Meta.setDescription('');
 
     });
 
-    if (localStorageService.get('jwt')) {
+    if (satellizer.getToken()) {
         $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
             $rootScope.user = data;
         });
@@ -113,7 +114,7 @@ tilos.run(function ($rootScope, Meta, localStorageService, $http, API_SERVER_END
 
     $rootScope.now = new Date();
 
-});
+}]);
 
 tilos.config(function (ezfbProvider) {
     ezfbProvider.setInitParams({
@@ -122,8 +123,18 @@ tilos.config(function (ezfbProvider) {
     });
 });
 
+
+tilos.config(function ($authProvider) {
+    $authProvider.facebook({
+        clientId: '1390285161277354',
+        url: '/api/int/oauth/facebook'
+    });
+
+});
+
+
 tilos.config(function ($routeProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
-    $httpProvider.interceptors.push(function ($q, localStorageService) {
+    /*$httpProvider.interceptors.push(function ($q, localStorageService) {
         return {
             'request': function (config) {
                 var jwt = localStorageService.get('jwt');
@@ -133,7 +144,7 @@ tilos.config(function ($routeProvider, $stateProvider, $urlRouterProvider, $http
                 return config;
             }
         };
-    });
+    });*/
 
     $urlRouterProvider.otherwise(function ($injector, $location) {
         var $http = $injector.get('$http');

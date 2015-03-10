@@ -16,16 +16,16 @@ angular.module('tilosApp').config(function ($stateProvider) {
 
 });
 
-angular.module('tilosApp').run(function ($rootScope, localStorageService, $location) {
+angular.module('tilosApp').run(['$rootScope', 'localStorageService', '$location', 'satellizer.shared', function ($rootScope, localStorageService, $location, satellizer) {
     $rootScope.logout = function () {
         $rootScope.user = null;
-        localStorageService.remove('jwt');
+        satellizer.logout();
         $location.path("/");
     };
     $rootScope.isLoggedIn = function () {
         return $rootScope.user;
     };
-});
+}]);
 
 
 angular.module('tilosApp').controller('PasswordReminderCtrl', function ($scope, $http, API_SERVER_ENDPOINT) {
@@ -47,28 +47,34 @@ angular.module('tilosApp').controller('PasswordReminderCtrl', function ($scope, 
     };
 });
 
-angular.module('tilosApp').controller('LoginCtrl', function ($rootScope, $scope, $location, API_SERVER_ENDPOINT, $http, localStorageService) {
-        if ($scope.user) {
-          $location.path("/me");
-        }
-        $scope.logindata = {};
-        $scope.loginerror = '';
-        $scope.login = function () {
-            $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/login', $scope.logindata).success(function (data) {
-                localStorageService.set('jwt', data);
+angular.module('tilosApp').controller('LoginCtrl',
+    ['$rootScope', '$scope', '$location', 'API_SERVER_ENDPOINT', '$http', 'localStorageService', '$auth', 'satellizer.shared',
+        function ($rootScope, $scope, $location, API_SERVER_ENDPOINT, $http, localStorageService, $auth, satellizer) {
+            if ($scope.user) {
+                $location.path("/me");
+            }
+            $scope.logindata = {};
+            $scope.loginerror = '';
+            $scope.authenticate = function (provider) {
+                $auth.authenticate(provider);
+            };
+            $scope.login = function () {
+                $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/login', $scope.logindata).success(function (data) {
+                    satellizer.setToken(data)
+                    localStorageService.set('jwt', data);
 
-                $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
-                    $rootScope.user = data;
-                    $location.path('/');
+                    $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
+                        $rootScope.user = data;
+                        $location.path('/');
+                    });
+
+                }).error(function () {
+                    localStorageService.remove('jwt');
+                    $scope.loginerror = 'Login error';
                 });
 
-            }).error(function () {
-                localStorageService.remove('jwt');
-                $scope.loginerror = 'Login error';
-            });
-
-        };
+            };
 
 
-    }
+        }]
 );
