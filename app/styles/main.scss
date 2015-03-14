@@ -1012,23 +1012,11 @@ a.icon-star, a.icon-star2{
     border-radius: 0.25em;
 }
 
-#archiveTable .listen-button {
-    background-color: $rss;
-}
-
-#archiveTable .download-button {
-    background-color: #dd4c3b
-}
 
 #archiveTable .listen-button, #archiveTable .download-button{
     color: #FFFFFF;
-    width: 90px;
     font-weight: bold;
     border: 0px;
-    &:hover{
-        background: darken($rss, 5%);
-        color: white;
-    }
 }
 
 
