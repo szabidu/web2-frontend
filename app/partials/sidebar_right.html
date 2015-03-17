@@ -5,7 +5,7 @@
     </div> <!-- box -->
     <div class="box actual-shows-box" ng-controller="EpisodesCtrl">
 		<h2>{{now| date: "yyyy.MM.dd."}} <a class="btn btn-default btn-sm pull-right weeklyschedule" href="http://tilos.hu/upload/content/musorlista/program.pdf"
-target="_blank">heti műsortábla</a></h2>
+target="_blank">heti műsor</a></h2>
 		<table class="table actual-shows" >
 			<tr ng-repeat="episode in episodes" class="{{(current.show.id == episode.show.id) && 'actual'|| ''}}" >
 				<td><a href="#/show/{{episode.show.alias}}">{{episode.show.name}}<a></td>
