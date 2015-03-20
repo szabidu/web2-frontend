@@ -10,7 +10,9 @@ angular.module('tilosApp').config(function ($stateProvider) {
 
 });
 
-angular.module('tilosApp').controller('RegisterCtrl', function ($scope, $http, API_SERVER_ENDPOINT, vcRecaptchaService, $rootScope, localStorageService, $location, satellizer) {
+angular.module('tilosApp').controller('RegisterCtrl',
+    ['$scope', '$http', 'API_SERVER_ENDPOINT', 'vcRecaptchaService', '$rootScope', 'localStorageService', '$location', 'satellizer.shared',
+    function ($scope, $http, API_SERVER_ENDPOINT, vcRecaptchaService, $rootScope, localStorageService, $location, satellizer) {
     if ($scope.user) {
         $location.path('/me');
     }
@@ -36,4 +38,4 @@ angular.module('tilosApp').controller('RegisterCtrl', function ($scope, $http, A
             }
         });
     };
-});
+}]);
