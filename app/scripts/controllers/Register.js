@@ -22,7 +22,7 @@ angular.module('tilosApp').controller('RegisterCtrl',
         $scope.form.captchaChallenge = vcRecaptchaService.data().challenge;
         $scope.form.captchaResponse = vcRecaptchaService.data().response;
         $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/register', $scope.form).success(function (data) {
-            satellizer.setToken(data)
+            satellizer.setToken({access_token:data})
             localStorageService.set('jwt', data);
             $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
                 $rootScope.user = data;
