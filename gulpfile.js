@@ -52,7 +52,8 @@ gulp.task('scripts', function () {
 
 
 gulp.task('assets', function () {
-  gulp.src([
+    gulp.src([
+      'app/nr.js',
       'app/template/**/*',
       'app/images/**/*',
       'app/styles/fonts/**',
