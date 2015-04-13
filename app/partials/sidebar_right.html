@@ -22,15 +22,12 @@ target="_blank">heti műsor</a></h2>
 			<span class="icon-chat2"></span>Belépés a chatre
 		</a>
 	</div> <!-- box -->
+	
 	<div class="box box-simple hidden-xs" id="fogas stream">	
-	<?php
-$file = 'http://stream.tilos.hu/selection_live_fogaskert.m3u';
-$file_headers = @get_headers($file);
-if($file_headers[0] != 'HTTP/1.1 404 Not Found') {
-echo '<a href="http://stream.tilos.hu/selection_live_fogaskert.m3u"><img class="logo" alt="selection live fogaskert" src="/images/selection_live.png"></img></a>';
-}
-?>
+	<?php $file = 'http://stream.tilos.hu/selection_live_fogaskert.m3u';
+$file_headers = @get_headers($file);if($file_headers[0] != 'HTTP/1.1 404 Not Found') {echo '<a href="http://stream.tilos.hu/selection_live_fogaskert.m3u"><img class="logo" alt="selection live fogaskert" src="/images/selection_live.png"></img></a>';}?>
 	</div>
+	
 <div class="box backing">
         <h2>Támogass <span class="sub-title">(paypal)</span></h2>
         <div class="row">
