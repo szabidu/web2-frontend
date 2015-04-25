@@ -1,5 +1,6 @@
     set $backend __BACKEND__HOST__;
     set $port __BACKEND__PORT__;
+    set $streamerport __STREAMER__PORT__;
     set $my_hostname __HOSTNAME__;
     set $fix 0;
 
@@ -57,7 +58,7 @@
 
     location ~ ^.*m3u$ {
         rewrite  ^/(.*) /api/v1/m3u/lastweek?stream=$1 break;
-        proxy_pass http://$backend:$port;
+        proxy_pass http://$backend:$streamerport;
         break;
     }
 
