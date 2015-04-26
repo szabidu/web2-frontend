@@ -52,7 +52,7 @@
 
 
     location ~ ^/mp3/.+$ {
-        proxy_pass http://$backend:$port;
+        proxy_pass http://$backend:$streamerport;
         break;
     }
 
