@@ -1,10 +1,10 @@
 <section class="col-md-9 main" role="main">
 
 
-    <listen-button ng-show="episode.m3uUrl !== null" link="{{episode.m3uUrl}}"/></h2>
+
     <h2 class="bordered top"><a class="label label-default" ng-href="/show/{{currentShow.alias}}">{{currentShow.name}}</a>  {{episode.plannedFrom |
         date:'yyyy. MMMM dd.'}}
-
+        <listen-button ng-show="episode.m3uUrl !== null" link="{{episode.m3uUrl}}"></listen-button></h2>
 
   <h1 class="ubuntu">{{episode.text.title}}</h1>
 
