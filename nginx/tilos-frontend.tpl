@@ -5,15 +5,15 @@
     set $fix 0;
 
 
-    if ($http_host != $server_name) {
-       set $fix 1;
-    }
-    if ($request_uri = '/serverinfo/server-status') {
-       set $fix 0;
-    }
-    if ($fix = 1) {
-       return $scheme://$my_hostname$request_uri;
-    } 
+#    if ($http_host != $server_name) {
+#       set $fix 1;
+#    }
+#    if ($request_uri = '/serverinfo/server-status') {
+#       set $fix 0;
+#    }
+#    if ($fix = 1) {
+#       return $scheme://$my_hostname$request_uri;
+#    } 
 
     location / {
         try_files $uri $uri/ @index;
