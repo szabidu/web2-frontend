@@ -1,4 +1,4 @@
 #!/bin/bash
-cat /etc/nginx/tilos-frontend.tpl | sed "s/__BACKEND__PORT__/8080/g" | sed "s/__STREAMER__PORT__/7777/g" | sed "s/__BACKEND__HOST__/backend/g" | sed "s/__HOSTNAME__/${HOSTNAME}/g" > /etc/nginx/tilos-frontend.conf
-cat /etc/nginx/sites-available/default | sed "s/__BACKEND__PORT__/8080/g" | sed "s/__STREAMER__PORT__/7777/g" | sed "s/__BACKEND__HOST__/backend/g" | sed "s/__HOSTNAME__/${HOSTNAME}/g" > /etc/nginx/sites-enabled/default
+cat /etc/nginx/tilos-frontend.tpl | sed "s/__BACKEND__PORT__/${BACKEND_PORT_8080_TCP_PORT}/g" | sed "s/__STREAMER__PORT__/${BACKEND_PORT_7777_TCP_PORT}/g" | sed "s/__BACKEND__HOST__/${BACKEND_PORT_8080_TCP_ADDR}/g" | sed "s/__HOSTNAME__/${HOSTNAME}/g" > /etc/nginx/tilos-frontend.conf
+cat /etc/nginx/sites-available/default | sed "s/__BACKEND__PORT__/${BACKEND_PORT_8080_TCP_PORT}/g" | sed "s/__STREAMER__PORT__/${BACKEND_PORT_7777_TCP_PORT}/g" | sed "s/__BACKEND__HOST__/${BACKEND_PORT_8080_TCP_ADDR}/g" | sed "s/__HOSTNAME__/${HOSTNAME}/g" > /etc/nginx/sites-enabled/default
 /usr/sbin/nginx
