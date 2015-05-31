@@ -1,0 +1,62 @@
+{
+  "apiVersion" : "1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "/",
+  "resourcePath" : "/feed",
+  "apis" : [ {
+    "path" : "/feed/show/itunes/{alias}",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "itunesFeed",
+      "type" : "Response",
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "alias",
+        "required" : true
+      } ],
+      "produces" : [ "application/atom+xml" ]
+    } ]
+  }, {
+    "path" : "/feed/show/{alias}{year:(/.*)?}",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "feed",
+      "type" : "Response",
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "alias",
+        "required" : true
+      }, {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "year",
+        "required" : true
+      } ],
+      "produces" : [ "application/atom+xml" ]
+    } ]
+  }, {
+    "path" : "/feed/weekly",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "weeklyFeed",
+      "type" : "Response",
+      "produces" : [ "application/atom+xml" ]
+    } ]
+  }, {
+    "path" : "/feed/weekly/{type}",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "weeklyFeed",
+      "type" : "Response",
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "type",
+        "required" : true
+      } ],
+      "produces" : [ "application/atom+xml" ]
+    } ]
+  } ]
+}

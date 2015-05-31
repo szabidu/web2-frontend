@@ -1,0 +1,139 @@
+{
+  "apiVersion" : "1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "/",
+  "resourcePath" : "/api/v1/mix",
+  "apis" : [ {
+    "path" : "/api/v1/mix",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "list",
+      "type" : "array",
+      "items" : {
+        "$ref" : "MixSimple"
+      },
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "query",
+        "name" : "show"
+      }, {
+        "type" : "string",
+        "paramType" : "query",
+        "name" : "category"
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  }, {
+    "path" : "/api/v1/mix/{id}",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "get",
+      "type" : "MixData",
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "id",
+        "required" : true
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "ShowSimple" : {
+      "id" : "ShowSimple",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "definition" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "PLANNED", "ACTIVE", "OLD", "LEGEND" ]
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "MUSIC", "SPEECH" ]
+        }
+      }
+    },
+    "MixData" : {
+      "id" : "MixData",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "content" : {
+          "type" : "string"
+        },
+        "author" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string",
+          "enum" : [ "DJ", "GUESTDJ", "SHOW", "TALE" ]
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "file" : {
+          "type" : "string"
+        },
+        "link" : {
+          "type" : "string"
+        },
+        "show" : {
+          "type" : "ShowSimple"
+        },
+        "date" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "MUSIC", "SPEECH" ]
+        }
+      }
+    },
+    "MixSimple" : {
+      "id" : "MixSimple",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "author" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string",
+          "enum" : [ "DJ", "GUESTDJ", "SHOW", "TALE" ]
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "withContent" : {
+          "type" : "void"
+        },
+        "link" : {
+          "type" : "string"
+        },
+        "show" : {
+          "type" : "ShowSimple"
+        },
+        "date" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "MUSIC", "SPEECH" ]
+        }
+      }
+    }
+  }
+}

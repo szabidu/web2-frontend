@@ -1,0 +1,92 @@
+{
+  "apiVersion" : "1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "/",
+  "resourcePath" : "/api/v1/user",
+  "apis" : [ {
+    "path" : "/api/v1/user/me",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "me",
+      "type" : "UserInfo",
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "Contribution" : {
+      "id" : "Contribution",
+      "properties" : {
+        "nick" : {
+          "type" : "string"
+        },
+        "show" : {
+          "type" : "ShowReference"
+        }
+      }
+    },
+    "UserInfo" : {
+      "id" : "UserInfo",
+      "properties" : {
+        "id" : {
+          "type" : "void"
+        },
+        "author" : {
+          "type" : "AuthorWithContribution"
+        },
+        "username" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "permissions" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "role" : {
+          "type" : "string",
+          "enum" : [ "UNKNOWN", "GUEST", "USER", "AUTHOR", "ADMIN" ]
+        }
+      }
+    },
+    "AuthorWithContribution" : {
+      "id" : "AuthorWithContribution",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "avatar" : {
+          "type" : "string"
+        },
+        "contributions" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "Contribution"
+          }
+        }
+      }
+    },
+    "ShowReference" : {
+      "id" : "ShowReference",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

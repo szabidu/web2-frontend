@@ -1,0 +1,59 @@
+{
+  "apiVersion" : "1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "/",
+  "resourcePath" : "/api/int/contribution",
+  "apis" : [ {
+    "path" : "/api/int/contribution",
+    "operations" : [ {
+      "method" : "DELETE",
+      "nickname" : "delete",
+      "type" : "void",
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "query",
+        "name" : "author"
+      }, {
+        "type" : "string",
+        "paramType" : "query",
+        "name" : "show"
+      } ],
+      "produces" : [ "application/json" ]
+    }, {
+      "method" : "POST",
+      "nickname" : "save",
+      "type" : "void",
+      "parameters" : [ {
+        "type" : "ContributionToSave",
+        "paramType" : "body",
+        "name" : "contributionToSave",
+        "required" : true
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "ObjectReference" : {
+      "id" : "ObjectReference",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ContributionToSave" : {
+      "id" : "ContributionToSave",
+      "properties" : {
+        "author" : {
+          "type" : "ObjectReference"
+        },
+        "nick" : {
+          "type" : "string"
+        },
+        "show" : {
+          "type" : "ObjectReference"
+        }
+      }
+    }
+  }
+}

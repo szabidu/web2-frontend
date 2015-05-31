@@ -1,0 +1,93 @@
+{
+  "apiVersion" : "1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "/",
+  "resourcePath" : "/api/v1/tag",
+  "apis" : [ {
+    "path" : "/api/v1/tag",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "list",
+      "type" : "TagCloud",
+      "parameters" : [ {
+        "type" : "integer",
+        "format" : "int32",
+        "paramType" : "query",
+        "name" : "limit"
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  }, {
+    "path" : "/api/v1/tag/{tag}",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "get",
+      "type" : "TaggedElementList",
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "tag",
+        "required" : true
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "TaggedElementList" : {
+      "id" : "TaggedElementList",
+      "properties" : {
+        "tagged" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "TaggedEpisode"
+          }
+        }
+      }
+    },
+    "TaggedEpisode" : {
+      "id" : "TaggedEpisode",
+      "properties" : {
+        "title" : {
+          "type" : "string"
+        },
+        "showName" : {
+          "type" : "string"
+        },
+        "showAlias" : {
+          "type" : "string"
+        },
+        "plannedFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "TagCloud" : {
+      "id" : "TagCloud",
+      "properties" : {
+        "tags" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "TagCloudElement"
+          }
+        }
+      }
+    },
+    "TagCloudElement" : {
+      "id" : "TagCloudElement",
+      "properties" : {
+        "count" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "GENERIC", "PERSON" ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "apiVersion" : "1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "/",
+  "resourcePath" : "/api/v1/comment",
+  "apis" : [ {
+    "path" : "/api/v1/comment",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "listAll",
+      "type" : "array",
+      "items" : {
+        "$ref" : "CommentData"
+      },
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "query",
+        "name" : "status"
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  }, {
+    "path" : "/api/v1/comment/{type}/{identifier}",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "list",
+      "type" : "array",
+      "items" : {
+        "$ref" : "CommentData"
+      },
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "type",
+        "required" : true,
+        "enum" : [ "EPISODE" ]
+      }, {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "identifier",
+        "required" : true
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "UserLink" : {
+      "id" : "UserLink",
+      "properties" : {
+        "username" : {
+          "type" : "string"
+        }
+      }
+    },
+    "CommentData" : {
+      "id" : "CommentData",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "author" : {
+          "type" : "UserLink"
+        },
+        "created" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "NEW", "ACCEPTED" ]
+        },
+        "moment" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "children" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "CommentData"
+          }
+        },
+        "comment" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "EPISODE" ]
+        }
+      }
+    }
+  }
+}

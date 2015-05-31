@@ -1,0 +1,189 @@
+{
+  "apiVersion" : "1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "/",
+  "resourcePath" : "/api/v1/stat",
+  "apis" : [ {
+    "path" : "/api/v1/stat/listener",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "getListenerSTat",
+      "type" : "array",
+      "items" : {
+        "$ref" : "ListenerStat"
+      },
+      "parameters" : [ {
+        "type" : "integer",
+        "format" : "int64",
+        "paramType" : "query",
+        "name" : "from"
+      }, {
+        "type" : "integer",
+        "format" : "int64",
+        "paramType" : "query",
+        "name" : "to"
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  }, {
+    "path" : "/api/v1/stat/summary",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "getSummary",
+      "type" : "StatData",
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "TagData" : {
+      "id" : "TagData",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "GENERIC", "PERSON" ]
+        }
+      }
+    },
+    "EpisodeData" : {
+      "id" : "EpisodeData",
+      "properties" : {
+        "realFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "tags" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "TagData"
+          },
+          "uniqueItems" : true
+        },
+        "text" : {
+          "type" : "TextData"
+        },
+        "persistent" : {
+          "type" : "void"
+        },
+        "realTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "m3uUrl" : {
+          "type" : "string"
+        },
+        "plannedTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "show" : {
+          "type" : "ShowSimple"
+        },
+        "plannedFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "url" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ShowSimple" : {
+      "id" : "ShowSimple",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "definition" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "PLANNED", "ACTIVE", "OLD", "LEGEND" ]
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "MUSIC", "SPEECH" ]
+        }
+      }
+    },
+    "StatData" : {
+      "id" : "StatData",
+      "properties" : {
+        "authorCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "episodeCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "showCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "mixCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "TextData" : {
+      "id" : "TextData",
+      "properties" : {
+        "content" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "formatted" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "format" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ListenerStat" : {
+      "id" : "ListenerStat",
+      "properties" : {
+        "min" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "max" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "episode" : {
+          "type" : "EpisodeData"
+        },
+        "mean" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    }
+  }
+}

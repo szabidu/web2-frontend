@@ -1,0 +1,97 @@
+{
+  "apiVersion" : "1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "/",
+  "resourcePath" : "/api/v1/text",
+  "apis" : [ {
+    "path" : "/api/v1/text/{type}",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "list",
+      "type" : "array",
+      "items" : {
+        "$ref" : "TextDataSimple"
+      },
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "type",
+        "required" : true
+      }, {
+        "type" : "integer",
+        "format" : "int32",
+        "paramType" : "query",
+        "name" : "limit"
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  }, {
+    "path" : "/api/v1/text/{type}/{id}",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "get",
+      "type" : "TextData",
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "id",
+        "required" : true
+      }, {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "type",
+        "required" : true
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "TextDataSimple" : {
+      "id" : "TextDataSimple",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "created" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      }
+    },
+    "TextData" : {
+      "id" : "TextData",
+      "properties" : {
+        "content" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "formatted" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "format" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

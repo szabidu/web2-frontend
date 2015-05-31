@@ -1,0 +1,370 @@
+{
+  "apiVersion" : "1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "/",
+  "resourcePath" : "/api/v1/show",
+  "apis" : [ {
+    "path" : "/api/v1/show",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "list",
+      "type" : "array",
+      "items" : {
+        "$ref" : "ShowSimple"
+      },
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "query",
+        "name" : "status"
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  }, {
+    "path" : "/api/v1/show/{alias}",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "get",
+      "type" : "ShowDetailed",
+      "parameters" : [ {
+        "type" : "string",
+        "description" : "Alias of the radioshow (eg. 3-utas)",
+        "paramType" : "path",
+        "name" : "alias",
+        "required" : true
+      } ],
+      "summary" : "Detailed information about one radioshow.",
+      "notes" : "\n <p/>\n Integer based if also could be used as an alias.",
+      "produces" : [ "application/json" ]
+    } ]
+  }, {
+    "path" : "/api/v1/show/{show}/episodes",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "listEpisodes",
+      "type" : "array",
+      "items" : {
+        "$ref" : "EpisodeData"
+      },
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "show",
+        "required" : true
+      }, {
+        "type" : "integer",
+        "format" : "int64",
+        "paramType" : "query",
+        "name" : "start"
+      }, {
+        "type" : "integer",
+        "format" : "int64",
+        "paramType" : "query",
+        "name" : "end"
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "TagData" : {
+      "id" : "TagData",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "GENERIC", "PERSON" ]
+        }
+      }
+    },
+    "AuthorReference" : {
+      "id" : "AuthorReference",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "avatar" : {
+          "type" : "string"
+        }
+      }
+    },
+    "EpisodeData" : {
+      "id" : "EpisodeData",
+      "properties" : {
+        "realFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "tags" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "TagData"
+          },
+          "uniqueItems" : true
+        },
+        "text" : {
+          "type" : "TextData"
+        },
+        "persistent" : {
+          "type" : "void"
+        },
+        "realTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "m3uUrl" : {
+          "type" : "string"
+        },
+        "plannedTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "show" : {
+          "type" : "ShowSimple"
+        },
+        "plannedFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "url" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ShowSimple" : {
+      "id" : "ShowSimple",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "definition" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "PLANNED", "ACTIVE", "OLD", "LEGEND" ]
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "MUSIC", "SPEECH" ]
+        }
+      }
+    },
+    "TextData" : {
+      "id" : "TextData",
+      "properties" : {
+        "content" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "formatted" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "format" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ShowContribution" : {
+      "id" : "ShowContribution",
+      "properties" : {
+        "author" : {
+          "type" : "AuthorReference"
+        },
+        "nick" : {
+          "type" : "string"
+        }
+      }
+    },
+    "MixSimple" : {
+      "id" : "MixSimple",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "author" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string",
+          "enum" : [ "DJ", "GUESTDJ", "SHOW", "TALE" ]
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "withContent" : {
+          "type" : "void"
+        },
+        "link" : {
+          "type" : "string"
+        },
+        "show" : {
+          "type" : "ShowSimple"
+        },
+        "date" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "MUSIC", "SPEECH" ]
+        }
+      }
+    },
+    "UrlData" : {
+      "id" : "UrlData",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "address" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SchedulingSimple" : {
+      "id" : "SchedulingSimple",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "validTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "text" : {
+          "type" : "string"
+        },
+        "duration" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "weekDay" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "weekType" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "minFrom" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "base" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "validFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "hourFrom" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "ShowDetailed" : {
+      "id" : "ShowDetailed",
+      "properties" : {
+        "contributors" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "ShowContribution"
+          }
+        },
+        "definition" : {
+          "type" : "string"
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "PLANNED", "ACTIVE", "OLD", "LEGEND" ]
+        },
+        "urls" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "UrlData"
+          }
+        },
+        "stats" : {
+          "type" : "ShowStats"
+        },
+        "schedulings" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "SchedulingSimple"
+          }
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "MUSIC", "SPEECH" ]
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "statusTxt" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "mixes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "MixSimple"
+          }
+        }
+      }
+    },
+    "ShowStats" : {
+      "id" : "ShowStats",
+      "properties" : {
+        "bookmarkCount" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "mixCount" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    }
+  }
+}

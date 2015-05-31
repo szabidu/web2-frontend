@@ -1,0 +1,32 @@
+{
+  "swaggerVersion" : "1.2",
+  "apiVersion" : "1",
+  "basePath" : "/apidoc",
+  "apis" : [ {
+    "path" : "/api_v1_stat.{format}"
+  }, {
+    "path" : "/api_v1.{format}"
+  }, {
+    "path" : "/api_int_contribution.{format}"
+  }, {
+    "path" : "/api_v1_user.{format}"
+  }, {
+    "path" : "/api_v1_text.{format}"
+  }, {
+    "path" : "/api_v1_show.{format}"
+  }, {
+    "path" : "/feed.{format}"
+  }, {
+    "path" : "/api_v1_m3u.{format}"
+  }, {
+    "path" : "/api_v1_comment.{format}"
+  }, {
+    "path" : "/api_v1_mix.{format}"
+  }, {
+    "path" : "/api_v1_author.{format}"
+  }, {
+    "path" : "/api_v1_tag.{format}"
+  }, {
+    "path" : "/api_v1_episode.{format}"
+  } ]
+}

@@ -1,0 +1,129 @@
+{
+  "apiVersion" : "1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "/",
+  "resourcePath" : "/api/v1/author",
+  "apis" : [ {
+    "path" : "/api/v1/author",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "list",
+      "type" : "array",
+      "items" : {
+        "$ref" : "AuthorListElement"
+      },
+      "produces" : [ "application/json" ]
+    } ]
+  }, {
+    "path" : "/api/v1/author/{alias}",
+    "operations" : [ {
+      "method" : "GET",
+      "nickname" : "get",
+      "type" : "AuthorDetailed",
+      "parameters" : [ {
+        "type" : "string",
+        "paramType" : "path",
+        "name" : "alias",
+        "required" : true
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "AuthorDetailed" : {
+      "id" : "AuthorDetailed",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "urls" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "UrlData"
+          }
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "avatar" : {
+          "type" : "string"
+        },
+        "introduction" : {
+          "type" : "string"
+        },
+        "contributions" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "Contribution"
+          }
+        }
+      }
+    },
+    "Contribution" : {
+      "id" : "Contribution",
+      "properties" : {
+        "nick" : {
+          "type" : "string"
+        },
+        "show" : {
+          "type" : "ShowReference"
+        }
+      }
+    },
+    "UrlData" : {
+      "id" : "UrlData",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "address" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AuthorListElement" : {
+      "id" : "AuthorListElement",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "avatar" : {
+          "type" : "string"
+        },
+        "contributions" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "Contribution"
+          }
+        }
+      }
+    },
+    "ShowReference" : {
+      "id" : "ShowReference",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "alias" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
