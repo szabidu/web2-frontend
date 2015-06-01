@@ -60,6 +60,8 @@ gulp.task('assets', function () {
       'app/jplayer/**/*'],
     {base: 'app'})
     .pipe(gulp.dest(distDir + '/www'));
+    gulp.src('apidoc/**/*.*')
+    .pipe(gulp.dest(distDir + '/www/apidoc'));
 
     gulp.src([
             'app/bower_components/sass-bootstrap/fonts/**'],
