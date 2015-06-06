@@ -1,9 +1,14 @@
 <div class="commentable">
     <h3>Hozzászólások</h3>
 
+    <div class="comment clearfix"
+         ng-repeat="comment in comments"
+         ng-include=" '/partials/comment.html' "></div>
+
     <div ng-hide="loggedIn()">
-        Please <span login-link></span> or <span register-link></span> to comment
+        Hozzászólás írásához <a href="/login">be kell jelentkezni</a>
     </div>
+
     <div ng-show="loggedIn()">
         <div class="add-comment">
             <textarea class="comment-edit" ng-model="formComment.comment" placeholder="Ide írd az új hozzászólást..."></textarea>
@@ -16,7 +21,4 @@
 
         </div>
     </div>
-    <div class="comment clearfix"
-         ng-repeat="comment in comments"
-         ng-include=" '/partials/comment.html' "></div>
 </div>

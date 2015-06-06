@@ -15,7 +15,7 @@ angular.module('tilosApp').directive('commentable', [function () {
 
         controller: function ($scope, $http, API_SERVER_ENDPOINT) {
 
-            var restEndpoint = API_SERVER_ENDPOINT + '/api/v1/comment/' + $scope.commentableType + '/' + $scope.commentable;
+            var restEndpoint = API_SERVER_ENDPOINT + '/api/v1/' + $scope.commentableType + '/' + $scope.commentable + '/comment';
             $scope.comments = [];
             $scope.formComment = {};
 

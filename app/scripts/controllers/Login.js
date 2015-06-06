@@ -56,7 +56,12 @@ angular.module('tilosApp').controller('LoginCtrl',
             $scope.logindata = {};
             $scope.loginerror = '';
             $scope.authenticate = function (provider) {
-                $auth.authenticate(provider);
+                $auth.authenticate(provider).then(function(){
+                    $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
+                        $rootScope.user = data;
+                        $location.path('/');
+                    });
+                    });
             };
             $scope.login = function () {
                 $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/login', $scope.logindata).success(function (data) {
@@ -68,9 +73,13 @@ angular.module('tilosApp').controller('LoginCtrl',
                         $location.path('/');
                     });
 
-                }).error(function () {
+                }).error(function (data) {
                     localStorageService.remove('jwt');
-                    $scope.loginerror = 'Login error';
+                    if (data.message) {
+                        $scope.loginerror = data.message;
+                    } else {
+                        $scope.loginerror = 'Login error';
+                    }
                 });
 
             };
