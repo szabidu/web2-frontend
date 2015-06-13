@@ -7,14 +7,20 @@ var jshint = require('gulp-jshint');
 var connect = require('gulp-connect');
 var exec = require('child_process');
 var replace = require('gulp-replace');
+var watch = require('gulp-watch');
 
 var gatoken = process.env.GA_TOKEN;
+
+var sources = {
+  'partials': ['./app/partials/**/*']
+}
 
 gulp.task('views', function () {
   gulp.src(['app/*', '!app/index.html'])
     .pipe(gulp.dest(distDir + '/www'));
 
-  gulp.src('./app/partials/**/*')
+  gulp.src(sources.partials)
+    .pipe(watch(sources.partials))
     .pipe(gulp.dest(distDir + '/www/partials/'));
 
   gulp.src('app/index.html')
@@ -115,13 +121,11 @@ gulp.task('zip', function (cb) {
 })
 
 gulp.task('watch', function () {
-  gulp.watch([distDir + "/www/**/*"], function (event) {
-    return gulp.src(event.path)
-      .pipe(connect.reload());
+  gulp.watch(sources.partials, function (event) {
+    gulp.start('views');
   });
-
-  gulp.watch(["app/**/*"], ['default']);
 });
+
 
 gulp.task('connect', function () {
   connect.server({
