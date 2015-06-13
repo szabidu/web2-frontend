@@ -16,6 +16,11 @@
          logged-in="isLoggedIn()"></div>
     <br/>
     <p ng-show="!episode.original">* Az adásnapló leírása felhasználó által beküldött tartalom alapján generált, és nem feltétlen tükrözi a műsorkészítők véleményét.</p>
+    <ul ng-show="user.role == 'ADMIN'">
+        <li data-ng-repeat="bookmark in episode.bookmarks">
+            {{bookmark.title}} {{bookmark.created}}
+        </li>
+    </ul>
     <form name="form" class="form-horizontal" role="form" ng-show="user.role == 'ADMIN'">
         <div class="alert alert-danger" ng-show="error">{{error}}</div>
 
