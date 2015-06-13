@@ -24,6 +24,9 @@ angular.module('tilosApp').controller('MainCtrl', function ($scope, FeedService,
     $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/last').success(function (data) {
         $scope.last = data;
     });
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/lastWeek').success(function (data) {
+        $scope.lastWeek = data;
+    });
     $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/lead').success(function (data) {
         $scope.lead = data;
     });

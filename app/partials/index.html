@@ -6,12 +6,12 @@
 
   <div ng-show="lead.formatted"  class="panel panel-default">
 
-        
+
       <div class="panel-heading">
          <b>Tilos Maraton - 2015</b>
       </div>
 	<div class="panel-body">
-	<iframe src="http://vaughnlive.tv/embed/video/tilosradio?viewers=true&autoplay=true" frameborder="0" framespacing="0" width="507" height="317" /></iframe> 
+	<iframe src="http://vaughnlive.tv/embed/video/tilosradio?viewers=true&autoplay=true" frameborder="0" framespacing="0" width="507" height="317" /></iframe>
       Élő stream:
       <a href="http://stream.tilos.hu/tilos_maraton">Hallgasd</a>
 	</div>
@@ -34,6 +34,21 @@
 
        </p>
     </div>
+  </div>
+  <div class="recent-broadcast-schedule">
+        <h2 class="blue top">Az elmúlt hét adásai</h2>
+        <div class="episode-last episode-list" data-ng-repeat="episode in lastWeek">
+            <p>
+            <h3>
+                <listen-button class="pull-right" link="{{episode.m3uUrl}}"> </listen-button>
+                <a ng-href="{{episode.url}}">{{episode.text.title}}</a>
+            </h3>
+            </p>
+            <p>
+                <a class="label label-episode label-default" ng-href="/show/{{episode.show.alias}}">{{episode.show.name}}</a>
+                <span class="pull-right main-date">{{episode.plannedFrom | date:'yyyy. MMMM dd.'}}</span>
+            </p>
+        </div>
   </div>
   <div class="recent-broadcast-schedule">
     <h2 class="blue top">Legfrissebb adásnaplók</h2>
