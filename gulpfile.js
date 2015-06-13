@@ -21,7 +21,6 @@ gulp.task('views', function () {
     .pipe(gulp.dest(distDir + '/www'));
 
   gulp.src(sources.partials)
-    .pipe(watch(sources.partials))
     .pipe(gulp.dest(distDir + '/www/partials/'));
 
   gulp.src('app/index.html')
