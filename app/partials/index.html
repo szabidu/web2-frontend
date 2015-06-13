@@ -6,20 +6,19 @@
 
   <div ng-show="lead.formatted"  class="panel panel-default">
 
+      <div ng-show="lead.formatted"  class="panel panel-default">
+          
+          <div class="panel-heading">
+              <b>{{lead.title}}</b>
+          </div>
+          <div class="panel-body" ng-bind-html="lead.formatted">
+          </div>
+          <div class="panel-body">
+              <iframe src="https://vaughnlive.tv/embed/video/tilosradio?viewers=true&autoplay=true" frameborder="0" framespacing="0" width="507" height="317" /></iframe>
+              Élő stream:
+              <a href="http://stream.tilos.hu/tilos_maraton">Hang</a> <a href="https://vaughnlive.tv/tilosradio">Video</a>
+          </div>
 
-      <div class="panel-heading">
-         <b>Tilos Maraton - 2015</b>
-      </div>
-	<div class="panel-body">
-	<iframe src="http://vaughnlive.tv/embed/video/tilosradio?viewers=true&autoplay=true" frameborder="0" framespacing="0" width="507" height="317" /></iframe>
-      Élő stream:
-      <a href="http://stream.tilos.hu/tilos_maraton">Hallgasd</a>
-	</div>
-
-      <!--div class="panel-heading">
-         <b>{{lead.title}}</b>
-      </div-->
-      <div class="panel-body" ng-bind-html="lead.formatted">
       </div>
 
   </div>
