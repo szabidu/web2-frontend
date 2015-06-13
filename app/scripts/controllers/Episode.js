@@ -1,8 +1,7 @@
 'use strict';
 
 
-angular.module('tilosApp').config(function($stateProvider)
-{
+angular.module('tilosApp').config(function ($stateProvider) {
     $stateProvider.state('episode-id', {
         url: '/episode/:id',
         templateUrl: 'partials/episode.html',
@@ -32,7 +31,7 @@ angular.module('tilosApp').config(function($stateProvider)
 
 
 /*global angular*/
-angular.module('tilosApp').controller('EpisodeCtrl', function ($scope, data, show, $sce, Meta, $location) {
+angular.module('tilosApp').controller('EpisodeCtrl', function ($scope, data, show, $sce, Meta, $location, dateUtil, $http, API_SERVER_ENDPOINT) {
         $scope.absUrl = $location.absUrl();
         $scope.episode = data.data;
         $scope.show = show.data;
@@ -45,8 +44,20 @@ angular.module('tilosApp').controller('EpisodeCtrl', function ($scope, data, sho
         } else {
             Meta.setTitle($scope.currentShow.name + ' adásnapló');
         }
-        if ($scope.episode.text.content) {
-            Meta.setDescription($scope.episode.text.content.substring(0,400));
+        if ($scope.episode.text && $scope.episode.text.content) {
+            Meta.setDescription($scope.episode.text.content.substring(0, 400));
+        }
+        $scope.bookmark = {}
+        $scope.bookmark.from = dateUtil.toHourMin($scope.episode.plannedFrom)
+        $scope.bookmark.to = dateUtil.toHourMin($scope.episode.plannedTo)
+        $scope.save = function () {
+            var bts = {}
+            bts.title = $scope.bookmark.title
+            bts.from = dateUtil.setDate($scope.episode.plannedFrom, $scope.bookmark.from)
+            bts.to = dateUtil.setDate($scope.episode.plannedTo, $scope.bookmark.to)
+            return $http.post(API_SERVER_ENDPOINT + '/api/v1/episode/' + $scope.episode.id + '/bookmark', bts, function(success){
+                alert(success);
+            });
         }
     }
 );

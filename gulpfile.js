@@ -12,7 +12,8 @@ var watch = require('gulp-watch');
 var gatoken = process.env.GA_TOKEN;
 
 var sources = {
-  'partials': ['./app/partials/**/*']
+  'partials': ['./app/partials/**/*'],
+  'myscripts' : ["app/scripts/**/*.js"]
 }
 
 gulp.task('views', function () {
@@ -30,7 +31,7 @@ gulp.task('views', function () {
 
 
 gulp.task('scripts', function () {
-  gulp.src(["app/scripts/**/*.js"])
+  gulp.src(sources.myscripts)
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('tilos.js'))
@@ -123,6 +124,9 @@ gulp.task('zip', function (cb) {
 gulp.task('watch', function () {
   gulp.watch(sources.partials, function (event) {
     gulp.start('views');
+  });
+  gulp.watch(sources.myscripts, function (event) {
+    gulp.start('scripts');
   });
 });
 

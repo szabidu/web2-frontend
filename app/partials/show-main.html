@@ -3,9 +3,9 @@
         <div class="panel-heading">
             <listen-button class="pull-right" link="{{episode.m3uUrl}}"> </listen-button>
             <div class="episode-title">
-                <a ng-show="episode.text" ng-href="{{episode.url}}">{{episode.plannedFrom| date:
+                <a ng-show="episode.persistent" ng-href="{{episode.url}}">{{episode.plannedFrom| date:
                     'yyyy.MM.dd.'}} {{episode.text.title}}</a></span>
-                <span ng-hide="episode.text">{{episode.plannedFrom| date: 'yyyy.MM.dd.'}}</span>
+                <span ng-hide="episode.persistent">{{episode.plannedFrom| date: 'yyyy.MM.dd.'}}</span>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@
         date:'yyyy. MMMM dd.'}}
         <listen-button ng-show="episode.m3uUrl !== null" link="{{episode.m3uUrl}}"></listen-button></h2>
 
-  <h1 class="ubuntu">{{episode.text.title}}</h1>
+  <h1 class="ubuntu">{{episode.text.title}}<span ng-show="!episode.original">*</span></h1>
 
   <span ng-bind-html="episode.text.formatted"></span>
 
@@ -14,6 +14,41 @@
          commentable="{{episode.id}}"
          commentable-type="EPISODE"
          logged-in="isLoggedIn()"></div>
+    <br/>
+    <p ng-show="!episode.original">* Az adásnapló leírása felhasználó által beküldött tartalom alapján generált, és nem feltétlen tükrözi a műsorkészítők véleményét.</p>
+    <form name="form" class="form-horizontal" role="form" ng-show="user.role == 'ADMIN'">
+        <div class="alert alert-danger" ng-show="error">{{error}}</div>
+
+        <fieldset>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label for="realFrom">Valós kezdet</label>
+                <input class="form-control" id="realFrom" name="realFrom" type="text" ng-model="bookmark.from" ng-pattern="/^[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?$/" style="width: 20ch;">
+                <div class="alert alert-danger" ng-show="form.realFrom.$error.pattern">A kezdetet óó:pp:mm formátumban kell megadni
+                </div>
+
+
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+                <label for="realTo">Valós vég</label>
+                <input class="form-control" id="realTo" name="realTo" type="text" ng-model="bookmark.to" ng-pattern="/^[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?$/" style="width: 20ch;">
+                <div class="alert alert-danger" ng-show="form.realTo.$error.pattern">A véget óó:pp:mm formátumban kell megadni</div>
+            </div>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label for="title">Leírás</label>
+                <input class="form-control" id="title" name="title" type="text" class="" ng-model="bookmark.title" width="" >
+
+            </div>
+
+        </fieldset>
+        <div class="alert alert-danger" ng-hide="form.$valid">Mentéshez előbb javítsd ki a jelzett hibákat.</div>
+        <input value="Mentés" class="btn" type="submit" ng-show="form.$valid" ng-click="save()"/>
+    </form>
 
 </section>
 
