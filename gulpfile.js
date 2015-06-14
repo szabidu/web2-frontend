@@ -13,7 +13,8 @@ var gatoken = process.env.GA_TOKEN;
 
 var sources = {
   'partials': ['./app/partials/**/*'],
-  'myscripts' : ["app/scripts/**/*.js"]
+  'myscripts' : ["app/scripts/**/*.js"],
+  'styles' : ['app/styles/main.scss']
 }
 
 gulp.task('views', function () {
@@ -105,7 +106,7 @@ gulp.task('default', function () {
 
 
 gulp.task('sass', function () {
-  return gulp.src('app/styles/main.scss')
+  return gulp.src(sources.styles)
     .pipe(sass({style: 'compressed', loadPath: 'app/bower_components'}))
     //.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(gulp.dest(distDir + '/www/styles'))
@@ -121,6 +122,10 @@ gulp.task('zip', function (cb) {
 })
 
 gulp.task('watch', function () {
+  gulp.watch(sources.styles, function (event) {
+      gulp.start('sass');
+  });
+
   gulp.watch(sources.partials, function (event) {
     gulp.start('views');
   });

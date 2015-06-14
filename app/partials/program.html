@@ -1,42 +1,47 @@
 <section class="col-md-12 main" role="main">
-  <h1 style="float: left;">Archívum</h1>
-  <a class="btn btn-default btn-lg pull-right weeklyschedule" style="margin-top: 20px;" href="http://tilos.hu/upload/content/musorlista/program.pdf"
-     target="_blank">heti műsortábla</a>
-  <nav class="text-center">
-    <ul class="pagination pagination-lg">
-      <li class="cursorPointer"><a ng-click="prev()">&larr; Előző nap</a></li>
-      <li class="cursorPointer" ng-click="open()">
-        <div class="DatePicker form-horizontald" id="datapicker">
+    <h1 style="float: left;">Archívum</h1>
+    <a class="btn btn-default btn-lg pull-right weeklyschedule" style="margin-top: 20px;" href="http://tilos.hu/upload/content/musorlista/program.pdf"
+       target="_blank">heti műsortábla</a>
+    <nav class="text-center">
+        <ul class="pagination pagination-lg">
+            <li class="cursorPointer"><a ng-click="prev()">&larr; Előző nap</a></li>
+            <li class="cursorPointer" ng-click="open()">
+                <div class="DatePicker form-horizontald" id="datapicker">
 
-      <button class="btn ChooseDate" ng-click="open()">
-              <i class="icon-calendar"></i>
-          </button>
-          <input type="text" class="datepicker" datepicker-popup="yyyy.MM.dd" show-weeks="false"
-                 ng-model="selectedDate" is-open="opened" min="minDate" max="maxDate"
-                 datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
-                 ng-required="true" ng-change="goto();" ng-click="open($event)">
-             {{selectedDate | date:'EEEE'}}
+                    <button class="btn ChooseDate" ng-click="open()">
+                        <i class="icon-calendar"></i>
+                    </button>
+                    <input type="text" class="datepicker" datepicker-popup="yyyy.MM.dd" show-weeks="false"
+                           ng-model="selectedDate" is-open="opened" min="minDate" max="maxDate"
+                           datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                           ng-required="true" ng-change="goto();" ng-click="open($event)">
+                    {{selectedDate | date:'EEEE'}}
+                </div>
+            </li>
+            <li class="cursorPointer"><a ng-click="next()">Következő nap &rarr;</a></li>
+        </ul>
+
+    </nav>
+
+
+    <div class="clearfix">
+
+
+    </div>
+
+
+    </div>
+    <table class="table table-hover" id="archiveTable">
+        <div class="panel program" ng-repeat="episode in episodes">
+            <div class="panel-heading">
+                <span class="time">{{episode.plannedFrom | date: 'HH:mm'}}</span>
+                <span>
+                <a ng-href="/show/{{episode.show.alias}}" class="label label-episode label-small label-default ng-binding">{{episode.show.name}}</a>
+                <span ng-show="episode.extra" class="label label-small label-danger">extra</span>
+                <a class="title" ng-href="{{episode.url}}">{{episode.text.title}}</a>
+                </span>
+                <listen-button class="listen" ng-show="episode.m3uUrl" link="{{episode.m3uUrl}}"/>
+            </div>
         </div>
-      </li>
-      <li class="cursorPointer"><a ng-click="next()">Következő nap &rarr;</a></li>
-    </ul>
-
-  </nav>
-
-
-  <div class="clearfix">
-
-
-  </div>
-
-
-  </div>
-  <table class="table table-hover" id="archiveTable">
-    <tr ng-repeat="episode in episodes">
-      <td class="archiveTime">{{episode.plannedFrom | date: 'HH:mm'}}</td>
-      <td class="archiveShowName"><a href="/show/{{episode.show.alias}}">{{episode.show.name}}</a></td>
-      <td class="archiveItalic archiveDesc"><a ng-href="{{episode.url}}">{{episode.text.title}}</a></td>
-      <td><listen-button ng-show="episode.m3uUrl" link="{{episode.m3uUrl}}"/></td>
-    </tr>
-  </table>
+    </table>
 </section>
