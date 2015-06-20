@@ -21,7 +21,7 @@
     <div class="episode-next episode-list" data-ng-repeat="episode in next">
       <h3><a ng-href="{{episode.url}}">{{episode.text.title}}</a></h3>
       <p>
-        <a class="label label-episode label-default" ng-href="/show/{{episode.show.alias}}">{{episode.show.name}}</a>
+        <show-label show="episode.show"></show-label>
         <span class="pull-right main-date">{{episode.plannedFrom | date:'MMMM dd. - HH:mm'}}</span>
 
        </p>
@@ -37,7 +37,7 @@
             </h3>
             </p>
             <p>
-                <a class="label label-episode label-default" ng-href="/show/{{episode.show.alias}}">{{episode.show.name}}</a>
+                <show-label show="episode.show"></show-label>
                 <span class="pull-right main-date">{{episode.plannedFrom | date:'yyyy. MMMM dd.'}}</span>
             </p>
         </div>
@@ -52,7 +52,7 @@
         </h3>
         </p>
         <p>
-          <a class="label label-episode label-default" ng-href="/show/{{episode.show.alias}}">{{episode.show.name}}</a>
+          <show-label show="episode.show"></show-label>
           <span class="pull-right main-date">{{episode.plannedFrom | date:'yyyy. MMMM dd.'}}</span>
         </p>
     </div>

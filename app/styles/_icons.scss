@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'tilos';
-	src:url('fonts/tilos.eot?-wlvhkg');
-	src:url('fonts/tilos.eot?#iefix-wlvhkg') format('embedded-opentype'),
-		url('fonts/tilos.woff?-wlvhkg') format('woff'),
-		url('fonts/tilos.ttf?-wlvhkg') format('truetype'),
-		url('fonts/tilos.svg?-wlvhkg#tilos') format('svg');
+	src:url('fonts/tilos.eot?-s1pg34');
+	src:url('fonts/tilos.eot?#iefix-s1pg34') format('embedded-opentype'),
+		url('fonts/tilos.ttf?-s1pg34') format('truetype'),
+		url('fonts/tilos.woff?-s1pg34') format('woff'),
+		url('fonts/tilos.svg?-s1pg34#tilos') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -44,8 +44,17 @@
 .icon-envelope:before {
 	content: "\e60c";
 }
+.icon-music:before {
+	content: "\e629";
+}
+.icon-bullhorn:before {
+	content: "\e62a";
+}
 .icon-box-add:before {
 	content: "\e60e";
+}
+.icon-bubbles:before {
+	content: "\e62b";
 }
 .icon-star:before {
 	content: "\e604";
@@ -61,6 +70,9 @@
 }
 .icon-google-plus:before {
 	content: "\e60a";
+}
+.icon-facebook2:before {
+	content: "\e62c";
 }
 .icon-twitter:before {
 	content: "\e60b";
@@ -80,9 +92,6 @@
 .icon-laptop:before {
 	content: "\e625";
 }
-.icon-modem:before {
-	content: "\e629";
-}
 .icon-tv:before {
 	content: "\e626";
 }
@@ -90,15 +99,12 @@
 	content: "\e627";
 }
 .icon-headphone:before {
-	content: "\e62a";
-}
-.icon-cassette:before {
-	content: "\e62b";
+	content: "\e62d";
 }
 .icon-car:before {
 	content: "\e628";
 }
-.icon-cassette2:before {
+.icon-cassette:before {
 	content: "\e609";
 }
 .icon-chat2:before {

@@ -36,7 +36,7 @@
             <div class="panel-heading">
                 <span class="time">{{episode.plannedFrom | date: 'HH:mm'}}</span>
                 <span>
-                <a ng-href="/show/{{episode.show.alias}}" class="label label-episode label-small label-default ng-binding">{{episode.show.name}}</a>
+                    <show-label show="episode.show"></show-label>
                 <span ng-show="episode.extra" class="label label-small label-danger">extra</span>
                 <a class="title" ng-href="{{episode.url}}">{{episode.text.title}}</a>
                 </span>
