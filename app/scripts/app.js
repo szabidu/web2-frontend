@@ -112,6 +112,10 @@ tilos.run(['$rootScope', 'Meta', 'localStorageService', '$http', 'API_SERVER_END
         });
     }
 
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/status/radio').success(function (data) {
+        $rootScope.extraStreams = data;
+    });
+
     $rootScope.now = new Date();
 
 }]);
