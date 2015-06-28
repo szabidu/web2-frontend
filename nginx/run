@@ -1,5 +1,5 @@
 #!/bin/bash
-export URL=$(cat tilos.properties  | grep server.url | awk -F "=" '{print $2}' | sed 's/\//\\\//g')
+export URL=$(cat /host/tilos.properties  | grep server.url | awk -F "=" '{print $2}' | sed 's/\//\\\//g')
 cat /host/www/index.html  | sed 's/<base href="\/">/<base href="@token@">/g' | sed "s/@token@/$URL/g" > /tmp/index.html
 cp /tmp/index.html /host/www/index.html
 cat /etc/nginx/tilos-frontend.tpl | sed "s/__BACKEND__PORT__/${BACKEND_PORT_8080_TCP_PORT}/g" | sed "s/__STREAMER__PORT__/${BACKEND_PORT_7777_TCP_PORT}/g" | sed "s/__BACKEND__HOST__/${BACKEND_PORT_8080_TCP_ADDR}/g" | sed "s/__HOSTNAME__/${HOSTNAME}/g" > /etc/nginx/tilos-frontend.conf
