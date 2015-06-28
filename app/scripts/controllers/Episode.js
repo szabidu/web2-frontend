@@ -47,19 +47,19 @@ angular.module('tilosApp').controller('EpisodeCtrl', function ($scope, data, sho
         if ($scope.episode.text && $scope.episode.text.content) {
             Meta.setDescription($scope.episode.text.content.substring(0, 400));
         }
-        $scope.bookmark = {}
-        $scope.bookmark.from = dateUtil.toHourMin($scope.episode.plannedFrom)
-        $scope.bookmark.to = dateUtil.toHourMin($scope.episode.plannedTo)
+        $scope.bookmark = {};
+        $scope.bookmark.from = dateUtil.toHourMin($scope.episode.plannedFrom);
+        $scope.bookmark.to = dateUtil.toHourMin($scope.episode.plannedTo);
         $scope.save = function () {
-            var bts = {}
-            bts.title = $scope.bookmark.title
-            bts.from = dateUtil.setDate($scope.episode.plannedFrom, $scope.bookmark.from)
-            bts.to = dateUtil.setDate($scope.episode.plannedTo, $scope.bookmark.to)
+            var bts = {};
+            bts.title = $scope.bookmark.title;
+            bts.from = dateUtil.setDate($scope.episode.plannedFrom, $scope.bookmark.from);
+            bts.to = dateUtil.setDate($scope.episode.plannedTo, $scope.bookmark.to);
             return $http.post(API_SERVER_ENDPOINT + '/api/v1/episode/' + $scope.episode.id + '/bookmark', bts).success(function(){
                 alert('Bookmark has been saved');
-                $scope.bookmark = {}
-                $scope.bookmark.from = dateUtil.toHourMin($scope.episode.plannedFrom)
-                $scope.bookmark.to = dateUtil.toHourMin($scope.episode.plannedTo)
+                $scope.bookmark = {};
+                $scope.bookmark.from = dateUtil.toHourMin($scope.episode.plannedFrom);
+                $scope.bookmark.to = dateUtil.toHourMin($scope.episode.plannedTo);
                 return $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/' + $scope.episode.id, bts).success(function(data){
                     $scope.episode = data;
                 });
