@@ -4,43 +4,47 @@
 
 <section class="col-md-pull-3 col-md-6 main" role="main">
 
-  <div class="stream-banner" ng-show="extraStreams.indexOf('samsara')>-1">
-    <a href="http://stream.tilos.hu/samsara.m3u"><img src="/images/samsara_banner.png"/></a>
-  </div>
-
-  <div class="stream-banner" ng-show="extraStreams.indexOf('selection_live_fogaskert')>-1">
-    <a href="http://stream.tilos.hu/selection_live_fogaskert.m3u"><img src="/images/selection_banner.png"/></a>
-  </div>
-
- 
-  <div ng-show="lead.formatted"  class="panel panel-default">
-      <div ng-show="lead.formatted"  class="panel panel-default">
-          <div class="panel-heading">
-              <b>{{lead.title}}</b>
-          </div>
-          <div class="panel-body" ng-bind-html="lead.formatted">
-          </div>
-      </div>
-
-  </div>
-
-  <div ng-show="next.length" class="program-guides">
-    <h2 class="blue">Műsorajánló</h2>
-    <div class="episode-next episode-list" data-ng-repeat="episode in next">
-      <h3><a ng-href="{{episode.url}}">{{episode.text.title}}</a></h3>
-      <p>
-        <show-label show="episode.show"></show-label>
-        <span class="pull-right main-date">{{episode.plannedFrom | date:'MMMM dd. - HH:mm'}}</span>
-
-       </p>
+    <div class="stream-banner" ng-show="extraStreams.indexOf('samsara')>-1">
+        <a href="http://stream.tilos.hu/samsara.m3u"><img src="/images/samsara_banner.png"/></a>
     </div>
-  </div>
-  <div class="recent-broadcast-schedule">
+
+    <div class="stream-banner" ng-show="extraStreams.indexOf('selection_live_fogaskert')>-1">
+        <a href="http://stream.tilos.hu/selection_live_fogaskert.m3u"><img src="/images/selection_banner.png"/></a>
+    </div>
+
+
+    <div ng-show="lead.formatted" class="panel panel-default">
+        <div ng-show="lead.formatted" class="panel panel-default">
+            <div class="panel-heading">
+                <b>{{lead.title}}</b>
+            </div>
+            <div class="panel-body" ng-bind-html="lead.formatted">
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-show="next.length" class="program-guides">
+        <h2 class="blue">Műsorajánló</h2>
+
+        <div class="episode-next episode-list" data-ng-repeat="episode in next">
+            <h3><a ng-href="{{episode.url}}">{{episode.text.title}}</a></h3>
+
+            <p>
+                <show-label show="episode.show"></show-label>
+                <span class="pull-right main-date">{{episode.plannedFrom | date:'MMMM dd. - HH:mm'}}</span>
+
+            </p>
+        </div>
+    </div>
+    <div class="recent-broadcast-schedule">
         <h2 class="blue top">Az elmúlt hét adásai</h2>
+
         <div class="episode-last episode-list" data-ng-repeat="episode in lastWeek">
             <p>
+
             <h3>
-                <listen-button class="pull-right" link="{{episode.m3uUrl}}"> </listen-button>
+                <listen-button class="pull-right" link="{{episode.m3uUrl}}"></listen-button>
                 <a ng-href="{{episode.url}}">{{episode.text.title}}</a>
             </h3>
             </p>
@@ -49,32 +53,36 @@
                 <span class="pull-right main-date">{{episode.plannedFrom | date:'yyyy. MMMM dd.'}}</span>
             </p>
         </div>
-  </div>
-  <div class="recent-broadcast-schedule">
-    <h2 class="blue top">Legfrissebb adásnaplók</h2>
-    <div class="episode-last episode-list" data-ng-repeat="episode in last">
-        <p>
-        <h3>
-            <listen-button class="pull-right" link="{{episode.m3uUrl}}"> </listen-button>
-            <a ng-href="{{episode.url}}">{{episode.text.title}}</a>
-        </h3>
-        </p>
-        <p>
-          <show-label show="episode.show"></show-label>
-          <span class="pull-right main-date">{{episode.plannedFrom | date:'yyyy. MMMM dd.'}}</span>
-        </p>
     </div>
-  </div>
+    <div class="recent-broadcast-schedule">
+        <h2 class="blue top">Legfrissebb adásnaplók</h2>
+
+        <div class="episode-last episode-list" data-ng-repeat="episode in last">
+            <p>
+
+            <h3>
+                <listen-button class="pull-right" link="{{episode.m3uUrl}}"></listen-button>
+                <a ng-href="{{episode.url}}">{{episode.text.title}}</a>
+            </h3>
+            </p>
+            <p>
+                <show-label show="episode.show"></show-label>
+                <span class="pull-right main-date">{{episode.plannedFrom | date:'yyyy. MMMM dd.'}}</span>
+            </p>
+        </div>
+    </div>
 </section> <!-- col-md-6 -->
 
 <aside class="col-md-pull-3 col-md-3">
 
-<div class="box">
-  <h2><a href="http://hirek.tilos.hu" target="_blank">Tilos hírek</a></h2>
-    <article class="news-lead" ng-repeat="feed in feeds">
-      <h3><a ng-href="{{feed.link}}" target="_blank">{{feed.title}}</a></h3>
-      <p><img  ng-src="{{feed.mediaGroups[0].contents[0].url}}" alt="{{feed.title}}" ng-show="{{feed.mediaGroups[0].contents[0].url}}"></a><span ng-bind-html="feed.content"></span></p>
-  </article>
-  <a href="http://hirek.tilos.hu" target="_blank">további Tilos hírek &rarr;</a>
-</div>
+    <div class="box">
+        <h2><a href="http://hirek.tilos.hu" target="_blank">Tilos hírek</a></h2>
+        <article class="news-lead" ng-repeat="feed in feeds">
+            <h3><a ng-href="{{feed.link}}" target="_blank">{{feed.title}}</a></h3>
+
+            <p><img ng-src="{{feed.mediaGroups[0].contents[0].url}}" alt="{{feed.title}}" ng-show="{{feed.mediaGroups[0].contents[0].url}}"></a><span
+                ng-bind-html="feed.content"></span></p>
+        </article>
+        <a href="http://hirek.tilos.hu" target="_blank">további Tilos hírek &rarr;</a>
+    </div>
 </aside>
