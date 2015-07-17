@@ -77,6 +77,11 @@
 
     <div class="box">
         <h2><a href="http://hirek.tilos.hu" target="_blank">Tilos hírek</a></h2>
+        <article class="news-lead" ng-repeat="text in news">
+            <h3><a ng-href="/news/{{text.id}}" target="_blank">{{text.title}}</a></h3>
+
+            <span ng-bind-html="text.formatted"></span></p>
+        </article>
         <article class="news-lead" ng-repeat="feed in feeds">
             <h3><a ng-href="{{feed.link}}" target="_blank">{{feed.title}}</a></h3>
 

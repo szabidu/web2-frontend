@@ -18,6 +18,9 @@ angular.module('tilosApp').controller('MainCtrl', function ($scope, FeedService,
     FeedService.parseFeed('http://hirek.tilos.hu/?feed=rss2').then(function (res) {
         $scope.feeds = res.data.responseData.feed.entries;
     });
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/text/news?full=true&limit=10').success(function (data) {
+        $scope.news = data;
+    });
     $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/next').success(function (data) {
         $scope.next = data;
     });

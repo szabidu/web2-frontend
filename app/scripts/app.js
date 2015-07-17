@@ -138,18 +138,6 @@ tilos.config(function ($authProvider) {
 
 
 tilos.config(function ($routeProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
-    /*$httpProvider.interceptors.push(function ($q, localStorageService) {
-        return {
-            'request': function (config) {
-                var jwt = localStorageService.get('jwt');
-                if (jwt) {
-                    config.headers.Bearer = jwt;
-                }
-                return config;
-            }
-        };
-    });*/
-
     $urlRouterProvider.otherwise(function ($injector, $location) {
         var $http = $injector.get('$http');
         var API_SERVER_ENDPOINT = $injector.get('API_SERVER_ENDPOINT');
@@ -167,12 +155,6 @@ tilos.config(function ($routeProvider, $stateProvider, $urlRouterProvider, $http
         return false;
 
     });
-
-//    .when('/news/:id', {
-//        templateUrl: 'partials/news.html',
-//        controller: 'NewsCtrl'
-//    });
-
 });
 
 var server = window.location.protocol + '//' + window.location.hostname;
