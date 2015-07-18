@@ -8,6 +8,11 @@ var connect = require('gulp-connect');
 var exec = require('child_process');
 var replace = require('gulp-replace');
 var watch = require('gulp-watch');
+var templateCache = require('gulp-angular-templatecache');
+var rev = require('gulp-rev');
+var inject = require('gulp-inject');
+var sort = require('gulp-sort');
+var uglify = require('gulp-uglify');
 
 var gatoken = process.env.GA_TOKEN;
 
@@ -21,12 +26,29 @@ gulp.task('views', function () {
   gulp.src(['app/*', '!app/index.html'])
     .pipe(gulp.dest(distDir + '/www'));
 
-  gulp.src(sources.partials)
-    .pipe(gulp.dest(distDir + '/www/partials/'));
+    var options = {
+        module: 'tilosApp',
+        filename: 'tilos-templates.js',
+        transformUrl: function(url) {
+            return 'partials/' + url;
+        }};
 
-  gulp.src('app/index.html')
-    .pipe(replace(/GA_TOKEN/g,gatoken))
-    .pipe(gulp.dest(distDir + "/www"));
+  return gulp.src(sources.partials)
+    .pipe(templateCache(options))
+    .pipe(rev())
+    .pipe(gulp.dest(distDir + '/tmp/'));
+
+});
+
+gulp.task('inject',  ['views', 'scripts'], function () {
+    var scripts = gulp.src(distDir + '/tmp/*.js')
+        .pipe(sort())
+        .pipe(gulp.dest(distDir + '/www'))
+
+    gulp.src('app/index.html')
+        .pipe(replace(/GA_TOKEN/g,gatoken))
+        .pipe(inject(scripts, {relative: true, ignorePath: '../dist/www/'}))
+        .pipe(gulp.dest(distDir + "/www"));
 });
 
 
@@ -35,7 +57,8 @@ gulp.task('scripts', function () {
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('tilos.js'))
-    .pipe(gulp.dest(distDir + "/www/scripts"));
+    .pipe(rev())
+    .pipe(gulp.dest(distDir + "/tmp/"));
 
   gulp.src([
     "app/bower_components/angular/angular.js",
@@ -54,6 +77,7 @@ gulp.task('scripts', function () {
     'app/bower_components/satellizer/satellizer.js'
   ])
     .pipe(concat('angular.js'))
+    .pipe(uglify())
     .pipe(gulp.dest(distDir + "/www/scripts"));
 });
 
@@ -97,11 +121,15 @@ gulp.task('clean', function () {
 
 
 gulp.task('build', ['clean'], function () {
-  gulp.start('default');
+    gulp.start('all','inject');
 });
 
-gulp.task('default', function () {
-  gulp.start('sass', 'scripts', 'assets', 'chat', 'bower_components', 'views');
+gulp.task('default', ['clean'], function () {
+  gulp.start('all');
+});
+
+gulp.task('all', ['sass', 'scripts', 'assets', 'chat', 'bower_components', 'views'], function(){
+
 });
 
 
