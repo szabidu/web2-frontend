@@ -4,7 +4,7 @@ angular.module('tilosApp').directive('commentable', [function () {
 
     return {
 
-        templateUrl: '/partials/commentable.html', //HTML template.. see below
+        templateUrl: 'partials/commentable.html',
 
         scope: {  //isolate the scope
             commentable: '@',
