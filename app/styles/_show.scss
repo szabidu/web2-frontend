@@ -1,0 +1,22 @@
+.show-links a {
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.show-links a.facebook {
+  background-color: $facebook;
+}
+
+.show-links a.mixcloud {
+    background-color: $mixcloud;
+}
+
+.fb-like {
+    margin-bottom: 10px;
+}
+
+

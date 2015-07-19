@@ -1,8 +1,8 @@
 {
 	"metadata": {
 		"name": "Tilos",
-		"lastOpened": 1434788086195,
-		"created": 1434787528809
+		"lastOpened": 1437323516479,
+		"created": 1437323512760
 	},
 	"iconSets": [
 		{
@@ -6110,7 +6110,7 @@
 					"prevSize": 48,
 					"code": 58916,
 					"name": "phone",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -6131,7 +6131,7 @@
 					"prevSize": 48,
 					"code": 58917,
 					"name": "laptop",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -6232,7 +6232,7 @@
 					"prevSize": 48,
 					"code": 58918,
 					"name": "tv",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -6261,7 +6261,7 @@
 					"prevSize": 48,
 					"code": 58919,
 					"name": "radio",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -6274,7 +6274,7 @@
 					"prevSize": 48,
 					"code": 58925,
 					"name": "headphone",
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"order": 0,
@@ -6614,7 +6614,7 @@
 					"prevSize": 48,
 					"code": 58920,
 					"name": "car",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -47566,7 +47566,7 @@
 					"prevSize": 32,
 					"code": 58889,
 					"name": "cassette",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -48107,7 +48107,7 @@
 					"prevSize": 32,
 					"code": 58897,
 					"name": "chat2",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -48120,7 +48120,7 @@
 					"prevSize": 32,
 					"code": 58896,
 					"name": "chat",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -57886,7 +57886,7 @@
 					"prevSize": 20,
 					"code": 58899,
 					"name": "pencil2",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -58997,7 +58997,8 @@
 					"order": 0,
 					"id": 284
 				}
-			]
+			],
+			"invisible": true
 		},
 		{
 			"id": 6,
@@ -68947,7 +68948,7 @@
 					"prevSize": 28,
 					"code": 58903,
 					"name": "volume-up",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -68992,7 +68993,7 @@
 					"prevSize": 28,
 					"code": 58908,
 					"name": "bold",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69001,7 +69002,7 @@
 					"prevSize": 28,
 					"code": 58909,
 					"name": "italic",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69050,7 +69051,7 @@
 					"prevSize": 28,
 					"code": 58910,
 					"name": "picture",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69059,7 +69060,7 @@
 					"prevSize": 28,
 					"code": 58905,
 					"name": "pencil",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69184,7 +69185,7 @@
 					"prevSize": 28,
 					"code": 58901,
 					"name": "arrow-left",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69193,7 +69194,7 @@
 					"prevSize": 28,
 					"code": 58902,
 					"name": "arrow-right",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69266,7 +69267,7 @@
 					"prevSize": 28,
 					"code": 58898,
 					"name": "calendar",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69299,7 +69300,7 @@
 					"prevSize": 28,
 					"code": 58904,
 					"name": "shopping-cart",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69424,7 +69425,7 @@
 					"prevSize": 28,
 					"code": 58893,
 					"name": "facebook",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69501,7 +69502,7 @@
 					"prevSize": 28,
 					"code": 58912,
 					"name": "wrench",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69530,7 +69531,7 @@
 					"prevSize": 28,
 					"code": 58911,
 					"name": "link",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69571,7 +69572,7 @@
 					"prevSize": 28,
 					"code": 58906,
 					"name": "list-ul",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -69580,7 +69581,7 @@
 					"prevSize": 28,
 					"code": 58907,
 					"name": "list-ol",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -72610,7 +72611,7 @@
 					"prevSize": 32,
 					"code": 58887,
 					"name": "news",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -80094,8 +80095,12 @@
 					"id": 186
 				},
 				{
-					"order": 0,
-					"id": 187
+					"order": 48,
+					"id": 187,
+					"prevSize": 32,
+					"code": 58926,
+					"name": "cloud",
+					"tempChar": ""
 				},
 				{
 					"order": 0,
@@ -80179,7 +80184,7 @@
 					"prevSize": 32,
 					"code": 58884,
 					"name": "star",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -80192,7 +80197,7 @@
 					"prevSize": 32,
 					"code": 58885,
 					"name": "star2",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -80501,7 +80506,7 @@
 					"prevSize": 32,
 					"code": 58886,
 					"name": "loop",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -80602,7 +80607,7 @@
 					"prevSize": 32,
 					"code": 58895,
 					"name": "arrow-down",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -80799,7 +80804,7 @@
 					"prevSize": 32,
 					"code": 58890,
 					"name": "google-plus",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -80828,7 +80833,7 @@
 					"prevSize": 32,
 					"code": 58924,
 					"name": "facebook2",
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"order": 0,
@@ -80844,7 +80849,7 @@
 					"prevSize": 32,
 					"code": 58891,
 					"name": "twitter",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -81013,7 +81018,7 @@
 					"prevSize": 32,
 					"code": 58913,
 					"name": "apple",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -81026,7 +81031,7 @@
 					"prevSize": 32,
 					"code": 58914,
 					"name": "android",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{
@@ -81039,7 +81044,7 @@
 					"prevSize": 32,
 					"code": 58915,
 					"name": "windows8",
-					"tempChar": "",
+					"tempChar": "",
 					"ligatures": ""
 				},
 				{

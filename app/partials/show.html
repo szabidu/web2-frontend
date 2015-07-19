@@ -14,9 +14,8 @@
 </section>
 
 <aside class="col-md-3">
-    <div class="box">
-
-        <h2>Megosztás</h2>
+    <div class="box link-box" ng-show="show.urls.length > 0">
+        <h2>Linkek</h2>
 
         <div class="fb-like" onrender="fbLikeRendered()"
              data-href="https://tilos.hu/show/{{show.alias}}"
@@ -24,6 +23,16 @@
              data-action="like"
              data-show-faces="true"
              data-share="true"></div>
+
+        <div class="row show-links">
+            <ul>
+                <li ng-repeat="url in show.urls">
+                    </span><a ng-class="url.type" class="btn btn-danger" ng-href="{{url.address}}">
+                    <span ng-class="url.icon"></span>
+                    {{url.label}}</a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div ng-include src="'partials/sidebar_show.html'"></div>
