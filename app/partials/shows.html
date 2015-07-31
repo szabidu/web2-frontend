@@ -1,34 +1,45 @@
 <div class="shows-page">
+
     <div class="form-horizontal row instant-search" role="form">
-      <div class="form-group col-sm-6">
-        <label for="simpleShowSearch" class="col-xs-2 control-label">Keresés</label>
-        <div class="col-xs-10">
-          <input type="search" id="simpleShowSearch" class="form-control" placeholder="Keresés a műsorok között"  ng-model="simpleShowSearch">
+        <div class="form-group col-md-6">
+            <label for="simpleShowSearch" class="col-xs-2 control-label">Keresés</label>
+
+            <div class="col-xs-10">
+                <input type="search" id="simpleShowSearch" class="form-control" placeholder="Keresés a műsorok között"
+                       ng-model="simpleShowSearch"/>
+            </div>
         </div>
-      </div>
+        <div class="col-md-6">
+            <a ng-href="/upload/content/musorlista/program.pdf" class="btn btn-warning btn-lg pull-right">Heti műsorbeosztás</a>
+        </div>
     </div>
-    <section class="col-md-6 main" role="main" >
-        <h1>Beszélgetős műsorok</h1>
-        <table class="table">
-            <tr ng-repeat="show in shows['talk'] | filter:simpleShowSearch">
-                <td>
-                    <show-label show="show"></show-label>
-                </td>
-                <td><i>{{show.definition}}</i></td>
-            </tr>
-        </table>
 
-    </section>
-    <section class="col-md-6 main" role="main" >
-        <h1>Zenés műsorok</h1>
-        <table class="table">
-            <tr ng-repeat="show in shows['sound'] | filter:simpleShowSearch">
-                <td>
-                    <show-label show="show"></show-label>
-                </td>
 
-                <td><i>{{show.definition}}</i></td>
-            </tr>
-        </table>
-    </section>
+    <div class="row">
+        <section class="col-md-6 main" role="main">
+            <h1>Beszélgetős műsorok</h1>
+            <table class="table">
+                <tr ng-repeat="show in shows['talk'] | filter:simpleShowSearch">
+                    <td>
+                        <show-label show="show"></show-label>
+                    </td>
+                    <td><i>{{show.definition}}</i></td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="col-md-6 main" role="main">
+            <h1>Zenés műsorok</h1>
+            <table class="table">
+                <tr ng-repeat="show in shows['sound'] | filter:simpleShowSearch">
+                    <td>
+                        <show-label show="show"></show-label>
+                    </td>
+
+                    <td><i>{{show.definition}}</i></td>
+                </tr>
+            </table>
+        </section>
+    </div>
 </div>
