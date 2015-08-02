@@ -40,14 +40,30 @@ gulp.task('views', function () {
 
 });
 
-gulp.task('inject',  ['views', 'scripts'], function () {
-    var scripts = gulp.src(distDir + '/tmp/*.js')
+gulp.task('sass', function(){
+    return gulp.src(sources.styles)
+        .pipe(sass({style: 'compressed', loadPath: 'app/bower_components'}))
+        .pipe(gulp.dest(distDir + '/tmp/'))
+})
+gulp.task('styles', function() {
+    return gulp.src('app/bower_components/angular-growl-v2/build/angular-growl.css')
+        .pipe(gulp.dest(distDir + '/tmp/'))
+
+
+})
+
+gulp.task('inject',  ['views', 'styles', 'sass', 'scripts'], function () {
+
+
+    // inject
+    var resources = gulp.src([distDir + '/tmp/*.css',distDir + '/tmp/*.js'])
         .pipe(sort())
-        .pipe(gulp.dest(distDir + '/www'))
+        .pipe(gulp.dest(distDir + '/www'));
+
 
     gulp.src('app/index.html')
         .pipe(replace(/GA_TOKEN/g,gatoken))
-        .pipe(inject(scripts, {relative: true, ignorePath: '../dist/www/'}))
+        .pipe(inject(resources, {relative: true, ignorePath: '../dist/www/'}))
         .pipe(gulp.dest(distDir + "/www"));
 });
 
@@ -74,7 +90,8 @@ gulp.task('scripts', function () {
     'app/bower_components/angularitics/src/angulartics.js',
     'app/bower_components/angularitics/src/angulartics-ga.js',
     'app/bower_components/angular-easyfb/angular-easyfb.min.js',
-    'app/bower_components/satellizer/satellizer.js'
+    'app/bower_components/satellizer/satellizer.js',
+    'app/bower_components/angular-growl-v2/build/angular-growl.js'
   ])
     .pipe(concat('angular.js'))
     .pipe(uglify())
@@ -97,7 +114,7 @@ gulp.task('assets', function () {
     gulp.src([
             'app/bower_components/sass-bootstrap/fonts/**'],
         {base: 'app/bower_components/sass-bootstrap/fonts'})
-        .pipe(gulp.dest(distDir + '/www/styles/fonts'));
+        .pipe(gulp.dest(distDir + '/www/fonts'));
 
 });
 
@@ -128,17 +145,11 @@ gulp.task('default', ['clean'], function () {
   gulp.start('all');
 });
 
-gulp.task('all', ['sass', 'scripts', 'assets', 'chat', 'bower_components', 'views'], function(){
+gulp.task('all', ['scripts', 'assets', 'chat', 'bower_components', 'views'], function(){
 
 });
 
-
-gulp.task('sass', function () {
-  return gulp.src(sources.styles)
-    .pipe(sass({style: 'compressed', loadPath: 'app/bower_components'}))
-    //.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(gulp.dest(distDir + '/www/styles'))
-});
+;
 
 
 gulp.task('zip', function (cb) {

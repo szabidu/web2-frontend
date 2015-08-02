@@ -19,7 +19,8 @@
     "angular-recaptcha": "~1.0.5",
     "angularitics": "~0.17.1",
     "angular-easyfb": "~1.2.1",
-    "satellizer": "~0.9.3"
+    "satellizer": "~0.9.3",
+    "angular-growl-v2": "~0.7.5"
   },
   "devDependencies": {},
   "resolutions": {
