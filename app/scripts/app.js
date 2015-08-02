@@ -11,11 +11,29 @@ var tilos = angular.module('tilosApp',
     'vcRecaptcha',
     'ezfb',
     'satellizer',
+    'angular-growl',
     'angulartics',
     'angulartics.google.analytics']);
 
-tilos.config(function ($locationProvider) {
+tilos.config(['growlProvider', function (growlProvider) {
+    growlProvider.globalTimeToLive(3000);
+    growlProvider.globalPosition('top-left');
+}]);
+
+
+tilos.config(function ($locationProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
+
+    $httpProvider.interceptors.push(function($q, growl) {
+        return {
+            'responseError': function(rejection) {
+                if (rejection.status != 404 && rejection.data.message) {
+                    growl.error(rejection.data.message);
+                }
+                return $q.reject(rejection);
+            }
+        };
+    })
 });
 
 tilos.weekStart = function (date) {

@@ -5,7 +5,7 @@ angular.module('tilosApp').config(function ($stateProvider) {
         abstract: true,
         url: '/show/:id',
         templateUrl: 'partials/show.html',
-        controller: function(show, $scope) {
+        controller: function (show, $scope) {
             $scope.show = show.data;
         },
         resolve: {
@@ -19,7 +19,11 @@ angular.module('tilosApp').config(function ($stateProvider) {
                         data.icon = 'icon-link';
                     }
                 };
-                return $http({method: 'GET', url: API_SERVER_ENDPOINT + '/api/v1/show/' + $stateParams.id, cache: true}).then(function (data) {
+                return $http({
+                    method: 'GET',
+                    url: API_SERVER_ENDPOINT + '/api/v1/show/' + $stateParams.id,
+                    cache: true
+                }).then(function (data) {
                     data.data.urls.forEach(function (url) {
                         addIcon(url);
                     });
@@ -52,9 +56,28 @@ angular.module('tilosApp').config(function ($stateProvider) {
         templateUrl: 'partials/show-bookmarks.html',
         controller: 'ShowBookmarksCtrl'
     });
+
+    $stateProvider.state('showContact', {
+        url: '/show/:id/contact',
+        templateUrl: 'partials/show-contact.html',
+        controller: 'ShowContactCtrl'
+    });
 });
 
 angular.module('tilosApp').controller('ShowIntroCtrl', function () {
+});
+
+
+angular.module('tilosApp').controller('ShowContactCtrl', function ($state, vcRecaptchaService, growl, $scope, $stateParams, API_SERVER_ENDPOINT, $http) {
+    $scope.message = {};
+    $scope.save = function () {
+        $scope.message.captchaChallenge = vcRecaptchaService.data().challenge;
+        $scope.message.captchaResponse = vcRecaptchaService.data().response;
+        $http.post(API_SERVER_ENDPOINT + '/api/v1/show/' + $stateParams.id + '/contact', $scope.message).success(function (data) {
+            growl.info("Message has been successfully sent");
+            $state.go('show.intro', {id: $stateParams.id});
+        });
+    }
 });
 
 angular.module('tilosApp')

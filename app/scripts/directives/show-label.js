@@ -6,7 +6,7 @@ angular.module('tilosApp').directive('showLabel', function ($compile) {
         scope: {
             show: '='
         },
-        template: '<a class="{{labelstyle}} label label-default" ng-href="/show/{{show.alias}}">' +
+        template: '<a class="{{labelstyle}} label label-default label-show" ng-href="/show/{{show.alias}}">' +
         '{{show.name}}&nbsp;<i class="{{icon}}"></i>' +
         '</a>',
         controller: function ($scope) {

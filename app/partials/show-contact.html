@@ -1,0 +1,25 @@
+<form>
+    <div class="form-group">
+        <label for="from">Feladó</label>
+        <input id="from" ng-model="message.from" type="email" class="form-control" placeholder="A te email címed">
+    </div>
+    <div class="form-group">
+        <label for="subject">Tárgy</label>
+        <input id="subject" ng-model="message.subject" type="subject" class="form-control" placeholder="Tárgy">
+    </div>
+    <div class="form-group">
+        <label for="body">Az üzenet</label>
+        <textarea id="body" ng-model="message.body" class="form-control">
+
+    </textarea>
+    </div>
+
+    <div class="form-group">
+
+        <div
+            vc-recaptcha
+            key="'6LeJRv0SAAAAABAZlebOuAD9nanyaajQ391jtRKq'"
+            ></div>
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="save()">Küldés</button>
+</form>
