@@ -42,7 +42,7 @@ gulp.task('views', function () {
 
 gulp.task('sass', function(){
     return gulp.src(sources.styles)
-        .pipe(sass({style: 'compressed', loadPath: 'app/bower_components'}))
+        .pipe(sass({style: 'expanded', loadPath: 'app/bower_components'}))
         .pipe(gulp.dest(distDir + '/tmp/'))
 })
 gulp.task('styles', function() {

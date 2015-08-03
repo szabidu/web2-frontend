@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "componentsDirectory": "app/",
   "dependencies": {
-    "sass-bootstrap": "3.0.2",
     "requirejs": "2.1.9",
     "modernizr": "2.7.1",
     "jquery": "2.0.3",
@@ -20,7 +19,8 @@
     "angularitics": "~0.17.1",
     "angular-easyfb": "~1.2.1",
     "satellizer": "~0.9.3",
-    "angular-growl-v2": "~0.7.5"
+    "angular-growl-v2": "~0.7.5",
+    "bootstrap-sass": "~3.3.5"
   },
   "devDependencies": {},
   "resolutions": {
