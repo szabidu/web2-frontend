@@ -69,7 +69,7 @@ gulp.task('inject',  ['views', 'styles', 'sass', 'scripts'], function () {
 
 
 gulp.task('scripts', function () {
-  gulp.src(sources.myscripts)
+  return gulp.src(sources.myscripts)
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('tilos.js'))
