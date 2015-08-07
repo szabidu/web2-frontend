@@ -62,7 +62,7 @@ target="_blank">heti műsor</a></h2>
         </form>
     </div> <!-- box -->
 
-	<div class="box box-simple hidden-xs" id="plaza">
+		<div class="box box-simple" id="plaza">
 		<h2><a href="http://plaza.tilos.hu" target="_blank" alt="tilos plaza">
 		<img src="https://tilos.hu/upload/content/info/icon-plaza.png"></a>
 		</h2>
@@ -71,10 +71,10 @@ target="_blank">heti műsor</a></h2>
 	<div class="box box-simple hidden-xs" id="mobil">
 		<h3>Mobil Alkalmazások</h3>
 
-  <div class="text-center" style="margin-bottom: 12px;">
+  <h2><div class="text-center" style="margin-bottom: 12px;">
     <a href="https://play.google.com/store/apps/details?id=pontezit.android.tilos.com">
       <img alt="Get it on Google Play"
-           src="https://tilos.hu/upload/content/info/Google_play.png" />
+           src="https://tilos.hu/upload/content/info/Google_play.png" /></h2>
     </a>
   </div>
 
@@ -87,9 +87,9 @@ target="_blank">heti műsor</a></h2>
 	</div>
     <div class="box box-simple" id="tags" ng-controller="TagCloudCtrl">
 
-        <h2>Népszerű címkék</h2>
+        <h3>Népszerű címkék</h3>
         <p>
-            <a ng-repeat="tag in tags" ng-href="/tag/{{tag.name}}">
+            <h2><a ng-repeat="tag in tags" ng-href="/tag/{{tag.name}}">
                 <span class="tag-badge">{{tag.name}} ({{tag.count}})</span>
             </a>
         </p>
