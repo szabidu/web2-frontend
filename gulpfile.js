@@ -52,7 +52,7 @@ gulp.task('styles', function() {
 
 })
 
-gulp.task('inject',  ['views', 'styles', 'sass'], function () {
+gulp.task('inject',  ['views', 'styles', 'sass', 'scripts', 'vendorjs'], function () {
 
 
     // inject
@@ -69,14 +69,16 @@ gulp.task('inject',  ['views', 'styles', 'sass'], function () {
 
 
 gulp.task('scripts', function () {
-  gulp.src(sources.myscripts)
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('default'))
-    .pipe(concat('tilos.js'))
-    .pipe(rev())
-    .pipe(gulp.dest(distDir + "/tmp/"));
+    return gulp.src(sources.myscripts)
+        .pipe(jshint('.jshintrc'))
+        .pipe(jshint.reporter('default'))
+        .pipe(concat('tilos.js'))
+        .pipe(rev())
+        .pipe(gulp.dest(distDir + "/tmp/"));
+});
 
-  gulp.src([
+gulp.task('vendorjs', function () {
+  return gulp.src([
     "app/bower_components/angular/angular.js",
     "app/bower_components/angular-route/angular-route.js",
     "app/bower_components/angular-resource/angular-resource.js",
@@ -145,7 +147,7 @@ gulp.task('default', ['clean'], function () {
   gulp.start('all');
 });
 
-gulp.task('all', ['scripts', 'assets', 'chat', 'bower_components', 'views'], function(){
+gulp.task('all', ['assets', 'chat', 'bower_components'], function(){
 
 });
 
