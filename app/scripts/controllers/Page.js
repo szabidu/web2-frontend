@@ -8,8 +8,9 @@ angular.module('tilosApp').config(function ($stateProvider) {
     });
 });
 
-angular.module('tilosApp').controller('PageCtrl', function ($scope, API_SERVER_ENDPOINT, $stateParams, $http) {
+angular.module('tilosApp').controller('PageCtrl', function ($scope, API_SERVER_ENDPOINT, $stateParams, $http, $sce) {
     $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/' + $stateParams.id).success(function (data) {
         $scope.page = data;
+        $scope.page.formatted = $sce.trustAsHtml($scope.page.formatted);
     });
 });
