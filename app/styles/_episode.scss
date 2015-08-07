@@ -3,3 +3,7 @@
     @extend .center-block;
     @extend .img-thumbnail;
 }
+
+#episode iframe {
+    @extend .center-block;
+}

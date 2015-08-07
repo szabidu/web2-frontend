@@ -3,3 +3,7 @@
     @extend .center-block;
     @extend .img-thumbnail;
 }
+
+#page iframe {
+    @extend .center-block;
+}
