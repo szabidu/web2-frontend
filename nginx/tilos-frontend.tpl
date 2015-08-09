@@ -1,11 +1,9 @@
     set $backend __BACKEND__HOST__;
     set $port __BACKEND__PORT__;
+    set $portng 6060;
     set $streamerport __STREAMER__PORT__;
     set $my_hostname __HOSTNAME__;
     set $fix 0;
-
-
-
 
     location @prerender {
         set $prerender 0;
@@ -54,6 +52,11 @@
 
     location ~ ^/api/v1/.+$ {
         proxy_pass http://$backend:$port;
+        break;
+    }
+
+    location ~ ^/api/v2/.+$ {
+        proxy_pass http://$backend:$portng;
         break;
     }
 
