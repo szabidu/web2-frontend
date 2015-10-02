@@ -106,10 +106,12 @@ gulp.task('assets', function () {
       'app/nr.js',
       'app/template/**/*',
       'app/images/**/*',
+      'app/doc/**/*',
       'app/fonts/**',
       'app/jplayer/**/*'],
     {base: 'app'})
     .pipe(gulp.dest(distDir + '/www'));
+
     gulp.src('apidoc/**/*.*')
     .pipe(gulp.dest(distDir + '/www/apidoc'));
 
