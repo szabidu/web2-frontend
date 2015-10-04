@@ -13,6 +13,7 @@ var rev = require('gulp-rev');
 var inject = require('gulp-inject');
 var sort = require('gulp-sort');
 var uglify = require('gulp-uglify');
+var proxy = require('http-proxy-middleware');
 
 var gatoken = process.env.GA_TOKEN;
 
@@ -24,7 +25,8 @@ var sources = {
 
 gulp.task('views', function () {
   gulp.src(['app/*', '!app/index.html'])
-    .pipe(gulp.dest(distDir + '/www'));
+    .pipe(gulp.dest(distDir + '/www'))
+    .pipe(connect.reload());
 
     var options = {
         module: 'tilosApp',
@@ -64,7 +66,8 @@ gulp.task('inject',  ['views', 'styles', 'sass', 'scripts', 'vendorjs'], functio
     gulp.src('app/index.html')
         .pipe(replace(/GA_TOKEN/g,gatoken))
         .pipe(inject(resources, {relative: true, ignorePath: '../dist/www/'}))
-        .pipe(gulp.dest(distDir + "/www"));
+        .pipe(gulp.dest(distDir + "/www"))
+        .pipe(connect.reload());
 });
 
 
@@ -97,7 +100,8 @@ gulp.task('vendorjs', function () {
   ])
     .pipe(concat('angular.js'))
     .pipe(uglify())
-    .pipe(gulp.dest(distDir + "/www/scripts"));
+    .pipe(gulp.dest(distDir + "/www/scripts"))
+    .pipe(connect.reload());
 });
 
 
@@ -110,28 +114,32 @@ gulp.task('assets', function () {
       'app/fonts/**',
       'app/jplayer/**/*'],
     {base: 'app'})
-    .pipe(gulp.dest(distDir + '/www'));
-
+    .pipe(gulp.dest(distDir + '/www'))
+    .pipe(connect.reload());
     gulp.src('apidoc/**/*.*')
-    .pipe(gulp.dest(distDir + '/www/apidoc'));
+    .pipe(gulp.dest(distDir + '/www/apidoc'))
+    .pipe(connect.reload());
 
     gulp.src([
             'app/bower_components/sass-bootstrap/fonts/**'],
         {base: 'app/bower_components/sass-bootstrap/fonts'})
-        .pipe(gulp.dest(distDir + '/www/fonts'));
+        .pipe(gulp.dest(distDir + '/www/fonts'))
+        .pipe(connect.reload());
 
 });
 
 gulp.task('chat', function () {
   gulp.src(['chat/**/*'], {base: '.'})
-    .pipe(gulp.dest(distDir + '/www'));
+    .pipe(gulp.dest(distDir + '/www'))
+    .pipe(connect.reload());
 });
 
 
 
 gulp.task('bower_components', function () {
   gulp.src(['app/bower_components/**/*'], {base: 'app'})
-    .pipe(gulp.dest(distDir + '/www'));
+    .pipe(gulp.dest(distDir + '/www'))
+    .pipe(connect.reload());
 });
 
 
@@ -165,24 +173,25 @@ gulp.task('zip', function (cb) {
 })
 
 gulp.task('watch', function () {
-  gulp.watch(sources.styles, function (event) {
-      gulp.start('sass');
-  });
-
-  gulp.watch(sources.partials, function (event) {
-    gulp.start('views');
-  });
-  gulp.watch(sources.myscripts, function (event) {
-    gulp.start('scripts');
-  });
+  gulp.watch(['app/index.html',
+              sources.styles,
+              sources.partials,
+              sources.myscripts],['inject']);
 });
-
 
 gulp.task('connect', function () {
   connect.server({
     root: [distDir + '/www'],
     port: 9000,
-    livereload: true
+    livereload: true,
+    middleware: function(connect, opt) {
+      return [
+        proxy('/api', {
+          target: 'https://tilos.hu',
+          changeOrigin:true
+        })
+      ]
+    }
   });
 });
 
