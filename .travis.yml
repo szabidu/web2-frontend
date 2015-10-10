@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - "iojs"
-  
+
+before_install:
+   - gem install sass
+
 script:
    - ./build.sh
