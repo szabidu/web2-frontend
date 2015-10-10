@@ -22,7 +22,7 @@
 
         if ($prerender = 1) {
             rewrite .* /https://tilos.hu$request_uri? break;
-            proxy_pass http://prerender:3000;
+            proxy_pass http://127.0.0.1:3000;
         }
         if ($prerender = 0) {
             rewrite .* /index.html last;
