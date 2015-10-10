@@ -72,10 +72,18 @@
     }
 
 
+
     location ~ ^/mp3/.+$ {
+       try_files /cache/$uri @mp3;
+    }
+
+    location @mp3 {
         proxy_pass http://$backend:$streamerport;
         break;
     }
+
+
+
 
     location ~ ^.*m3u$ {
         rewrite  ^/(.*) /api/v1/m3u/lastweek?stream=$1 break;
