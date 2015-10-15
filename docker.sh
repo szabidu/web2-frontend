@@ -1,1 +1,3 @@
-docker build -t tilos/frontend .
+#!/bin/bash
+set -e
+docker build -t tilosradio/frontend .
