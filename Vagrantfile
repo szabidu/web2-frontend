@@ -68,7 +68,8 @@ Vagrant.configure(2) do |config|
      sudo apt-get update
      sudo apt-get install -y nginx ruby-sass mc git zip
      rm -rf /etc/nginx/*
-     cp /tilos/vagrant/nginx/* /etc/nginx
+     cp /tilos/nginx/vagrant/* /etc/nginx
+     cp /tilos/nginx/tilos-frontend.conf /etc/nginx/
      nginx -s reload
   SHELL
   config.vm.provision "shell", privileged: false, inline: <<-SHELL

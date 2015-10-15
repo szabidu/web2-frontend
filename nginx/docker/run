@@ -1,0 +1,7 @@
+#!/bin/bash
+export URL=$(cat /host/tilos.properties  | grep server.url | awk -F "=" '{print $2}' | sed 's/\//\\\//g')
+export BACKEND_HOST=$(/sbin/ip route|awk '/default/ { print $3 }')
+cat /host/www/index.html  | sed 's/<base href="\/">/<base href="@token@">/g' | sed "s/@token@/$URL/g" > /tmp/index.html
+cp /tmp/index.html /host/www/index.html
+cat /etc/nginx/variables.tpl | sed "s/__BACKEND__PORT__/${BACKEND_PORT}/g" | sed "s/__STREAMER__PORT__/${STREAMER_PORT}/g" | sed "s/__BACKEND__HOST__/${BACKEND_HOST}/g" | sed "s/__HOSTNAME__/${HOSTNAME}/g" > /etc/nginx/variables.conf
+/usr/sbin/nginx
