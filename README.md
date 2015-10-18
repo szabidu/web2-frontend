@@ -1,5 +1,9 @@
 This is an AngularJS based web application for tilos.hu which uses the REST backend.
 
+[![Travis](https://img.shields.io/travis/tilosradio/web2-frontend.svg)](http://travis-ci.org/tilosradio/web2-frontend)
+
+To get help [![gitter](https://img.shields.io/badge/gitter-join%20chat-1dce73.svg)](https://gitter.im/tilosradio/public)
+
 Requirements
 ------------
 
