@@ -10,6 +10,7 @@ ADD nginx/tilos-frontend.conf /etc/nginx/
 ADD nginx/docker/variables.tpl /etc/nginx/variables.tpl
 
 ADD dist/www /host/www
+ADD dist/version.txt /host/
 
 
 

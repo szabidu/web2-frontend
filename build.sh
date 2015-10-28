@@ -10,3 +10,4 @@ touch $DIR/build/frontend.zip
 rm $DIR/build/frontend.zip
 zip -r $DIR/build/frontend.zip *
 cd $DIR
+git show -s HEAD > $DIR/dist/version.txt
