@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('tilosApp').config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.when('/ttt', '/ttt/havi');
-    $urlRouterProvider.when('/ttt/', '/ttt/havi');
+    $urlRouterProvider.when('/ttt', '/ttt/elfogad');
+    $urlRouterProvider.when('/ttt/', '/ttt/elfogad');
 
     $stateProvider.state('ttt', {
         abstract: true,
