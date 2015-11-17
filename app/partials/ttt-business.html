@@ -6,10 +6,10 @@
             <p ng-show="business.description">{{business.description}}</p>
             <div class="btn-group" role="group">
                 <a href="{{business.program}}" target="_blank" class="btn btn-default" ng-show="business.program">programok</a>
-                <a href="{{business.url}}" target="_blank" class="btn btn-default" ng-show="business.weboldal">weboldal</a>
+                <a href="{{business.url}}" target="_blank" class="btn btn-default" ng-show="business.url">weboldal</a>
                 <a href="{{business.facebook}}" target="_blank" class="btn btn-default" ng-show="business.facebook">facebook</a>
             </div>
-            <div ng-show="business.discount" class="label label-success label-discount">{{business.discount}}</div>
+            <div ng-show="business.discount" class="label label-success label-discount">{{business.discount}}%</div>
         </div>
     </div>
 </section>
