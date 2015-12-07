@@ -1,6 +1,7 @@
 <section class="col-md-12 main" role="main">
     <div class="module-card-wrap">
         <div class="module-card" ng-repeat="business in businesses | orderBy:'-discount'">
+            <img src="/api/v1/ttt/business/business.name/photo.jpg" alt="business.name">
             <h3 ng-show="business.name">{{business.name}}</h3>
             <p ng-show="business.address">{{business.address}}</p>
             <p ng-show="business.description">{{business.description}}</p>
