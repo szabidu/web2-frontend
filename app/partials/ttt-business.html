@@ -2,7 +2,6 @@
     <div class="module-card-wrap">
         <div class="module-card" ng-repeat="business in businesses | orderBy:'-discount'">
             
-            <img ng-hide="business.photo" src="https://tilos.hu/upload/content/info/ttt-kartya.jpg" alt="{{business.name}}">
             <img ng-show="business.photo" src="{{business.photo}}" alt="{{business.name}}">
             <h3 ng-show="business.name">{{business.name}}</h3>
             <p ng-show="business.address">{{business.address}}</p>
