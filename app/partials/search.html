@@ -3,7 +3,9 @@
 
 <div class="panel panel-default episode-box ng-scope" ng-repeat="result in result.elements">
     <div class="panel-heading ng-binding">
-        <b> {{types[result.type]}}:</b>  <a ng-href="{{result.uri}}">{{result.title}}</a>
+        <b> {{types[result.type]}}:</b>
+        <a ng-show="result.title" ng-href="{{result.uri}}">{{result.title}}</a>
+        <a ng-hide="result.title" ng-href="{{result.uri}}">---</a>
 
     </div>
 </div>
