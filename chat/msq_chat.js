@@ -28,7 +28,7 @@ case 7:
 	alert("TrollKontroll\n\nA jobb oldali névlistában bal klikk annak a nevére, akinek a szövegét nem akarod olvasni.\nEkkor a név alatt megnyílik egy menü, abban bal klikk a \"SILENCE\" szóra.\nEttől kezdve egészen addig nem látod, hogy mit ír, amíg hasonló elven a \"DESILENCE\" szóra nem klikkelsz.\n\nTANÁCS: A troll előre megfontoltan aknázza ki az online közösség normáinak gyenge pontjait, hogy feldühítse az embereket.\nNe etesd a trollt! A trollnak a veszekedés, a zavar és a felfordulás a lételeme: ha vitába szállsz vele, csak a kedvére teszel. Ahogy a mondás tartja: ne kezdj birkózásba egy disznóval. Mindketten sárosak lesztek, de a disznó még élvezi is.");
 	break;
 case 8:
-	alert("Kitiltottak?\n\nHa kitiltás miatt nem tudsz csatlakozni a chat-re (azaz például ilyen üzenet fogad a Status ablakban: [09:36] -irc.tilos.hu- *** You're banned!) akkor írj egy email-t az unban@tilos.hu címre, amibe belemásolod a Status ablakban lévő üzenetet az IP címeddel együtt\n");
+	alert("Kitiltottak?\n\nHa kitiltás miatt nem tudsz csatlakozni a chat-re \n(azaz például ilyen üzenet fogad a Status ablakban: \n[09:36] -irc.tilos.hu- *** You're banned!) \nakkor írj egy email-t az unban@tilos.hu címre, \namibe belemásolod a Status ablakban lévő üzenetet \naz IP címeddel együtt");
 	break;
 }
 }
