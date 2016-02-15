@@ -11,6 +11,13 @@
 
     <span ng-bind-html="episode.text.formatted"></span>
 
+    <div style="line-height: 40px">
+    <span  ng-repeat="tag in episode.tags">
+        <a ng-href="/tag/{{tag.name}}" class="btn btn-info">#{{tag.name}}</a>&nbsp;
+    </span>
+    </div>
+
+
     <div id="comments" class="tab-pane"
          commentable="{{episode.id}}"
          commentable-type="EPISODE"
@@ -31,7 +38,8 @@
         </div>
     </section>
 
-    <p ng-show="!episode.original || episode.bookmarks.length > 0">* Felhasználók által hozzáadott tartalom, nem feltétlen tükrözi a műsorkészítők véleményét.</p>
+    <p ng-show="!episode.original || episode.bookmarks.length > 0">* Felhasználók által hozzáadott tartalom, nem
+        feltétlen tükrözi a műsorkészítők véleményét.</p>
 
     <form name="form" class="form-horizontal" role="form" ng-show="user.role == 'ADMIN'">
         <div class="alert alert-danger" ng-show="error">{{error}}</div>
@@ -43,7 +51,8 @@
                 <input class="form-control" id="realFrom" name="realFrom" type="text" ng-model="bookmark.from"
                        ng-pattern="/^[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?$/" style="width: 20ch;">
 
-                <div class="alert alert-danger" ng-show="form.realFrom.$error.pattern">A kezdetet óó:pp:mm formátumban kell megadni
+                <div class="alert alert-danger" ng-show="form.realFrom.$error.pattern">A kezdetet óó:pp:mm formátumban
+                    kell megadni
                 </div>
 
 
@@ -51,17 +60,21 @@
             <!-- Text input-->
             <div class="form-group">
                 <label for="realTo">Valós vég</label>
-                <input class="form-control" id="realTo" name="realTo" type="text" ng-model="bookmark.to" ng-pattern="/^[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?$/"
+                <input class="form-control" id="realTo" name="realTo" type="text" ng-model="bookmark.to"
+                       ng-pattern="/^[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?$/"
                        style="width: 20ch;">
 
-                <div class="alert alert-danger" ng-show="form.realTo.$error.pattern">A véget óó:pp:mm formátumban kell megadni</div>
+                <div class="alert alert-danger" ng-show="form.realTo.$error.pattern">A véget óó:pp:mm formátumban kell
+                    megadni
+                </div>
             </div>
 
 
             <!-- Text input-->
             <div class="form-group">
                 <label for="title">Leírás</label>
-                <input class="form-control" id="title" name="title" type="text" class="" ng-model="bookmark.title" width="" required="true">
+                <input class="form-control" id="title" name="title" type="text" class="" ng-model="bookmark.title"
+                       width="" required="true">
 
             </div>
 
