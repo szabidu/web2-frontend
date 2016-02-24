@@ -1158,6 +1158,7 @@ input.datepicker {
 
 .news-lead {
     margin-bottom: 1em;
+    overflow: hidden;
     @include clearfix();
     h3 {
         border-bottom: 1px solid $primary-color;
