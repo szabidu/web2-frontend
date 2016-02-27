@@ -1063,9 +1063,19 @@ a.icon-star, a.icon-star2 {
 
 #datapicker {
     .btn-default {
-        background-color: #cacaca;
-        color: #000;
-        border-color: #D0D0D0;
+        background-color: #fff;
+        color: #333;
+        border-color: #ccc;
+        width: auto!important;
+        min-width: 100%;
+    }
+
+    table {
+        margin: 2px 6px;
+    }
+
+    td {
+        padding: 1px;
     }
 }
 
@@ -1073,7 +1083,7 @@ a.icon-star, a.icon-star2 {
     border: none;
     font-family: "Open Sans", sans-serif;
     font-size: 18px;
-    padding: 10px;
+    padding: 9px 10px;
     width: 115px;
     margin-left: -6px;
 }
