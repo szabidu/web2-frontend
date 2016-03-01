@@ -6,7 +6,7 @@
     "requirejs": "2.1.9",
     "modernizr": "2.7.1",
     "jquery": "2.0.3",
-    "angular": "1.2.4",
+    "angular": "1.5.0",
     "angular-route": "1.2.4",
     "angular-resource": "1.2.4",
     "angular-sanitize": "1.2.4",
@@ -18,7 +18,7 @@
     "angular-recaptcha": "~1.0.5",
     "angularitics": "~0.17.1",
     "angular-easyfb": "~1.2.1",
-    "satellizer": "~0.9.3",
+    "satellizer": "~0.14.0",
     "angular-growl-v2": "~0.7.5",
     "bootstrap-sass": "~3.3.5"
   },

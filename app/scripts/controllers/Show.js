@@ -90,7 +90,7 @@ angular.module('tilosApp')
 
 
 angular.module('tilosApp')
-    .controller('ShowCtrl', function (Player, $scope, $stateParams, API_SERVER_ENDPOINT, $http, validateUrl, $rootScope, $location, Meta) {
+    .controller('ShowCtrl', function ($scope, $stateParams, API_SERVER_ENDPOINT, $http, validateUrl, $rootScope, $location, Meta) {
         $scope.server = API_SERVER_ENDPOINT;
         Meta.setTitle($scope.show.name);
         if ($scope.show.definition) {
@@ -106,8 +106,6 @@ angular.module('tilosApp')
         $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $scope.show.id + '/episodes?start=' + from + '&end=' + to).success(function (data) {
             $scope.show.episodes = data;
         });
-
-        $scope.play = Player.play;
 
         $scope.prev = function () {
             $scope.currentShowPage--;

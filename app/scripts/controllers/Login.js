@@ -16,7 +16,7 @@ angular.module('tilosApp').config(function ($stateProvider) {
 
 });
 
-angular.module('tilosApp').run(['$rootScope', 'localStorageService', '$location', 'satellizer.shared', function ($rootScope, localStorageService, $location, satellizer) {
+angular.module('tilosApp').run(['$rootScope', 'localStorageService', '$location', '$auth', function ($rootScope, localStorageService, $location, satellizer) {
     $rootScope.logout = function () {
         $rootScope.user = null;
         satellizer.logout();
@@ -48,8 +48,8 @@ angular.module('tilosApp').controller('PasswordReminderCtrl', function ($scope, 
 });
 
 angular.module('tilosApp').controller('LoginCtrl',
-    ['$rootScope', '$scope', '$location', 'API_SERVER_ENDPOINT', '$http', 'localStorageService', '$auth', 'satellizer.shared',
-        function ($rootScope, $scope, $location, API_SERVER_ENDPOINT, $http, localStorageService, $auth, satellizer) {
+    ['$rootScope', '$scope', '$location', 'API_SERVER_ENDPOINT', '$http', 'localStorageService', '$auth',
+        function ($rootScope, $scope, $location, API_SERVER_ENDPOINT, $http, localStorageService, $auth) {
             if ($scope.user) {
                 $location.path('/me');
             }
@@ -65,7 +65,7 @@ angular.module('tilosApp').controller('LoginCtrl',
             };
             $scope.login = function () {
                 $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/login', $scope.logindata).success(function (data) {
-                    satellizer.setToken(data);
+                    $auth.setToken(data);
                     localStorageService.set('jwt', data);
 
                     $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {

@@ -4,7 +4,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 mkdir -p $DIR/build
 npm install
 ./node_modules/bower/bin/bower update
-node_modules/gulp/bin/gulp.js build
+node_modules/gulp/bin/gulp.js webpack assets chat
 cd $DIR/dist
 touch $DIR/build/frontend.zip
 rm $DIR/build/frontend.zip
