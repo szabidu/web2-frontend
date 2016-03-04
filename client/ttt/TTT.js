@@ -4,6 +4,7 @@ var angular = require("angular")
 require("ttt/ttt.html");
 require("ttt/ttt-business.html");
 require("ttt/ttt-sub.html");
+require("ttt/ttt.scss");
 
 var angularModule = angular.module("ttt", []);
 
