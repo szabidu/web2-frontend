@@ -2,10 +2,11 @@
   "name": "radio-ui",
   "version": "1.0.0",
   "dependencies": {
+    "angular-ui-router": "^0.2.18",
+    "bootstrap-loader": "^1.0.9",
     "bootstrap-sass": "^3.3.6",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
-    "bootstrap-loader": "^1.0.9",
     "sass-loader": "^3.1.2",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",

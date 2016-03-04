@@ -1,0 +1,102 @@
+<section class="col-md-9 main" role="main" id="episode">
+
+
+    <h2 class="bordered top">
+        <show-label show="currentShow"></show-label>
+        {{episode.plannedFrom | date:'yyyy. MMMM dd.'}}
+        <listen-button ng-show="episode.m3uUrl !== null" link="{{episode.m3uUrl}}"></listen-button>
+    </h2>
+
+    <h1 class="ubuntu">{{episode.text.title}}<span ng-show="!episode.original">*</span></h1>
+
+    <span ng-bind-html="episode.text.formatted"></span>
+
+    <div style="line-height: 40px">
+    <span  ng-repeat="tag in episode.tags">
+        <a ng-href="/tag/{{tag.name}}" class="btn btn-info">#{{tag.name}}</a>&nbsp;
+    </span>
+    </div>
+
+
+    <div id="comments" class="tab-pane"
+         commentable="{{episode.id}}"
+         commentable-type="EPISODE"
+         logged-in="isLoggedIn()"></div>
+    <br/>
+
+    <section ng-show="episode.bookmarks.length > 0">
+        <h3> Könyvjelzők* </h3>
+
+        <div class="panel panel-default episode-box" ng-repeat="bookmark in episode.bookmarks">
+            <div class="panel-heading">
+                <listen-button class="pull-right" link="{{bookmark.m3uUrl}}"></listen-button>
+                <div class="episode-title">
+                    <span>{{bookmark.from| date: 'HH:mm'}}-{{bookmark.to| date: 'HH:mm'}}</span>
+                    <b>{{bookmark.title}}</b> ({{bookmark.creator.username}})
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <p ng-show="!episode.original || episode.bookmarks.length > 0">* Felhasználók által hozzáadott tartalom, nem
+        feltétlen tükrözi a műsorkészítők véleményét.</p>
+
+    <form name="form" class="form-horizontal" role="form" ng-show="user.role == 'ADMIN'">
+        <div class="alert alert-danger" ng-show="error">{{error}}</div>
+        <fieldset>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label for="realFrom">Valós kezdet</label>
+                <input class="form-control" id="realFrom" name="realFrom" type="text" ng-model="bookmark.from"
+                       ng-pattern="/^[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?$/" style="width: 20ch;">
+
+                <div class="alert alert-danger" ng-show="form.realFrom.$error.pattern">A kezdetet óó:pp:mm formátumban
+                    kell megadni
+                </div>
+
+
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+                <label for="realTo">Valós vég</label>
+                <input class="form-control" id="realTo" name="realTo" type="text" ng-model="bookmark.to"
+                       ng-pattern="/^[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?$/"
+                       style="width: 20ch;">
+
+                <div class="alert alert-danger" ng-show="form.realTo.$error.pattern">A véget óó:pp:mm formátumban kell
+                    megadni
+                </div>
+            </div>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label for="title">Leírás</label>
+                <input class="form-control" id="title" name="title" type="text" class="" ng-model="bookmark.title"
+                       width="" required="true">
+
+            </div>
+
+        </fieldset>
+        <div class="alert alert-danger" ng-hide="form.$valid">Mentéshez előbb javítsd ki a jelzett hibákat.</div>
+        <input value="Mentés" class="btn" type="submit" ng-show="form.$valid" ng-click="save()"/>
+    </form>
+
+</section>
+
+<aside class="col-md-3">
+    <div class="box">
+
+        <h2>Megosztás</h2>
+
+        <div class="fb-like" onrender="fbLikeRendered()"
+             data-href="{{absUrl}}"
+             data-layout="button_count"
+             data-action="like"
+             data-show-faces="true"
+             data-share="true"></div>
+    </div>
+
+    <div ng-include src="'show/sidebar_show.html'"></div>
+</aside>

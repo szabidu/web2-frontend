@@ -6,14 +6,17 @@ module.exports = {
     resolve: {
         root: [
             './app'
-        ]
+        ],
+        modulesDirectories: ["node_modules", "client"]
     },
     devtool: 'sourcemap',
-    entry: ['bootstrap-loader','./app/scripts/app.js'],
+    entry: ['bootstrap-loader', './app/scripts/app.js'],
     module: {
         loaders: [
             {test: /\.js$/, exclude: [/app\/bower_components/, /node_modules/], loader: 'ng-annotate'},
             {test: /\.js$/, include: [/app\/bower_components/, /node_modules/], loader: 'ng-annotate'},
+            {test: /\.html$/, include: [/client/], loader: 'ngtemplate?relativeTo=/client/!raw'},
+
 //      {test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate!babel'},
 //            {test: /\.html$/, loader: 'raw'},
             {test: /\.png$/, loader: 'url'},
@@ -47,6 +50,6 @@ module.exports = {
         })
     ],
     sassLoader: {
-        includePaths: [path.resolve(__dirname, "./app/bower_components"),path.resolve(__dirname, "./app")]
+        includePaths: [path.resolve(__dirname, "./app/bower_components"), path.resolve(__dirname, "./app")]
     }
 };
