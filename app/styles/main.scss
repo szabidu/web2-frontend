@@ -12,8 +12,13 @@ $icon-font-path: "fonts/";
 
 body {
     padding-top: 48px;
+
     @media all and (min-width: $screen-sm) {
-        padding-top: 250px; //need for a fix navbar
+        padding-top: 375px; //need for a fix navbar
+    }
+
+    @media all and (min-width: $screen-md) {
+        padding-top: 250px;
     }
 }
 
@@ -208,6 +213,12 @@ img {
 .brand-holder h5 {
     float: left;
     margin-right: 10px;
+
+    .scrolled & {
+        display: inline-block;
+        float: none;
+        margin-right: 0;
+    }
 }
 
 .navbar-collapse {
@@ -398,10 +409,10 @@ img {
     color: white;
     padding: 22px 0;
     h1 {
-        // font-size: 36px;
         font-weight: 300;
         margin: 10px 0;
     }
+
     h2 {
         font-size: 20px;
         font-weight: 300;
@@ -473,12 +484,7 @@ img {
         .radio-formatList {
             padding-right: 0px;
             .scrolled & {
-                width: 40%;
-            }
-        }
-        .radio-info {
-            .scrolled & {
-                width: 60%;
+                padding-left: 0;
             }
         }
     }
@@ -487,31 +493,28 @@ img {
 .brand-holder {
     padding-top: 10px;
     @include clearfix();
-    .scrolled & {
-        padding-top: 0;
-        width: 37%;
+
+    h1 {
+        font-size: 28px;
     }
+
     a {
         color: white;
         &:hover {
             color: white;
             text-decoration: none;
         }
-        .scrolled & {
-            h1 {
-                font-size: 27px;
-                float: left;
-                margin: 5px 10px 0 0;
+    }
+}
 
-            }
-            h2 {
-                float: left;
-                margin-top: 12px;
-                span {
-                    display: none;
-                }
-            }
-        }
+.scrolled .brand-holder {
+    padding-top: 0;
+
+    h1 {
+        font-size: 20px;
+        display: inline-block;
+        margin-right: 15px;
+
     }
 }
 
@@ -520,12 +523,6 @@ img {
     margin-right: 20px;
     .scrolled & {
         width: 100px;
-    }
-}
-
-.radio-holder {
-    .scrolled & {
-        width: 63%;
     }
 }
 
@@ -1061,9 +1058,19 @@ a.icon-star, a.icon-star2 {
 
 #datapicker {
     .btn-default {
-        background-color: #cacaca;
-        color: #000;
-        border-color: #D0D0D0;
+        background-color: #fff;
+        color: #333;
+        border-color: #ccc;
+        width: auto!important;
+        min-width: 100%;
+    }
+
+    table {
+        margin: 2px 6px;
+    }
+
+    td {
+        padding: 1px;
     }
 }
 
@@ -1071,7 +1078,7 @@ a.icon-star, a.icon-star2 {
     border: none;
     font-family: "Open Sans", sans-serif;
     font-size: 18px;
-    padding: 10px;
+    padding: 9px 10px;
     width: 115px;
     margin-left: -6px;
 }
@@ -1156,6 +1163,7 @@ input.datepicker {
 
 .news-lead {
     margin-bottom: 1em;
+    overflow: hidden;
     @include clearfix();
     h3 {
         border-bottom: 1px solid $primary-color;
