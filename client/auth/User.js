@@ -1,11 +1,12 @@
 'use strict';
 
 var angularModule = require("auth/Auth");
+require("auth/me.html");
 
 angularModule.config(function ($stateProvider) {
   $stateProvider.state('me', {
       url: '/me',
-      templateUrl: 'partials/me.html',
+      templateUrl: 'auth/me.html',
       controller: 'MeCtrl'
     }
   );

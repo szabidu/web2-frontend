@@ -1,11 +1,12 @@
 'use strict';
 
 var angularModule = require("auth/Auth");
+require("auth/register.html");
 
 angularModule.config(function ($stateProvider) {
     $stateProvider.state('register', {
             url: '/register',
-            templateUrl: 'partials/register.html',
+            templateUrl: 'auth/register.html',
             controller: 'RegisterCtrl'
         }
     );
@@ -13,7 +14,7 @@ angularModule.config(function ($stateProvider) {
 });
 
 angularModule.controller('RegisterCtrl',
-    ['$scope', '$http', 'API_SERVER_ENDPOINT', 'vcRecaptchaService', '$rootScope', 'localStorageService', '$location', 'satellizer.shared',
+    ['$scope', '$http', 'API_SERVER_ENDPOINT', 'vcRecaptchaService', '$rootScope', 'localStorageService', '$location', '$auth',
         function ($scope, $http, API_SERVER_ENDPOINT, vcRecaptchaService, $rootScope, localStorageService, $location, satellizer) {
             if ($scope.user) {
                 $location.path('/me');
@@ -24,7 +25,7 @@ angularModule.controller('RegisterCtrl',
                 $scope.form.captchaChallenge = vcRecaptchaService.data().challenge;
                 $scope.form.captchaResponse = vcRecaptchaService.data().response;
                 $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/register', $scope.form).success(function (data) {
-                    satellizer.setToken({access_token: data});
+                    satellizer.setToken(data.access_token);
                     localStorageService.set('jwt', data);
                     $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
                         $rootScope.user = data;

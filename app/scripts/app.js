@@ -1,6 +1,8 @@
 'use strict';
 var angular = require("angular");
 var uiRouter = require("angular-ui-router");
+var satellizer = require("satellizer")
+
 require("script!../bower_components/angular-resource/angular-resource.js");
 require("script!../bower_components/angular-sanitize/angular-sanitize.js");
 require("script!../bower_components/textAngular/textAngular.js");
@@ -11,7 +13,6 @@ require("script!../bower_components/angular-recaptcha/release/angular-recaptcha.
 require("script!../bower_components/angularitics/src/angulartics.js");
 require("script!../bower_components/angularitics/src/angulartics-ga.js");
 require("script!../bower_components/angular-easyfb/angular-easyfb.min.js");
-require("script!../bower_components/satellizer/satellizer.js");
 require("script!../bower_components/angular-growl-v2/build/angular-growl.js");
 
 //require("ngtemplate?relativeTo=/app/!raw!../../app/partials/audiotest.html");
@@ -42,7 +43,7 @@ var tilos = angular.module('tilosApp',
         'LocalStorageModule',
         'vcRecaptcha',
         'ezfb',
-        'satellizer',
+        satellizer,
         'angular-growl',
         'angulartics',
         'angulartics.google.analytics',

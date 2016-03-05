@@ -2,18 +2,19 @@
 
 var angularModule = require("auth/Auth");
 
-
+require("auth/login.html");
+require("auth/reminder.html");
 
 angularModule.config(function ($stateProvider) {
     $stateProvider.state('login', {
             url: '/login',
-            templateUrl: 'partials/login.html',
+            templateUrl: 'auth/login.html',
             controller: 'LoginCtrl'
         }
     );
     $stateProvider.state('password_reminder', {
             url: '/password_reminder',
-            templateUrl: 'partials/reminder.html',
+            templateUrl: 'auth/reminder.html',
             controller: 'PasswordReminderCtrl'
         }
     );
@@ -69,7 +70,7 @@ angularModule.controller('LoginCtrl',
             };
             $scope.login = function () {
                 $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/login', $scope.logindata).success(function (data) {
-                    $auth.setToken(data);
+                    $auth.setToken(data.access_token);
                     localStorageService.set('jwt', data);
 
                     $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
