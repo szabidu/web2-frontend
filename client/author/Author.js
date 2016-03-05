@@ -1,7 +1,7 @@
 'use strict';
 
 var angular = require("angular")
-//require("ngtemplate?relativeTo=/client/!raw!author/author.html");
+require("author/author.html");
 
 var angularModule = angular.module('author', []);
 
