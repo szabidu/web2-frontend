@@ -1,7 +1,10 @@
 'use strict';
 
 var angular = require("angular")
-var angularModule = angular.module("comment",[]);
+var angularModule = angular.module("comment", []);
+require("comment/comment.html");
+require("comment/commentable.html");
+require("comment/comment-reply.html");
 
 angularModule.directive('commentable', [function () {
 
