@@ -1,0 +1,10 @@
+<div class="box actual-shows-box">
+    <h2>{{$ctrl.now| date: "yyyy.MM.dd."}} <a class="btn btn-default btn-sm pull-right weeklyschedule" href="/api/v1/scheduling"
+                                        target="_blank">heti műsor</a></h2>
+    <table class="table actual-shows" >
+        <tr ng-repeat="episode in $ctrl.episodes" class="{{($ctrl.current.show.id == episode.show.id) && 'actual'|| ''}}" >
+            <td><a href="/show/{{episode.show.alias}}">{{episode.show.name}}<a></td>
+            <td>{{episode.plannedFrom | date: 'HH:mm'}}</td>
+        </tr>
+    </table>
+</div>

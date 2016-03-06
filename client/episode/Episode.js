@@ -4,26 +4,7 @@ var angular = require("angular");
 var angularModule = angular.module("episode", []);
 require("episode/episode.html");
 
-angularModule.controller('EpisodesCtrl', function ($scope, $stateParams, API_SERVER_ENDPOINT, $http) {
-        $scope.now = new Date();
 
-        var nowDate = new Date();
-        var start = Math.round((nowDate.getTime() - 60 * 60 * 3 * 1000) / 60000) * 60000;
-        var now = nowDate.getTime();
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/episode?start=' + start + '&end=' + (start + 8 * 60 * 60 * 1000), {cache: true}).success(function (data) {
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].plannedFrom <= now && data[i].plannedTo > now) {
-                    $scope.current = data[i];
-                }
-            }
-            $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $scope.current.show.id, {cache: true}).success(function (sd) {
-                $scope.current.show = sd;
-                $scope.episodes = data;
-            });
-        });
-
-    }
-);
 
 
 angularModule.config(function ($stateProvider) {
@@ -94,4 +75,5 @@ angularModule.controller('EpisodeCtrl', function ($scope, data, show, $sce, Meta
 );
 
 module.exports = angularModule;
-require("episode/Program")
+require("episode/Program");
+require("episode/Current");

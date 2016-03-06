@@ -1,0 +1,6 @@
+<span>
+   <a href="#/show/{{$ctrl.current.show.alias}}" ng-bind="$ctrl.current.show.name"></a>
+   <span class="radio-fromTo" ng-show="$ctrl.current.show">
+      <span ng-bind="$ctrl.current.plannedFrom| date: 'HH:mm'"></span>-<span ng-bind="$ctrl.current.plannedTo| date: 'HH:mm'"></span>
+   </span>
+</span>

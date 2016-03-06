@@ -142,14 +142,11 @@
                   	</h5>
 
                 </div>
-                <div class="col-sm-offset-1 col-md-offset-0 col-sm-6 col-md-6 radio-holder" ng-controller="EpisodesCtrl">
+                <div class="col-sm-offset-1 col-md-offset-0 col-sm-6 col-md-6 radio-holder">
                     <div class="radio-player">
                         <div class="col-sm-12 col-md-6 radio-info">
                             <h3>
-                                <a href="#/show/{{current.show.alias}}" ng-bind="current.show.name"></a>
-								<span class="radio-fromTo" ng-show="current.show">
-                                    <span ng-bind="current.plannedFrom| date: 'HH:mm'"></span>-<span ng-bind="current.plannedTo| date: 'HH:mm'"></span>
-								</span>
+                                <current-show></current-show>
                             </h3>
                         </div>
                         <div class="col-sm-12 col-md-6 radio-formatList">

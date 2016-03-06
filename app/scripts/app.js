@@ -74,6 +74,7 @@ tilos.config(function ($locationProvider, $httpProvider) {
                 if (rejection.status != 404 && rejection.data.message) {
                     growl.error(rejection.data.message);
                 }
+                if (rejection.status == 50)
                 return $q.reject(rejection);
             }
         };

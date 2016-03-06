@@ -3,16 +3,7 @@
         <p>{{user.username}} <button class="pull-right btn btn-warning" ng-click="logout()">Kilépés</button></p>
 
     </div> <!-- box -->
-    <div class="box actual-shows-box" ng-controller="EpisodesCtrl">
-		<h2>{{now| date: "yyyy.MM.dd."}} <a class="btn btn-default btn-sm pull-right weeklyschedule" href="/api/v1/scheduling"
-target="_blank">heti műsor</a></h2>
-		<table class="table actual-shows" >
-			<tr ng-repeat="episode in episodes" class="{{(current.show.id == episode.show.id) && 'actual'|| ''}}" >
-				<td><a href="/show/{{episode.show.alias}}">{{episode.show.name}}<a></td>
-				<td>{{episode.plannedFrom | date: 'HH:mm'}}</td>
-			</tr>
-		</table>
-	</div>
+    <current-list></current-list>
 	<div class="box box-simple">
 		<h3>Adástelefon</h3>
 		<div class="centered">

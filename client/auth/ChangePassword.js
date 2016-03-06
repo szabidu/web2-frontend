@@ -1,11 +1,12 @@
 'use strict';
 
 var angularModule = require("auth/Auth");
+require("auth/reset.html");
 
 angularModule.config(function ($stateProvider) {
     $stateProvider.state('password_reset', {
         url: '/password_reset',
-        templateUrl: 'partials/reset.html',
+        templateUrl: 'auth/reset.html',
         controller: 'ChangePasswordCtrl'
     });
 });
