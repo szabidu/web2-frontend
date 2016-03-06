@@ -33,6 +33,7 @@
     "raw-loader": "^0.5.1",
     "resolve-url-loader": "^1.4.3",
     "run-sequence": "^1.1.5",
+    "rx": "^4.0.8",
     "satellizer": "^0.14.0",
     "webpack": "^1.9.5",
     "webpack-dev-middleware": "^1.4.0",
