@@ -1,4 +1,4 @@
-var angularModule = require("episode/Episode.js");
+ var angularModule = require("episode/Episode.js");
 require("episode/currentShow.html");
 require("episode/currentList.html");
 
@@ -8,7 +8,7 @@ angularModule.factory("currentEpisodes", function ($http, API_SERVER_ENDPOINT) {
 
     var episodes = Rx.Observable.timer(
         0,
-        10000)
+        5 * 60 * 1000)
         .flatMap(function (x, i) {
             var nowDate = new Date();
             var start = Math.round((nowDate.getTime() - 60 * 60 * 3 * 1000) / 60000) * 60000;
