@@ -4,7 +4,7 @@ var angular = require("angular")
 require("tag/tags.html");
 require("tag/tag.html");
 
-var angularModule = angular.module("ttt", []);
+var angularModule = angular.module("tag", []);
 
 
 angularModule.config(function ($stateProvider) {

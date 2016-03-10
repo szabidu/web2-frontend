@@ -1,14 +1,16 @@
 'use strict';
 
-var angular = require("angular")
+var angular = require("angular");
+var angularModule = angular.module("ttt", []);
+
 require("ttt/ttt.html");
 require("ttt/ttt-business.html");
 require("ttt/ttt-sub.html");
 require("ttt/ttt.scss");
 
-var angularModule = angular.module("ttt", []);
 
 angularModule.config(function ($stateProvider, $urlRouterProvider) {
+
     var businessUrlSlug = 'elfogad';
 
     $urlRouterProvider.when('/ttt', '/ttt/' + businessUrlSlug);
@@ -35,13 +37,13 @@ angularModule.controller('TTTCtrl', function ($scope, API_SERVER_ENDPOINT, $stat
 
     if (id === 'elfogad') {
         $http.get(API_SERVER_ENDPOINT + '/api/v1/ttt/business').success(function (data) {
-		  $scope.businesses = data;
-  	    });
-  } else {
+            $scope.businesses = data;
+        });
+    } else {
         $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/ttt-' + id).success(function (data) {
             $scope.page = data;
         });
-  }
+    }
 
 });
 

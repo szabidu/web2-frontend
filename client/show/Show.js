@@ -12,6 +12,7 @@ require("show/sidebar_show.html");
 require("show/show.scss");
 
 angularModule.config(function ($stateProvider) {
+
     $stateProvider.state('show', {
         abstract: true,
         url: '/show/:id',

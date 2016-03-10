@@ -162,7 +162,7 @@ tilos.run(function () {
     };
 });
 
-tilos.run(['$rootScope', 'Meta', 'localStorageService', '$http', 'API_SERVER_ENDPOINT', '$auth', function ($rootScope, Meta, localStorageService, $http, API_SERVER_ENDPOINT, satellizer) {
+tilos.run(['$rootScope', 'Meta', '$http', 'API_SERVER_ENDPOINT', '$auth', function ($rootScope, Meta, $http, API_SERVER_ENDPOINT, satellizer) {
     $rootScope.$on('$locationChangeStart', function () {
         Meta.setTitle('');
         Meta.setDescription('');
