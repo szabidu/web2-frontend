@@ -68,9 +68,12 @@ tilos.config(['growlProvider', function (growlProvider) {
 tilos.config(function ($locationProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
 
-    $httpProvider.interceptors.push(function ($q, growl) {
+    $httpProvider.interceptors.push(function ($q, growl, $injector) {
         return {
             'responseError': function (rejection) {
+                if (rejection.status == 500 && rejection.data.exception == "hu.tilos.radio.backend.jwt.JwtAuthenticationException") {
+                    $injector.get("$auth").logout();
+                }
                 if (rejection.status != 404 && rejection.data.message) {
                     growl.error(rejection.data.message);
                 }
