@@ -1,8 +1,9 @@
 'use strict';
 
-var angular = require("angular")
+var angular = require("angular");
 
 var angularModule = angular.module("search", []);
+require("search/search.html");
 
 angularModule.config(function ($stateProvider) {
     $stateProvider.state('search', {
@@ -24,4 +25,4 @@ angularModule.controller('SearchBox', function ($scope, $location) {
     };
 });
 
-module.exports = angularModule
+module.exports = angularModule;
