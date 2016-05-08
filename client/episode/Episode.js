@@ -77,3 +77,4 @@ angularModule.controller('EpisodeCtrl', function ($scope, data, show, $sce, Meta
 module.exports = angularModule;
 require("episode/Program");
 require("episode/Current");
+require("episode/Podcast");

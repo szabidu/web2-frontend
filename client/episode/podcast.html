@@ -1,0 +1,106 @@
+<section class="col-md-12 main" role="main" id="podcast">
+    <section class="col-md-12 main" role="main" id="podcast">
+        <h2>Podcast Url generátor</h2>
+        <form class="form-horizontal">
+            <fieldset>
+
+                <!-- Form Name -->
+
+
+                <!-- Multiple Radios -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="what">Mit akarsz hallgatni</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label for="radios-0">
+                                <input type="radio" ng-model="what" name="what" id="all" value="all" checked="checked">Mindenféle
+                                műsort</label>
+                        </div>
+                        <div class="radio">
+                            <label for="radios-1">
+                                <input type="radio" ng-model="what" name="what" id="show" value="show">
+                                Egy bizonyos műsort
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Select Basic -->
+                <div class="form-group" ng-show="what == 'show'">
+                    <label class="col-md-4 control-label" for="selectbasic">Válaszd ki a műsort</label>
+                    <div class="col-md-4">
+                        <select id="Show" name="Show" type="text" class="input-xlarge" ng-model="show"
+                                ng-options="s.alias as s.name for s in shows"></select>
+                    </div>
+                </div>
+
+                <!-- Multiple Radios -->
+                <div class="form-group" ng-hide="what == 'show'">
+                    <label class="col-md-4 control-label" for="radios">Szöveges vagy zenés műsorokat keresel?</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label for="radios-0">
+                                <input type="radio" ng-model="type" name="type" value="talk" checked="checked"> Szöveges</label>
+                        </div>
+                        <div class="radio">
+                            <label for="radios-1">
+                                <input type="radio" ng-model="type" name="type" value="music">
+                                Zenés
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="radios-2">
+                                <input type="radio" ng-model="type" name="type" value="all">
+                                Mind
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multiple Radios -->
+                <div class="form-group" ng-hide="what == 'show'">
+                    <label class="col-md-4 control-label" for="radios">Milyen adások érdekelnek</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label for="radios-0">
+                                <input type="radio" ng-model="annotated" name="annotated" value="yes" checked="checked">
+                                Csak az, amihez van adásnapló és korrekt tartalom leírás
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="radios-1">
+                                <input type="radio" ng-model="annotated" name="annotated" value="no">
+                                Minden
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multiple Radios -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="radios">Formátum</label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label for="radios-0">
+                                <input type="radio" ng-model="format" name="format" value="mp3" checked="checked">
+                                Mp3 (1 óra kb. 100mb)
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="radios-1">
+                                <input type="radio" ng-model="format" name="format" value="mp4">
+                                Mp4 (Nagyon kísérleti, de negyed akkorák a fileokt)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+        <h2>Podcast URL</h2>
+        <h1 ng-show="what == 'all' || show"><a ng-href="{{url}}" target="_self">{{url}}</a></h1>
+
+        <img ng-show="what == 'all' || show" ng-src="{{qrUrl}}"/>
+
+    </section>
+</section>
