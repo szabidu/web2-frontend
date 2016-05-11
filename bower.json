@@ -15,13 +15,14 @@
     "angular-ui-router": "~0.2.11",
     "angular-local-storage": "~0.2.7",
     "angular-recaptcha": "~3.0.3",
-    "angularitics": "~1.0.3",
-    "angular-easyfb": "~1.4.4",
+    "angularitics": "0.17.1",
+    "angular-easyfb": "1.2.1",
     "angular-growl-v2": "~0.7.5",
     "bootstrap-sass": "~3.3.5"
   },
   "devDependencies": {},
   "resolutions": {
-    "angular": "1.2.4"
+    "angular": "1.5.5",
+    "angular-sanitize": "~1.2.0"
   }
 }

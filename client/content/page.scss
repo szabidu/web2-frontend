@@ -1,5 +1,5 @@
 #page img{
-    @extend .img-responsive;
+    @extend .img-responsive !optional;
     @extend .img-thumbnail;
 }
 
