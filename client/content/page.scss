@@ -1,8 +1,8 @@
 #page img{
     @extend .img-responsive !optional;
-    @extend .img-thumbnail;
+    @extend .img-thumbnail !optional;
 }
 
 #page iframe {
-    @extend .center-block;
+    @extend .center-block !optional;
 }
