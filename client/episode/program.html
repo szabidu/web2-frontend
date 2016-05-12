@@ -11,7 +11,7 @@
                     <button class="btn ChooseDate" ng-click="open()">
                         <i class="icon-calendar"></i>
                     </button>
-                    <input type="text" class="datepicker" datepicker-popup="yyyy.MM.dd" show-weeks="false"
+                    <input type="text" class="datepicker" uib-datepicker-popup="yyyy.MM.dd" show-weeks="false"
                            ng-model="selectedDate" is-open="opened" min="minDate" max="maxDate"
                            datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
                            ng-required="true" ng-change="goto();" ng-click="open($event)">

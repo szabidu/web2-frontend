@@ -15,8 +15,8 @@ angularModule.config(function ($stateProvider) {
     controller: 'ProgramCtrl'
   });
 });
-angularModule.controller('ProgramCtrl', function ($scope, $state, $stateParams, API_SERVER_ENDPOINT, $http, datepickerPopupConfig, $timeout) {
-    datepickerPopupConfig.showButtonBar = false;
+angularModule.controller('ProgramCtrl', function ($scope, $state, $stateParams, API_SERVER_ENDPOINT, $http, $timeout) {
+//    datepickerPopupConfig.showButtonBar = false;
 
     $scope.gotoDay = function(date) {
       var monthStr = ('0' + (date.getMonth() + 1)).slice(-2);
