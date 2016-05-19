@@ -1,7 +1,7 @@
 'use strict';
-
+var captcha = require("angular-recaptcha");
 var angular = require("angular");
-var angularModule = angular.module("show",[]);
+var angularModule = angular.module("show",['vcRecaptcha']);
 require("show/show.html");
 require("show/show-main.html");
 require("show/show-intro.html");

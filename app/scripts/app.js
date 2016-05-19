@@ -9,7 +9,6 @@ require("script!../bower_components/textAngular/textAngular.js");
 require("script!../bower_components/angular-ui-bootstrap-bower/ui-bootstrap.js");
 require("script!../bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js");
 require("script!../bower_components/angular-local-storage/dist/angular-local-storage.js");
-require("script!../bower_components/angular-recaptcha/release/angular-recaptcha.min.js");
 require("script!../bower_components/angularitics/src/angulartics.js");
 require("script!../bower_components/angularitics/src/angulartics-ga.js");
 require("script!../bower_components/angular-easyfb/angular-easyfb.min.js");
@@ -41,7 +40,6 @@ var tilos = angular.module('tilosApp',
         'ngResource',
         uiRouter,
         'LocalStorageModule',
-        'vcRecaptcha',
         'ezfb',
         satellizer,
         'angular-growl',

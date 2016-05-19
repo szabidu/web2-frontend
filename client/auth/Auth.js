@@ -1,6 +1,7 @@
 var angular = require("angular");
 
-var angularModule = angular.module("auth",[]);
+var captcha = require("angular-recaptcha");
+var angularModule = angular.module("auth",['vcRecaptcha']);
 
 module.exports = angularModule;
 

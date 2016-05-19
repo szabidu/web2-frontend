@@ -10,16 +10,11 @@
     <div class="form-group">
         <label for="body">Az üzenet</label>
         <textarea id="body" ng-model="message.body" class="form-control">
-
-    </textarea>
+        </textarea>
     </div>
 
     <div class="form-group">
-
-        <div
-            vc-recaptcha
-            key="'6LeJRv0SAAAAABAZlebOuAD9nanyaajQ391jtRKq'"
-            ></div>
+        <div vc-recaptcha key="'6LeJRv0SAAAAABAZlebOuAD9nanyaajQ391jtRKq'"></div>
     </div>
     <button type="submit" class="btn btn-default" ng-click="save()">Küldés</button>
 </form>
