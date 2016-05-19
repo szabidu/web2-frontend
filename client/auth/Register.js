@@ -15,15 +15,14 @@ angularModule.config(function ($stateProvider) {
 
 angularModule.controller('RegisterCtrl',
     ['$scope', '$http', 'API_SERVER_ENDPOINT', 'vcRecaptchaService', '$rootScope', 'localStorageService', '$location', '$auth',
-        function ($scope, $http, API_SERVER_ENDPOINT, vcRecaptchaService, $rootScope, localStorageService, $location, satellizer) {
+        function ($scope, $http, API_SERVER_ENDPOINT, $rootScope, localStorageService, $location, satellizer) {
             if ($scope.user) {
                 $location.path('/me');
             }
             $scope.form = {};
             $scope.register = function () {
                 $scope.errormessage = '';
-                $scope.form.captchaChallenge = vcRecaptchaService.data().challenge;
-                $scope.form.captchaResponse = vcRecaptchaService.data().response;
+                $scope.form.captcha = $scope.captcha;
                 $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/register', $scope.form).success(function (data) {
                     satellizer.setToken(data.access_token);
                     localStorageService.set('jwt', data);

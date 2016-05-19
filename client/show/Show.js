@@ -83,8 +83,7 @@ angularModule.controller('ShowIntroCtrl', function () {
 angularModule.controller('ShowContactCtrl', function ($state, vcRecaptchaService, growl, $scope, $stateParams, API_SERVER_ENDPOINT, $http) {
     $scope.message = {};
     $scope.save = function () {
-        $scope.message.captchaChallenge = vcRecaptchaService.data().challenge;
-        $scope.message.captchaResponse = vcRecaptchaService.data().response;
+        $scope.message.captcha = $scope.captcha;
         $http.post(API_SERVER_ENDPOINT + '/api/v1/show/' + $stateParams.id + '/contact', $scope.message).success(function (data) {
             growl.info("Message has been successfully sent");
             $state.go('show.intro', {id: $stateParams.id});
