@@ -5,7 +5,6 @@ var satellizer = require("satellizer")
 
 require("script!../bower_components/angular-resource/angular-resource.js");
 require("script!../bower_components/angular-sanitize/angular-sanitize.js");
-require("script!../bower_components/textAngular/textAngular.js");
 require("script!../bower_components/angular-ui-bootstrap-bower/ui-bootstrap.js");
 require("script!../bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js");
 require("script!../bower_components/angular-local-storage/dist/angular-local-storage.js");
@@ -36,7 +35,6 @@ var tilos = angular.module('tilosApp',
         'ngSanitize',
         'configuration',
         'ui.bootstrap',
-        'textAngular',
         'ngResource',
         uiRouter,
         'LocalStorageModule',
