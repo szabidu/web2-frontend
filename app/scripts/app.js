@@ -3,11 +3,9 @@ var angular = require("angular");
 var uiRouter = require("angular-ui-router");
 var satellizer = require("satellizer")
 
-require("script!../bower_components/angular-resource/angular-resource.js");
 require("script!../bower_components/angular-sanitize/angular-sanitize.js");
 require("script!../bower_components/angular-ui-bootstrap-bower/ui-bootstrap.js");
 require("script!../bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js");
-require("script!../bower_components/angular-local-storage/dist/angular-local-storage.js");
 require("script!../bower_components/angularitics/src/angulartics.js");
 require("script!../bower_components/angularitics/src/angulartics-ga.js");
 require("script!../bower_components/angular-easyfb/angular-easyfb.min.js");
@@ -35,9 +33,7 @@ var tilos = angular.module('tilosApp',
         'ngSanitize',
         'configuration',
         'ui.bootstrap',
-        'ngResource',
         uiRouter,
-        'LocalStorageModule',
         'ezfb',
         satellizer,
         'angular-growl',

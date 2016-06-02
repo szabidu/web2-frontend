@@ -21,7 +21,7 @@ angularModule.config(function ($stateProvider) {
 
 });
 
-angularModule.run(['$rootScope', 'localStorageService', '$location', '$auth', function ($rootScope, localStorageService, $location, satellizer) {
+angularModule.run(['$rootScope', '$location', '$auth', function ($rootScope, $location, satellizer) {
     $rootScope.logout = function () {
         $rootScope.user = null;
         satellizer.logout();

@@ -2,6 +2,7 @@
   "name": "radio-ui",
   "version": "1.0.0",
   "dependencies": {
+    "angular-local-storage": "^0.2.7",
     "angular-recaptcha": "^3.0.3",
     "angular-ui-router": "^0.2.18",
     "bootstrap-loader": "^1.0.9",
