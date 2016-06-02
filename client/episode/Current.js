@@ -1,3 +1,5 @@
+'use strict';
+
 var angularModule = require("episode/Episode.js");
 require("episode/currentShow.html");
 require("episode/currentList.html");

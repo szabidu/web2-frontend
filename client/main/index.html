@@ -13,20 +13,6 @@
         </div>
     </div>
 
-    <a href="https://www.facebook.com/events/212031182515447/"><img src="/images/maraton2016.jpg" class="img"></a>
-
-    <div class="stream-banner" ng-show="extraStreams.indexOf('samsara')>-1">
-        <a href="http://stream.tilos.hu/samsara.m3u"><!--img src="../images/samsara_banner.png"/></a-->
-    </div>
-
-    <div class="stream-banner" ng-show="extraStreams.indexOf('selection_live_fogaskert')>-1">
-        <a href="http://stream.tilos.hu/selection_live_fogaskert.m3u"><!--img src="../images/selection_banner.png"/--></a>
-    </div>
-    
-<!---    <div>
-    <iframe src="https://www.powr.io/plugins/countdown-timer/view?unique_label=1b586bb3_1462480649&external_type=iframe" width="100%" height="600" frameborder="0"></iframe>
-    </div> --->
-    
     <div ng-show="lead.formatted" class="panel panel-default">
         <div ng-show="lead.formatted" class="panel panel-default">
             <div class="panel-heading">
@@ -37,6 +23,55 @@
         </div>
 
     </div>
+    
+    <ion-view ng-controller="DayCtrl">
+        <h2>Maraton aktuális: <b>{{day.name}}</b>, {{day.date}}</h2>
+
+        <p>Maraton programfüzet (Android, iOS, PC): <a href="http://maraton.tilos.hu">http://maraton.tilos.hu</a></p>
+        <ion-content class="padding">
+
+            <a browse-to="{{item.fb}}" class="item item-icon-left" ng-show="item.fb">
+                <i class="icon ion-social-facebook"></i>
+                <h2>A nap facebook event-je</h2>
+            </a>
+
+            <div class="list card" ng-repeat="item in day.events | orderBy:timeComparator">
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="icon" ng-class="selectIcon(item.type)" ng-show="item.type"></i> <span class="label label-default">{{item.time}}</span> {{item.name}}
+                        <span class="label label-info pull-right">{{item.loc}}</span>
+                    </div>
+                    <div class="panel-body" ng-show="item.desc || item.image">
+                        {{item.imageDate}}
+                        <img ng-src="{{item.imageData}}" ng-show="item.imageData" width="100%"/>
+                        <span ng-show="item.desc" style="white-space: pre-wrap">{{item.desc}}</span>
+                    </div>
+                    <div class="panel-footer" ng-show="item.fb">
+                        <a ng-href="{{item.fb}}">{{item.fb}}</a>
+                    </div>
+                    <div class="panel-footer" ng-show="item.url">
+                        <a ng-href="{{item.url}}">{{item.url}}</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </ion-content>
+    </ion-view>
+
+    <div class="stream-banner" ng-show="extraStreams.indexOf('samsara')">
+        <a href="http://stream.tilos.hu/samsara.m3u"><!--img src="../images/samsara_banner.png"/></a-->
+    </div>
+
+    <div class="stream-banner" ng-show="extraStreams.indexOf('selection_live_fogaskert')>-1">
+        <a href="http://stream.tilos.hu/selection_live_fogaskert.m3u"><!--img src="../images/selection_banner.png"/--></a>
+    </div>
+
+
+
+
     <div ng-show="next.length" class="program-guides">
         <h2 class="blue">Műsorajánló</h2>
 

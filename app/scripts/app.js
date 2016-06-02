@@ -30,7 +30,7 @@ var ttt = require("ttt/TTT");
 var tag = require("tag/Tag");
 var comment = require("comment/Comment");
 var auth = require("auth/Auth");
-
+var maraton = require("maraton/Maraton");
 var tilos = angular.module('tilosApp',
     [
         'ngSanitize',
@@ -55,6 +55,7 @@ var tilos = angular.module('tilosApp',
         ttt.name,
         tag.name,
         comment.name,
+        maraton.name,
         auth.name]);
 
 tilos.config(['growlProvider', function (growlProvider) {

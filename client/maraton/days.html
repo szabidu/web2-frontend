@@ -1,0 +1,12 @@
+<ion-view view-title="Programok">
+  <ion-content class="padding" ng-show="loading">
+    Az program adatok szinkronizálása folyamatban van. Kérjük várakozz türelemmel (és kapcsold be az internetet, ha még nem tetted). Ha az internetet később indítottad el, kérlek indítsd újra az alkalmazást.
+  </ion-content>
+  <ion-content class="padding">
+    <a ng-href="#/app/day/{{item.value._id}}" ng-repeat="item in items | orderBy:'value._id'" class="item">
+      <h2>{{item.value.name}}</h2>
+      <p>{{item.value.date}}</p>
+    </a>
+  </ion-content>
+
+</ion-view>

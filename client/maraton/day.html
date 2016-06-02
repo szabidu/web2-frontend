@@ -1,0 +1,42 @@
+<ion-view>
+  <ion-nav-title>{{day.name}}</ion-nav-title>
+  <ion-content class="padding">
+
+    <a browse-to="{{item.fb}}" class="item item-icon-left" ng-show="item.fb">
+      <i class="icon ion-social-facebook"></i>
+      <h2>A nap facebook event-je</h2>
+    </a>
+
+    <div class="list card" ng-repeat="item in day.events | orderBy:timeComparator">
+
+
+      <div class="item item-icon-left" ng-show="item.type">
+        <i class="icon" ng-class="selectIcon(item.type)"></i>
+        <h2>{{item.name}}</h2>
+        <p><span class="custom-label">{{item.time}}</span> {{item.loc}}</p>
+
+      </div>
+      <div class="item" ng-hide="item.type">
+        <h2>{{item.name}}</h2>
+        <p><span class="custom-label">{{item.time}}</span> {{item.loc}}</p>
+
+      </div>
+      <div class="item item-body" ng-show="item.image || item.desc">
+        <img ng-src="{{item.imageData}}" ng-show="item.imageData" width="100%"/>
+        <p style="white-space: pre-wrap;" ng-show="item.desc">{{item.desc}}</p>
+      </div>
+      <div browse-to="{{item.fb}}" ng-show="item.fb" class="item item-icon-left">
+        <i class="icon ion-social-facebook"></i>
+        {{item.fb}}
+      </div>
+      <div browse-to="{{item.url}}" ng-show="item.url" class="item item-icon-left">
+        <i class="icon ion-link"></i>
+        {{item.url}}
+      </div>
+      <div browse-to="{{item.sound}}" ng-show="item.sound" class="item item-icon-left">
+        <i class="icon ion-music-note"></i>
+        {{item.sound}}
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
