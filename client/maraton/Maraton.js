@@ -62,7 +62,6 @@ angularModule.controller('DayCtrl', function ($scope, pouchService) {
                 pouchService.getAttachment(id, event.image).then(function (data) {
 
                     $scope.$apply(function () {
-                        console.log(data);
                         event.imageData = URL.createObjectURL(data);
                     });
                     //event.imageData = 'http://localhost:5984/maraton16/day1/bazsinka.jpg';
