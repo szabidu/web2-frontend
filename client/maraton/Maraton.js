@@ -21,7 +21,7 @@ angularModule.factory('pouchService', function ($rootScope) {
 })
     .run(function (pouchService) {
 
-
+        
     });
 
 
@@ -74,13 +74,6 @@ angularModule.controller('DayCtrl', function ($scope, pouchService) {
 
         });
     })
-})
-    .controller('PageCtrl', function ($scope, pouchService, $stateParams) {
-        pouchService.get($stateParams.id, {attachment: true}).then(function (result) {
-            $scope.$apply(function () {
-                $scope.page = result;
-            });
-        })
-    });
+});
 
 module.exports = angularModule;
