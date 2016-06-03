@@ -4,15 +4,6 @@
 
 <section class="col-md-pull-3 col-md-6 main" role="main">
 
-    <div class="stream-banner" ng-show="extraStreams.indexOf('24per24')>-1">
-       <div class="panel panel-default">
-         <div class="panel-heading">24 éves a Tilos</div>
-         <div class="panel-body">
-          Az élő születésnapi stream <b>hallgatható <a href="http://stream.tilos.hu/24per24">itt: 24/24</a></b>. Részletek <a href="https://www.facebook.com/events/720447364758015/">amott</a>.
-          </div>
-        </div>
-    </div>
-
     <div ng-show="lead.formatted" class="panel panel-default">
         <div ng-show="lead.formatted" class="panel panel-default">
             <div class="panel-heading">
@@ -23,6 +14,9 @@
         </div>
 
     </div>
+    
+    <iframe width="560" height="316" src="https://www.youtube.com/embed/gDTgffrZ9Ww" frameborder="0" allowfullscreen></iframe>
+    
     <ion-view ng-controller="DayCtrl">
         <h2>Maraton aktuális: <b>{{day.name}}</b>, {{day.date}}</h2>
 
@@ -121,13 +115,6 @@
 
 <aside class="col-md-pull-3 col-md-3">
     <div class="box">
-    <h2>Tilos Filmre gyűjtünk</h2>
-    <div class="text-center">
-    <iframe src="https://www.indiegogo.com/project/tilos-radio-film--2/embedded" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
-    </div>
-
-    </div>
-    <div class="box">
         <h2><a href="http://hirek.tilos.hu" target="_blank">Tilos hírek</a></h2>
         <article class="news-lead" ng-repeat="text in news">
             <h3><a ng-href="/news/{{text.id}}" target="_blank">{{text.title}}</a></h3>
@@ -142,4 +129,12 @@
         </article>
         <a href="http://hirek.tilos.hu" target="_blank">további Tilos hírek &rarr;</a>
     </div>
+    <div class="box">
+    <h2>Tilos Filmre gyűjtünk</h2>
+    <div class="text-center">
+    <iframe src="https://www.indiegogo.com/project/tilos-radio-film--2/embedded" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
+    </div>
+
+    </div>
+
 </aside>
