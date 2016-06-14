@@ -14,9 +14,7 @@
         </div>
 
     </div>
-    
-    <!-- <iframe width="560" height="316" src="https://www.youtube.com/embed/gDTgffrZ9Ww" frameborder="0" allowfullscreen></iframe>
-    
+
     <ion-view ng-controller="DayCtrl">
         <h2>Maraton aktuális: <b>{{day.name}}</b>, {{day.date}}</h2>
 
@@ -32,7 +30,8 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="icon" ng-class="selectIcon(item.type)" ng-show="item.type"></i> <span class="label label-default">{{item.time}}</span> {{item.name}}
+                        <i class="icon" ng-class="selectIcon(item.type)" ng-show="item.type"></i> <span
+                        class="label label-default">{{item.time}}</span> {{item.name}}
                         <span class="label label-info pull-right">{{item.loc}}</span>
                     </div>
                     <div class="panel-body" ng-show="item.desc || item.image">
@@ -58,10 +57,9 @@
     </div>
 
     <div class="stream-banner" ng-show="extraStreams.indexOf('selection_live_fogaskert')>-1">
-        <a href="http://stream.tilos.hu/selection_live_fogaskert.m3u"><!--img src="../images/selection_banner.png"/--></a>
+        <a href="http://stream.tilos.hu/selection_live_fogaskert.m3u">
+            <!--img src="../images/selection_banner.png"/--></a>
     </div>
-
-
 
 
     <div ng-show="next.length" class="program-guides">
@@ -118,23 +116,8 @@
         <h2><a href="" target="_blank">Tilos hírek</a></h2>
         <article class="news-lead" ng-repeat="text in news">
             <h3><a ng-href="/news/{{text.id}}" target="_blank">{{text.title}}</a></h3>
-
-            <span ng-bind-html="text.formatted"></span></p>
+            <span ng-bind-html="text.leadFormatted"></span></p>
+            <span ng-show="text.longText" class="btn btn-small btn-info pull-right" ng-href="/news/{{text.id}}" target="_blank">Tovább</span>
         </article>
-        <!-- <article class="news-lead" ng-repeat="feed in feeds">
-            <h3><a ng-href="{{feed.link}}" target="_blank">{{feed.title}}</a></h3>
-
-            <p><img ng-src="{{feed.mediaGroups[0].contents[0].url}}" alt="{{feed.title}}" ng-show="{{feed.mediaGroups[0].contents[0].url}}"></a><span
-                ng-bind-html="feed.content"></span></p>
-        </article>
-        <a href="http://hirek.tilos.hu" target="_blank">további Tilos hírek &rarr;</a> -->
     </div>
-    <div class="box">
-    <h2>Tilos Filmre gyűjtünk</h2>
-    <div class="text-center">
-    <iframe src="https://www.indiegogo.com/project/tilos-radio-film--2/embedded" width="222px" height="445px" frameborder="0" scrolling="no"></iframe>
-    </div>
-
-    </div>
-
 </aside>
