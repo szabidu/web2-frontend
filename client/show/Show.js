@@ -141,3 +141,4 @@ angularModule
 );
 module.exports = angularModule;
 require("show/AllShow");
+require("show/ShowLabel");

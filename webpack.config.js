@@ -11,7 +11,7 @@ module.exports = {
         modulesDirectories: ["node_modules", "client"]
     },
     devtool: 'sourcemap',
-    entry: ['bootstrap-loader', './app/scripts/app.js'],
+    entry: ['bootstrap-loader', './client/app.js'],
     module: {
         loaders: [
             {test: /\.js$/, exclude: [/app\/bower_components/, /node_modules/], loader: 'ng-annotate'},

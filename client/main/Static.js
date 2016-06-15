@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('tilosApp').config(function ($stateProvider) {
+var angularModule = require("main/Main")
+angularModule.config(function ($stateProvider) {
 
     $stateProvider.state('listen', {
         url: '/hallgass',

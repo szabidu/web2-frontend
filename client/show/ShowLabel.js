@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tilosApp').directive('showLabel', function ($compile) {
+require("show/Show").directive('showLabel', function ($compile) {
     return {
         restrict: 'EA',
         scope: {

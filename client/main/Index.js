@@ -18,10 +18,8 @@ angularModule .config(function ($stateProvider) {
 
 });
 
-angularModule.controller('MainCtrl', function ($scope, FeedService, $http, API_SERVER_ENDPOINT, $sce, $timeout) {
-    FeedService.parseFeed('http://hirek.tilos.hu/?feed=rss2').then(function (res) {
-        $scope.feeds = res.data.responseData.feed.entries;
-    });
+angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOINT, $sce, $timeout) {
+
     $http.get(API_SERVER_ENDPOINT + '/api/v1/text/news/current').success(function (data) {
         $scope.news = data;
     });

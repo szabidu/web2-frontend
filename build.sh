@@ -3,7 +3,6 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 mkdir -p $DIR/build
 npm install
-./node_modules/bower/bin/bower update
 node_modules/gulp/bin/gulp.js webpack assets chat
 sed -i "s/GA_TOKEN/$GA_TOKEN/g" dist/www/index.html
 cd $DIR/dist

@@ -6,6 +6,10 @@ require("mix/mixes.html");
 
 var angularModule = angular.module("mix",[]);
 
+angularModule.factory('enumMixType', function () {
+    return ['Zenés', 'Beszélgetős'];
+});
+
 angularModule.config(function ($stateProvider) {
     $stateProvider.state('mixlist', {
         url: '/mixes/:category',

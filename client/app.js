@@ -2,20 +2,6 @@
 var angular = require("angular");
 var uiRouter = require("angular-ui-router");
 var satellizer = require("satellizer")
-
-require("script!../bower_components/angular-sanitize/angular-sanitize.js");
-require("script!../bower_components/angular-ui-bootstrap-bower/ui-bootstrap.js");
-require("script!../bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js");
-require("script!../bower_components/angularitics/src/angulartics.js");
-require("script!../bower_components/angularitics/src/angulartics-ga.js");
-require("script!../bower_components/angular-easyfb/angular-easyfb.min.js");
-require("script!../bower_components/angular-growl-v2/build/angular-growl.js");
-
-//require("ngtemplate?relativeTo=/app/!raw!../../app/partials/audiotest.html");
-//require("ngtemplate?relativeTo=/app/!raw!../../app/partials/experimental.html");
-require("ngtemplate?relativeTo=/app/!raw!../../app/partials/listenButton.html");
-
-
 var author = require("author/Author");
 var mix = require("mix/Mix");
 var main = require("main/Main");
@@ -27,17 +13,21 @@ var ttt = require("ttt/TTT");
 var tag = require("tag/Tag");
 var comment = require("comment/Comment");
 var auth = require("auth/Auth");
+
+require('script!angular-growl-v2');
+require('angular-easyfb')
+
 var tilos = angular.module('tilosApp',
     [
-        'ngSanitize',
+        require("angular-sanitize"),
         'configuration',
-        'ui.bootstrap',
+        require("angular-ui-bootstrap"),
         uiRouter,
         'ezfb',
         satellizer,
+        require('angulartics'),
         'angular-growl',
-        'angulartics',
-        'angulartics.google.analytics',
+        require('angulartics-google-analytics'),
         main.name,
         author.name,
         mix.name,
@@ -48,7 +38,8 @@ var tilos = angular.module('tilosApp',
         ttt.name,
         tag.name,
         comment.name,
-        auth.name]);
+        auth.name,
+        ]);
 
 tilos.config(['growlProvider', function (growlProvider) {
     growlProvider.globalTimeToLive(3000);
@@ -230,19 +221,9 @@ tilos.factory('validateUrl', function ($sce) {
 });
 
 
-require("script!./filters/RssDate.js");
-require("script!./dateutil.js");
-require("script!./enum.js");
-require("script!./services/DateFormatUtils.js");
-require("script!./services/FeedService.js");
-require("script!./config.js");
-require("script!./directives/scroll.js");
-require("script!./directives/activeLink.js");
-require("script!./directives/listenButton.js");
-require("script!./directives/compiledText.js");
-require("script!./directives/show-label.js");
-require("script!./controllers/Static.js");
-require("script!./controllers/Render.js");
-//require("script!./controllers/Experimental.js");
-//require("script!./controllers/AudioTest.js");
-//require("script!./controllers/Player.js");
+
+// require("script!./services/DateFormatUtils.js");
+// require("script!./config.js");
+// require("script!./directives/activeLink.js");
+// require("script!./directives/show-label.js");
+//

@@ -18,9 +18,55 @@ angularModule.controller('HeaderCtrl', function ($scope, $location) {
 });
 
 
+angularModule.directive('activeLink', ['$location', function (location) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var clazz = attrs.activeLink;
+            //TODO it shoud be more error prone
+            var path = element.children()[0].href;
+            path = path.substring(1 + path.indexOf('#'));
+            if (path.charAt(0) !== '/') {
+                path = '/' + path;
+            }
+            scope.location = location;
+            scope.$watch('location.path()', function (newPath) {
+                if (path === newPath) {
+                    element.addClass(clazz);
+                } else {
+                    element.removeClass(clazz);
+                }
+            });
+
+        }
+    };
+}]);
+
+angularModule.directive('scroll', function ($window) {
+        return function (scope) {
+            angular.element($window).bind('scroll', function () {
+                if (this.pageYOffset >= 100) {
+                    scope.boolChangeClass = true;
+                    if(this.pageYOffset >= 1000){
+                        scope.showLink = true;
+                    }else{
+                        scope.showLink = false;
+                    }
+                    // console.log('Scrolled below header.');
+                } else {
+                    scope.boolChangeClass = false;
+                    scope.showLink = false;
+                    // console.log('Header is in view.');
+                }
+                scope.$apply();
+            });
+        };
+    });
+
 
 module.exports = angularModule;
 
 
 require("main/404");
 require("main/Index")
+require("main/Static")
