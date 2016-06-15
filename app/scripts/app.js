@@ -48,7 +48,6 @@ var tilos = angular.module('tilosApp',
         ttt.name,
         tag.name,
         comment.name,
-        maraton.name,
         auth.name]);
 
 tilos.config(['growlProvider', function (growlProvider) {
