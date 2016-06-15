@@ -8,6 +8,14 @@ config.output = {
   path: path.resolve(__dirname, 'dist/www')
 };
 
+config.devServer = {}
+config.devServer.proxy = {
+  '/api/*': {
+    target: 'https://tilos.hu',
+    secure: false
+  }
+}
+
 config.plugins = config.plugins.concat([
 
   // Adds webpack HMR support. It act's like livereload,
