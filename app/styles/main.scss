@@ -10,17 +10,6 @@ $icon-font-path: "fonts/";
 
 // Marton Ronyai, we remember.
 
-body {
-    padding-top: 48px;
-
-    @media all and (min-width: $screen-sm) {
-        padding-top: 375px; //need for a fix navbar
-    }
-
-    @media all and (min-width: $screen-md) {
-        padding-top: 250px;
-    }
-}
 
 h1 {
     a {
