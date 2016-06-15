@@ -3,7 +3,7 @@ styleLoaders: ['style', 'css', 'sass']
 appStyles: app/styles/main.scss
 preBootstrapCustomizations: app/styles/_color.scss
 bootstrapCustomizations: app/styles/bootstrap-settings.scss
-#extractStyles: true
+extractStyles: true
 ### Bootstrap styles
 styles:
 

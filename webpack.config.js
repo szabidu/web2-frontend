@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     resolve: {
@@ -21,8 +22,8 @@ module.exports = {
 //            {test: /\.html$/, loader: 'raw'},
             {test: /\.png$/, loader: 'url'},
             {test: /\.styl$/, loader: 'style!css!stylus'},
-            {test: /\.css$/, loader: 'style!css'},
-            {test: /\.scss$/, loader: 'style!css!sass'},
+            {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader","css-loader")},
+            {test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader","css-loader!sass-loader")},
             {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&minetype=application/font-woff"},
             {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&minetype=application/font-woff"},
             {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&minetype=application/octet-stream"},
@@ -30,7 +31,8 @@ module.exports = {
             {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&minetype=image/svg+xml"}
         ]
     },
-    plugins: [
+    plugins:[ 
+        new ExtractTextPlugin("[name].css"),
         // Injects bundles in your index.html instead of wiring all manually.
         // It also adds hash to all injected assets so we don't have problems
         // with cache purging during deployment.
