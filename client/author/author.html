@@ -2,7 +2,7 @@
     <h1>{{author.name}}</h1>
 
 
-    <span ng-bind-html="author.introduction"></span>
+    <span class="textual" ng-bind-html="author.introduction"></span>
 
 </section>
 
@@ -30,7 +30,7 @@
         <h2>Linkek</h2>
         <ul>
             <li ng-repeat="url in author.urls">
-                <a href="{{url.address}}">{{url.address}}</a>
+                <a href="{{url.address}}">{{<url class="addre"></url>ss}}</a>
             </li>
         </ul>
     </div>

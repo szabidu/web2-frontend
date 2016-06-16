@@ -1,22 +1,20 @@
 'use strict';
 
-require("show/Show").directive('showLabel', function ($compile) {
-    return {
-        restrict: 'EA',
-        scope: {
-            show: '='
-        },
-        template: '<a class="{{labelstyle}} label label-default label-show" ng-href="/show/{{show.alias}}">' +
-        '{{show.name}}&nbsp;<i class="{{icon}}"></i>' +
-        '</a>',
-        controller: function ($scope) {
-            if ($scope.show.type == 'SPEECH') {
-                $scope.icon = "icon-bubbles"
-            } else {
-                $scope.icon = "icon-music"
-            }
-            $scope.labelstyle = 'label-' + $scope.show.type.toLowerCase();
+require("show/Show").component('showLabel', {
+    bindings: {
+        show: '='
+    },
+    template: '<a class="{{$ctrl.labelstyle}} label label-default label-show" ng-href="/show/{{$ctrl.show.alias}}">' +
+    '{{$ctrl.show.name}}&nbsp;<i ng-show="ctrl.icon" class="{{$ctrl.icon}}"></i>' +
+    '</a>',
+    controller: function () {
+        var ctrl = this;
+        if (ctrl.show.type == 'SPEECH') {
+            ctrl.icon = "icon-bubbles"
+        } else {
+            ctrl.icon = "icon-music"
         }
-    }
+        ctrl.labelstyle = 'label-' + ctrl.show.type.toLowerCase();
 
+    }
 });

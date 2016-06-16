@@ -14,27 +14,28 @@
 </section>
 
 <aside class="col-md-3">
-    <div class="box link-box" ng-show="show.urls.length > 0">
-        <h2>Linkek</h2>
+    <div class="panel panel-default" ng-show="show.urls.length > 0">
+        <div class="panel-heading">Linkek</div>
+        <div class="panel-body">
 
-        <div class="fb-like" onrender="fbLikeRendered()"
-             data-href="https://tilos.hu/show/{{show.alias}}"
-             data-layout="button_count"
-             data-action="like"
-             data-show-faces="true"
-             data-share="true"></div>
+            <div class="fb-like" onrender="fbLikeRendered()"
+                 data-href="https://tilos.hu/show/{{show.alias}}"
+                 data-layout="button_count"
+                 data-action="like"
+                 data-show-faces="true"
+                 data-share="true"></div>
 
-        <div class="row show-links">
-            <ul>
-                <li ng-repeat="url in show.urls">
-                    </span><a ng-class="url.type" class="btn btn-danger" ng-href="{{url.address}}">
+            <div class="show-links">
+
+                <p ng-repeat="url in show.urls">
+                    <a ng-class="url.type" class="btn btn-danger" ng-href="{{url.address}}">
                     <span ng-class="url.icon"></span>
                     {{url.label}}</a>
-                </li>
-            </ul>
+                </p>
+
+            </div>
         </div>
     </div>
-
     <div ng-include src="'show/sidebar_show.html'"></div>
 </aside>
 

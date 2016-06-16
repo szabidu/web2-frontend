@@ -1,6 +1,5 @@
 'use strict';
 
-
 var angular = require("angular");
 
 var angularModule = angular.module('main', []);
@@ -46,5 +45,7 @@ module.exports = angularModule;
 
 
 require("main/404");
-require("main/Index")
-require("main/Static")
+require("main/Index");
+require("main/Static");
+require("main/Listen");
+
