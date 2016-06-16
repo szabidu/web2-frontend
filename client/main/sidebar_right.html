@@ -1,115 +1,130 @@
-    <div ng-show="user" class="box box-simple">
-        <h3>Aktuális felhasználó:</h3>
-        <p>{{user.username}} <button class="pull-right btn btn-warning" ng-click="logout()">Kilépés</button></p>
+<div ng-show="user" class="box box-simple">
+    <h3>Aktuális felhasználó:</h3>
+    <p>{{user.username}}
+        <button class="pull-right btn btn-warning" ng-click="logout()">Kilépés</button>
+    </p>
 
-    </div> <!-- box -->
-    <current-list></current-list>
-	<div class="box box-simple">
-		<h3>Adástelefon</h3>
-		<div class="centered">
-			<a href="tel:+3612153773" class="tel">(+36 1) 215 37 73</a>
-		</div>
-		<a href="http://tilos.hu/chat/" target="_blank" class="btn btn-danger btn-block btn-lg" role="button">
-			<span class="icon-chat2"></span>Belépés a chatre
-		</a>
-	</div> <!-- box -->
+</div> <!-- box -->
+<current-list></current-list>
+<div class="panel panel-default">
+    <div class="panel-heading">Kapcsolat</div>
+    <div class="panel-body">
+        <h3>Adástelefon</h3>
+        <div class="centered">
+            <a href="tel:+3612153773" class="tel">(+36 1) 215 37 73</a>
+        </div>
+        <a href="http://tilos.hu/chat/" target="_blank" class="btn btn-danger btn-block btn-lg" role="button">
+            <span class="icon-chat2"></span>Tilos chat
+        </a>
+    </div>
+</div>
 
-	<div class="box box-simple" id="ttt">
-<a href="http://tilos.hu/ttt"><img class="" alt="Tilos Támogatói Tagkártya" src="https://tilos.hu/upload/content/info/icon-ttt.png"></img></a>
-	</div>
 
-	<div class="box box-simple">
-        <h3>Támogass <span class="sub-title">(paypal)</span></h3>
-        <div class="row">
-            <div class="col-xs-8">
-                <label>Egyszeri támogatás</label>
-            </div>
-            <div class="col-xs-4">
-            	<form  action="https://www.paypal.com/cgi-bin/webscr">
-            	<input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="VK5YWMWAGKEE4">
-                <button type="submit" class="btn btn-default" role="button">mehet</button>
-                </form>
-            </div>
-        </div> </br><!-- /row -->
-        <form action="https://www.paypal.com/cgi-bin/webscr"  class="form-inline row">
+<div class="panel panel-default">
+    <div class="panel-heading">Támogass</div>
+    <div class="panel-body">
+
+        <label>Egyszeri támogatás</label>
+
+
+        <form action="https://www.paypal.com/cgi-bin/webscr">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="VK5YWMWAGKEE4">
+            <button type="submit" class="btn btn-default col-xs-12" role="button">mehet</button>
+        </form>
+
+        <br/> <br/>
+        <label for="amount">Rendszeres támogatás</label>
+
+        <form action="https://www.paypal.com/cgi-bin/webscr">
             <input type="hidden" name="cmd" value="_s-xclick">
             <input type="hidden" name="hosted_button_id" value="FUBZCJARZML46">
             <input type="hidden" name="currency_code" value="HUF">
             <input type="hidden" name="on0" value="">
-            <div class="col-xs-8">
-                <label for="amount">Rendszeres támogatás</label>
-                <select class="form-control" id="amount" name="os0">
-                    <option value="1">1 000Ft</option>
-                    <option value="2">2 000Ft</option>
-                    <option value="3">3 000Ft</option>
-                    <option value="4">5 000Ft</option>
-                    <option value="5">10 000Ft</option>
-                </select>
-            </div>
-            <div class="col-xs-4">
-                <button type="submit" class="btn btn-default">mehet</button>
-            </div>
+
+
+            <select class="form-control col-xs-12" id="amount" name="os0">
+                <option value="1">1 000Ft</option>
+                <option value="2">2 000Ft</option>
+                <option value="3">3 000Ft</option>
+                <option value="4">5 000Ft</option>
+                <option value="5">10 000Ft</option>
+            </select>
+
+
+            <button type="submit" class="btn btn-default col-xs-12  ">mehet</button>
+
         </form>
-    </div> <!-- box -->
-
-		<div class="box box-simple" id="plaza">
-		<h2><a href="http://plaza.tilos.hu" target="_blank" alt="tilos plaza">
-		<img src="https://tilos.hu/upload/content/info/icon-plaza.png"></a>
-		</h2>
-	</div> <!-- box -->
-
-	<div class="box box-simple" id="mobil">
-		<h3>Mobil Alkalmazások</h3>
-
-  <h2><div class="text-center" style="margin-bottom: 12px;">
-    <a href="https://play.google.com/store/apps/details?id=pontezit.android.tilos.com">
-      <img alt="Get it on Google Play"
-           src="https://tilos.hu/upload/content/info/Google_play.png" />
-    </a></div>
-    <div>
-  	<a class="text-center" href="http://www.windowsphone.com/s?appid=3bb343ce-7fc2-4f97-af2b-ca5ae5e714a9">
-      <img	src="https://tilos.hu/upload/content/info/windows-phone-store.png" alt="Download from Windows Store" />
-    </a></h2>
-  </div>
-
-	</div>
-    <div class="box box-simple" id="tags" ng-controller="TagCloudCtrl">
-
-        <h3>Népszerű címkék</h3>
-        <p>
-            <h2><a ng-repeat="tag in tags" ng-href="/tag/{{tag.name}}">
-                <span class="tag-badge">{{tag.name}} ({{tag.count}})</span>
-            </a>
-        </p>
-        <p><a href="/tags">További címkék...</a></p>
-        </h2>
+    </div>
+    <div class="panel-body">
+        <a href="http://tilos.hu/ttt"><img class="" alt="Tilos Támogatói Tagkártya"
+                                           src="https://tilos.hu/upload/content/info/icon-ttt.png"></img></a>
+    </div>
+    <div class="panel-body">
+        <a href="http://plaza.tilos.hu" target="_blank" alt="tilos plaza">
+            <img src="https://tilos.hu/upload/content/info/icon-plaza.png"></a>
     </div>
 
+</div> <!-- box -->
 
-	<div class="box-simple social-box hidden-xs">
-		<div class="row collapse-row">
-			<div class="col-xs-3">
-				<a href="https://www.facebook.com/tilosradio" target="_blank" alt="facebook" class="facebook">
-					<span class="icon-facebook"></span>
-				</a>
-			</div>
-			<div class="col-xs-3">
-				<a href="https://twitter.com/tilosradio" target="_blank" alt="twitter" class="twitter">
-					<span class="icon-twitter"></span>
-				</a>
-			</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Mobil alkalmazások</div>
+    <div class="panel-body">
 
-			<div class="col-xs-3">
-				<a href="https://plus.google.com/116097167846496587800/about" target="_blank" alt="google-plus" class="google-plus">
-					<span class="icon-google-plus"></span>
-				</a>
-			</div>
-			<div class="col-xs-3">
-				<a href="mailto:radio@tilos.hu" alt="email-social" class="email-social">
-					<span class="icon-envelope"></span>
-				</a>
-			</div>
+        <div class="text-center" style="margin-bottom: 12px;">
+            <a href="https://play.google.com/store/apps/details?id=pontezit.android.tilos.com">
+                <img alt="Get it on Google Play"
+                     src="https://tilos.hu/upload/content/info/Google_play.png"/>
+            </a></div>
+        <div>
+            <a class="text-center" href="http://www.windowsphone.com/s?appid=3bb343ce-7fc2-4f97-af2b-ca5ae5e714a9">
+                <img src="https://tilos.hu/upload/content/info/windows-phone-store.png"
+                     alt="Download from Windows Store"/>
+            </a>
 
-		</div> <!--  collapse-row -->
-	</div> <!-- social-box -->
+        </div>
+    </div>
+
+</div>
+
+<div class="panel panel-default" ng-controller="TagCloudCtrl">
+    <div class="panel-heading">Népszerű címkék</div>
+    <div class="panel-body">
+
+        <h2><a ng-repeat="tag in tags" ng-href="/tag/{{tag.name}}">
+            <span class="tag-badge">{{tag.name}} ({{tag.count}})</span>
+        </a></h2>
+
+        <p><a href="/tags">További címkék...</a></p>
+
+    </div>
+
+</div>
+
+<div class="box-simple social-box hidden-xs">
+    <div class="row collapse-row">
+        <div class="col-xs-3">
+            <a href="https://www.facebook.com/tilosradio" target="_blank" alt="facebook" class="facebook">
+                <span class="icon-facebook"></span>
+            </a>
+        </div>
+        <div class="col-xs-3">
+            <a href="https://twitter.com/tilosradio" target="_blank" alt="twitter" class="twitter">
+                <span class="icon-twitter"></span>
+            </a>
+        </div>
+
+        <div class="col-xs-3">
+            <a href="https://plus.google.com/116097167846496587800/about" target="_blank" alt="google-plus"
+               class="google-plus">
+                <span class="icon-google-plus"></span>
+            </a>
+        </div>
+        <div class="col-xs-3">
+            <a href="mailto:radio@tilos.hu" alt="email-social" class="email-social">
+                <span class="icon-envelope"></span>
+            </a>
+        </div>
+
+    </div> <!--  collapse-row -->
+</div> <!-- social-box -->

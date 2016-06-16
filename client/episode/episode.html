@@ -9,20 +9,15 @@
 
     <h1 class="ubuntu">{{episode.text.title}}<span ng-show="!episode.original">*</span></h1>
 
-    <span ng-bind-html="episode.text.formatted"></span>
+    <span class="textual" ng-bind-html="episode.text.formatted"></span>
 
     <div style="line-height: 40px">
-    <span  ng-repeat="tag in episode.tags">
+    <span ng-repeat="tag in episode.tags">
         <a ng-href="/tag/{{tag.name}}" class="btn btn-info">#{{tag.name}}</a>&nbsp;
     </span>
     </div>
 
 
-    <div id="comments" class="tab-pane"
-         commentable="{{episode.id}}"
-         commentable-type="EPISODE"
-         logged-in="isLoggedIn()"></div>
-    <br/>
 
     <section ng-show="episode.bookmarks.length > 0">
         <h3> Könyvjelzők* </h3>

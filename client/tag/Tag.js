@@ -4,28 +4,33 @@ var angular = require("angular")
 require("tag/tags.html");
 require("tag/tag.html");
 
-var angularModule = angular.module("tag", []);
+var angularModule = angular.module("tag", [
+    require("angular-ui-router")
+]);
 
 
 angularModule.config(function ($stateProvider) {
     $stateProvider.state('tag', {
         url: '/tag/:id',
         templateUrl: 'tag/tag.html',
-        controller: 'TagCtrl',
-        resolve: {
-            data: function ($route, Tags, $stateParams) {
-                return Tags.get({id: $stateParams.id});
-            }
-        }
-    }).state('tags', {
+        controller: 'TagCtrl'
+        /*resolve: {
+         data: function ($route, Tags, $stateParams) {
+         return Tags.get({id: $stateParams.id});
+         }
+         }*/
+    });
+    $stateProvider.state('tags1', {
         url: '/tags',
         templateUrl: 'tag/tags.html',
         controller: 'TagListCtrl'
     });
 });
 
-angularModule.controller('TagCtrl', function ($scope, Tags, data, $stateParams) {
-    $scope.list = data;
+angularModule.controller('TagCtrl', function ($scope, $stateParams, $http) {
+    $http.get('/api/v1/tag/' + $stateParams.id, {cache: true}).success(function (data) {
+        $scope.list = data;
+    });
     $scope.tag = $stateParams.id;
 });
 
