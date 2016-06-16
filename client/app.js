@@ -39,7 +39,7 @@ var tilos = angular.module('tilosApp',
         tag.name,
         comment.name,
         auth.name,
-        ]);
+    ]);
 
 tilos.config(['growlProvider', function (growlProvider) {
     growlProvider.globalTimeToLive(3000);
@@ -60,7 +60,7 @@ tilos.config(function ($locationProvider, $httpProvider) {
                     growl.error(rejection.data.message);
                 }
                 if (rejection.status == 50)
-                return $q.reject(rejection);
+                    return $q.reject(rejection);
             }
         };
     })
@@ -147,6 +147,11 @@ tilos.run(function () {
     };
 });
 
+tilos.run(function ($rootScope) {
+    $rootScope.$on('$stateChangeSuccess', function () {
+        window.scrollTo(0, 0);
+    });
+});
 tilos.run(['$rootScope', 'Meta', '$http', 'API_SERVER_ENDPOINT', '$auth', function ($rootScope, Meta, $http, API_SERVER_ENDPOINT, satellizer) {
     $rootScope.$on('$locationChangeStart', function () {
         Meta.setTitle('');
@@ -219,7 +224,6 @@ tilos.factory('validateUrl', function ($sce) {
         }
     };
 });
-
 
 
 // require("script!./services/DateFormatUtils.js");
