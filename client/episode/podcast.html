@@ -1,12 +1,12 @@
 <section class="col-md-12 main" role="main" id="podcast">
     <section class="col-md-12 main textual" role="main" id="podcast">
         <h2>Podcast</h2>
-        <p>A podcast letölthető rádióadásokat jelent. A podcast alkalmazások segítségével a múlt beli rádióadásokat automatikusan vagy gomnyomásra egyszerűen letölthetjük az eszközeinkre</p>
-        <p>Ehhez két dolog kell: egy podcast alkalmazás és egy url, ahonnan jönnek az adások</p>
-        <p>Alkalmazásnak iphonera az <a href="https://itunes.apple.com/us/app/overcast-podcast-player/id888422857?mt=8">Overcast</a>, android az <a href="https://play.google.com/store/apps/details?id=de.danoeh.antennapod">Antennapod</a> megteszi.</p>
+        <p>A podcast letölthető rádióadásokat jelent. A podcast-alkalmazások segítségével a múltbeli rádióadásokat automatikusan vagy gombnyomásra egyszerűen letölthetjük az eszközeinkre.</p>
+        <p>Ehhez két dolog kell: egy podcast alkalmazás és egy URL, ahonnan jönnek az adások.</p>
+        <p>Alkalmazásnak iPhone-ra az <a href="https://itunes.apple.com/us/app/overcast-podcast-player/id888422857?mt=8">Overcast</a>, Androidon az <a href="https://play.google.com/store/apps/details?id=de.danoeh.antennapod">Antennapod</a> megteszi.</p>
         <p>Ezek a programok induláskor kérnek egy URL-t, ezeket itt lent lehet generálni aszerint, hogy mit szeretnél hallgatni.</p>
 
-        <h2>Podcast Url generátor</h2>
+        <h2>Podcast URL generátor:</h2>
         <form class="form-horizontal">
             <fieldset>
 
@@ -15,17 +15,17 @@
 
                 <!-- Multiple Radios -->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="what">Mit akarsz hallgatni</label>
+                    <label class="col-md-4 control-label" for="what">Mit akarsz hallgatni?</label>
                     <div class="col-md-4">
                         <div class="radio">
                             <label for="radios-0">
                                 <input type="radio" ng-model="what" name="what" id="all" value="all" checked="checked">Mindenféle
-                                műsort</label>
+                                műsort?</label>
                         </div>
                         <div class="radio">
                             <label for="radios-1">
                                 <input type="radio" ng-model="what" name="what" id="show" value="show">
-                                Egy bizonyos műsort
+                                Egy bizonyos műsort?
                             </label>
                         </div>
                     </div>
@@ -65,12 +65,12 @@
 
                 <!-- Multiple Radios -->
                 <div class="form-group" ng-hide="what == 'show'">
-                    <label class="col-md-4 control-label" for="radios">Milyen adások érdekelnek</label>
+                    <label class="col-md-4 control-label" for="radios">Milyen adások érdekelnek?</label>
                     <div class="col-md-4">
                         <div class="radio">
                             <label for="radios-0">
                                 <input type="radio" ng-model="annotated" name="annotated" value="yes" checked="checked">
-                                Csak az, amihez van adásnapló és korrekt tartalom leírás
+                                Csak az, amihez van adásnapló és korrekt tartalomleírás?
                             </label>
                         </div>
                         <div class="radio">
@@ -89,13 +89,13 @@
                         <div class="radio">
                             <label for="radios-0">
                                 <input type="radio" ng-model="format" name="format" value="mp3" checked="checked">
-                                Mp3 (1 óra kb. 100mb)
+                                MP3 (1 óra kb. 100mb)
                             </label>
                         </div>
                         <div class="radio">
                             <label for="radios-1">
                                 <input type="radio" ng-model="format" name="format" value="mp4">
-                                Mp4 (Nagyon kísérleti, de negyed akkorák a fileokt)
+                                MP4 (Nagyon kísérleti, de negyedakkorák a fájlok)
                             </label>
                         </div>
                     </div>
