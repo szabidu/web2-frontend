@@ -4,6 +4,7 @@ require("main/404.html")
 var angularModule = require("main/Main")
 
 
+
 angularModule .config(function ($stateProvider) {
     $stateProvider.state('index', {
         url: '/',
@@ -31,9 +32,6 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
     });
     $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/lastWeek').success(function (data) {
         $scope.lastWeek = data;
-    });
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/lead').success(function (data) {
-        $scope.lead = data;
     });
 
 });
