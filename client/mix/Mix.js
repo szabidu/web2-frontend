@@ -26,7 +26,7 @@ angularModule.config(function ($stateProvider) {
 angularModule.controller('MixListCtrl', function ($http, $stateParams, API_SERVER_ENDPOINT, $scope, enumMixType) {
         $scope.tab = $stateParams.category;
         var category = $stateParams.category.toUpperCase();
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/mix?category=' + category).then(function (data) {
+        $http.get(API_SERVER_ENDPOINT + '/api/v1/mix?category=' + category).success(function (data) {
             $scope.mixes = data;
         });
         $scope.mixType = enumMixType;
@@ -36,7 +36,7 @@ angularModule.controller('MixListCtrl', function ($http, $stateParams, API_SERVE
 
 angularModule.controller('MixCtrl', function ($http, $stateParams, API_SERVER_ENDPOINT, $scope, enumMixType) {
         $scope.tab = $stateParams.category;
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/mix/' + $stateParams.id).then(function (data) {
+        $http.get(API_SERVER_ENDPOINT + '/api/v1/mix/' + $stateParams.id).success(function (data) {
             $scope.mix = data;
         });
         $scope.mixType = enumMixType;

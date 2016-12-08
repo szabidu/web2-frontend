@@ -36,11 +36,11 @@ angularModule.controller('TTTCtrl', function ($scope, API_SERVER_ENDPOINT, $stat
     var id = $stateParams.id;
 
     if (id === 'elfogad') {
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/ttt/business').then(function (data) {
+        $http.get(API_SERVER_ENDPOINT + '/api/v1/ttt/business').success(function (data) {
             $scope.businesses = data;
         });
     } else {
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/ttt-' + id).then(function (data) {
+        $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/ttt-' + id).success(function (data) {
             $scope.page = data;
         });
     }

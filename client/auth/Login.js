@@ -36,7 +36,7 @@ angularModule.run(['$rootScope', '$location', '$auth', function ($rootScope, $lo
 angularModule.controller('PasswordReminderCtrl', function ($scope, $http, API_SERVER_ENDPOINT) {
     $scope.reminderdata = {};
     $scope.reminder = function () {
-        $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/password_reset', $scope.reminderdata).then(function (data) {
+        $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/password_reset', $scope.reminderdata).success(function (data) {
             if (!data.error) {
                 $scope.message = data.message;
             } else {
@@ -62,23 +62,23 @@ angularModule.controller('LoginCtrl',
             $scope.loginerror = '';
             $scope.authenticate = function (provider) {
                 $auth.authenticate(provider).then(function(){
-                    $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').then(function (data) {
+                    $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
                         $rootScope.user = data;
                         $location.path('/');
                     });
                     });
             };
             $scope.login = function () {
-                $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/login', $scope.logindata).then(function (data) {
+                $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/login', $scope.logindata).success(function (data) {
                     $auth.setToken(data.access_token);
                     localStorageService.set('jwt', data);
 
-                    $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').then(function (data) {
+                    $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
                         $rootScope.user = data;
                         $location.path('/');
                     });
 
-                },function (data) {
+                }).error(function (data) {
                     localStorageService.remove('jwt');
                     if (data.message) {
                         $scope.loginerror = data.message;

@@ -12,7 +12,7 @@ angularModule.config(function ($stateProvider) {
 });
 
 angularModule.controller('PageCtrl', function ($scope, API_SERVER_ENDPOINT, $stateParams, $http, $sce) {
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/' + $stateParams.id).then(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/' + $stateParams.id).success(function (data) {
         $scope.page = data;
         $scope.page.formatted = $sce.trustAsHtml($scope.page.formatted);
     });

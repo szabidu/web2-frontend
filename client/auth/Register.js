@@ -23,14 +23,14 @@ angularModule.controller('RegisterCtrl',
             $scope.register = function () {
                 $scope.errormessage = '';
                 $scope.form.captcha = $scope.captcha;
-                $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/register', $scope.form).then(function (data) {
+                $http.post(API_SERVER_ENDPOINT + '/api/v1/auth/register', $scope.form).success(function (data) {
                     satellizer.setToken(data.access_token);
                     localStorageService.set('jwt', data);
-                    $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').then(function (data) {
+                    $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
                         $rootScope.user = data;
                         $location.path('/');
                     });
-                },function (data) {
+                }).error(function (data) {
                     vcRecaptchaService.reload();
                     if (data.message) {
                         $scope.errormessage = data.message.replace(/\n/g, '<br/>');

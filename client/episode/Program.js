@@ -40,7 +40,7 @@ angularModule.controller('ProgramCtrl', function ($scope, $state, $stateParams, 
       from.setToDayStart();
       var to = new Date(timestamp);
       to.setToDayEnd();
-      $http.get(API_SERVER_ENDPOINT + '/api/v1/episode?start=' + from.getTime() + '&end=' + to.getTime(), {cache: true}).then(function (data) {
+      $http.get(API_SERVER_ENDPOINT + '/api/v1/episode?start=' + from.getTime() + '&end=' + to.getTime(), {cache: true}).success(function (data) {
         $scope.episodes = data;
       });
     };

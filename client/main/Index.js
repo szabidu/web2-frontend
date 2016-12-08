@@ -21,16 +21,16 @@ angularModule .config(function ($stateProvider) {
 
 angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOINT, $sce, $timeout) {
 
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/text/news/current').then(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/text/news/current').success(function (data) {
         $scope.news = data;
     });
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/next').then(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/next').success(function (data) {
         $scope.next = data;
     });
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/last').then(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/last').success(function (data) {
         $scope.last = data;
     });
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/lastWeek').then(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/lastWeek').success(function (data) {
         $scope.lastWeek = data;
     });
 

@@ -82,12 +82,12 @@ angularModule.controller('EpisodeCtrl', function ($scope, data, show, $sce, Meta
             bts.title = $scope.bookmark.title;
             bts.from = dateUtil.setDate($scope.episode.plannedFrom, $scope.bookmark.from);
             bts.to = dateUtil.setDate($scope.episode.plannedTo, $scope.bookmark.to);
-            return $http.post(API_SERVER_ENDPOINT + '/api/v1/episode/' + $scope.episode.id + '/bookmark', bts).then(function () {
+            return $http.post(API_SERVER_ENDPOINT + '/api/v1/episode/' + $scope.episode.id + '/bookmark', bts).success(function () {
                 alert('Bookmark has been saved');
                 $scope.bookmark = {};
                 $scope.bookmark.from = dateUtil.toHourMin($scope.episode.plannedFrom);
                 $scope.bookmark.to = dateUtil.toHourMin($scope.episode.plannedTo);
-                return $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/' + $scope.episode.id, bts).then(function (data) {
+                return $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/' + $scope.episode.id, bts).success(function (data) {
                     $scope.episode = data;
                 });
             });
