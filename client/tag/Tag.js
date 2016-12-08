@@ -28,14 +28,14 @@ angularModule.config(function ($stateProvider) {
 });
 
 angularModule.controller('TagCtrl', function ($scope, $stateParams, $http) {
-    $http.get('/api/v1/tag/' + $stateParams.id, {cache: true}).success(function (data) {
+    $http.get('/api/v1/tag/' + $stateParams.id, {cache: true}).then(function (data) {
         $scope.list = data;
     });
     $scope.tag = $stateParams.id;
 });
 
 angularModule.controller('TagListCtrl', function ($scope, $http, API_SERVER_ENDPOINT) {
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/tag?limit=100', {cache: true}).success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/tag?limit=100', {cache: true}).then(function (data) {
         $scope.tags = data;
     });
 
@@ -47,7 +47,7 @@ angularModule.factory('Tags', ['API_SERVER_ENDPOINT', '$resource', function (ser
 
 
 angularModule.controller('TagCloudCtrl', function (API_SERVER_ENDPOINT, $http, $scope) {
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/tag', {cache: true}).success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/tag', {cache: true}).then(function (data) {
         $scope.tags = data.tags;
     });
 });

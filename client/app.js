@@ -160,12 +160,12 @@ tilos.run(['$rootScope', 'Meta', '$http', 'API_SERVER_ENDPOINT', '$auth', functi
     });
 
     if (satellizer.getToken()) {
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').success(function (data) {
+        $http.get(API_SERVER_ENDPOINT + '/api/v1/user/me').then(function (data) {
             $rootScope.user = data;
         });
     }
 
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/status/radio').success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/status/radio').then(function (data) {
         $rootScope.extraStreams = data;
     });
 
@@ -195,13 +195,13 @@ tilos.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         var $http = $injector.get('$http');
         var API_SERVER_ENDPOINT = $injector.get('API_SERVER_ENDPOINT');
         var path = $location.path();
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/text' + path).success(function () {
+        $http.get(API_SERVER_ENDPOINT + '/api/v1/text' + path).then(function () {
             var $state = $injector.get('$state');
             $state.go('page', {id: path.substr(1)});
-        }).error(function () {
-            $http.get(API_SERVER_ENDPOINT + '/api/v1/show' + path).success(function () {
+        },function () {
+            $http.get(API_SERVER_ENDPOINT + '/api/v1/show' + path).then(function () {
                 $injector.get('$state').go('show.main', {id: path.substr(1)});
-            }).error(function () {
+            },function () {
                 $injector.get('$state').go('notfound');
             });
         });

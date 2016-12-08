@@ -25,7 +25,7 @@ angularModule.directive('commentable', [function () {
             $scope.comments = [];
             $scope.formComment = {};
 
-            $http.get(restEndpoint).success(function (res) {
+            $http.get(restEndpoint).then(function (res) {
                 $scope.comments = res;
             });
 
@@ -43,9 +43,9 @@ angularModule.directive('commentable', [function () {
 
             $scope.createComment = function () {
                 if ($scope.formComment.comment) {
-                    return $http.post(restEndpoint, $scope.formComment).success(function () {
+                    return $http.post(restEndpoint, $scope.formComment).then(function () {
                         _resetFormComment();
-                        $http.get(restEndpoint).success(function (res) {
+                        $http.get(restEndpoint).then(function (res) {
                             $scope.comments = res;
                         });
                     });
@@ -60,8 +60,8 @@ angularModule.directive('commentable', [function () {
                     newComment.comment = comment.interact;
                     newComment.parentId = comment.id;
 
-                    return $http.post(restEndpoint, newComment).success(function () {
-                        $http.get(restEndpoint).success(function (res) {
+                    return $http.post(restEndpoint, newComment).then(function () {
+                        $http.get(restEndpoint).then(function (res) {
                             $scope.comments = res;
                         });
                     });

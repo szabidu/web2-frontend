@@ -14,7 +14,7 @@ angularModule.config(function ($stateProvider) {
 });
 angularModule.controller('SearchCtrl', function ($scope, $rootScope, $stateParams, API_SERVER_ENDPOINT, $http) {
     $scope.types = {'page': 'Oldal', 'episode': 'Adásnapló', 'author': 'Műsorkészítő', 'show': 'Műsor', 'mix': 'Mix'};
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/search/query?q=' + $stateParams.id, {cache: true}).success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/search/query?q=' + $stateParams.id, {cache: true}).then(function (data) {
         $scope.result = data;
     });
 });

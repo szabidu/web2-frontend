@@ -13,7 +13,7 @@ angularModule.config(function ($stateProvider) {
 });
 
 angularModule.controller('AllshowCtrl', function ($scope, API_SERVER_ENDPOINT, $http) {
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/show', {cache: true}).success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/show', {cache: true}).then(function (data) {
         var res = {
             talk: [],
             sound: []

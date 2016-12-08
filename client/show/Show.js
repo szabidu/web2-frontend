@@ -84,7 +84,7 @@ angularModule.controller('ShowContactCtrl', function ($state, vcRecaptchaService
     $scope.message = {};
     $scope.save = function () {
         $scope.message.captcha = $scope.captcha;
-        $http.post(API_SERVER_ENDPOINT + '/api/v1/show/' + $stateParams.id + '/contact', $scope.message).success(function (data) {
+        $http.post(API_SERVER_ENDPOINT + '/api/v1/show/' + $stateParams.id + '/contact', $scope.message).then(function (data) {
             growl.info("Message has been successfully sent");
             $state.go('show.intro', {id: $stateParams.id});
         });
@@ -94,7 +94,7 @@ angularModule.controller('ShowContactCtrl', function ($state, vcRecaptchaService
 angularModule
     .controller('ShowMixesCtrl', function ($scope, $stateParams, API_SERVER_ENDPOINT, $http) {
 
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/mix?show=' + $stateParams.id, {cache: true}).success(function (data) {
+        $http.get(API_SERVER_ENDPOINT + '/api/v1/mix?show=' + $stateParams.id, {cache: true}).then(function (data) {
             $scope.mixes = data;
         });
     });
@@ -114,7 +114,7 @@ angularModule
 
         var to = new Date().getTime();
         var from = to - ( 6 * 30 * 24 * 3600 * 1000);
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $scope.show.id + '/episodes?start=' + from + '&end=' + to).success(function (data) {
+        $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $scope.show.id + '/episodes?start=' + from + '&end=' + to).then(function (data) {
             $scope.show.episodes = data;
         });
 
@@ -122,7 +122,7 @@ angularModule
             $scope.currentShowPage--;
             var to = $scope.show.episodes[$scope.show.episodes.length - 1].plannedFrom - 60000;
             var from = to - 60 * 24 * 60 * 60 * 1000;
-            $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $scope.show.id + '/episodes?start=' + from + '&end=' + to).success(function (data) {
+            $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $scope.show.id + '/episodes?start=' + from + '&end=' + to).then(function (data) {
                 $scope.show.episodes = data;
             });
 
@@ -131,7 +131,7 @@ angularModule
             $scope.currentShowPage++;
             var from = $scope.show.episodes[0].plannedTo + 60000;
             var to = from + 60 * 24 * 60 * 60 * 1000;
-            $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $scope.show.id + '/episodes?start=' + from + '&end=' + to).success(function (data) {
+            $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $scope.show.id + '/episodes?start=' + from + '&end=' + to).then(function (data) {
                 $scope.show.episodes = data;
             });
         };

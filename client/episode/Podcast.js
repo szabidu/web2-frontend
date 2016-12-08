@@ -50,7 +50,7 @@ angularModule.controller("PodcastCtrl", function ($scope, $http, API_SERVER_ENDP
         calculateUrl();
     });
 
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/show', {'cache': true}).success(function (data) {
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/show', {'cache': true}).then(function (data) {
         $scope.shows = data;//
     });
 

@@ -20,11 +20,11 @@ angularModule
             $scope.error = "Az email vagy a token paraméter hiányzik";
         }
         $scope.reset = function () {
-            $http.post(server + '/api/v1/auth/password_reset', $scope.newpassword).success(function (data) {
+            $http.post(server + '/api/v1/auth/password_reset', $scope.newpassword).then(function (data) {
                 $scope.error = "";
                 $scope.message = data.message;
 
-            }).error(function (data) {
+            },function (data) {
                 if (data.message) {
                     $scope.error = data.message;
                 } else {
