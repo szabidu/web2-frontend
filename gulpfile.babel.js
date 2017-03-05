@@ -14,6 +14,7 @@ import lodash   from 'lodash';
 import gutil    from 'gulp-util';
 import serve    from 'browser-sync';
 import webpackDevMiddelware from 'webpack-dev-middleware';
+import proxy from 'http-proxy-middleware';
 import webpachHotMiddelware from 'webpack-hot-middleware';
 import colorsSupported      from 'supports-color';
 import historyApiFallback   from 'connect-history-api-fallback';
@@ -87,6 +88,10 @@ gulp.task('serve', () => {
           modules: false
         },
         publicPath: config.output.publicPath
+      }),
+      proxy('/', {
+        target: 'https://tilos.hu',
+        changeOrigin: true
       }),
       webpachHotMiddelware(compiler)
     ]
