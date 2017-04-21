@@ -12,9 +12,16 @@ angularModule.config(function ($stateProvider) {
 });
 
 angularModule
-    .controller('NewsCtrl', ['$scope', '$stateParams', 'API_SERVER_ENDPOINT', '$http', 'validateUrl', function ($scope, $stateParams, $server, $http) {
+    .controller('NewsCtrl', ['$scope', '$stateParams', 'API_SERVER_ENDPOINT', '$http', 'Meta', 'validateUrl', function ($scope, $stateParams, $server, $http, Meta) {
         $http.get($server + '/api/v1/text/news/' + $stateParams.id, {cache: true}).success(function (data) {
             $scope.news = data;
+
+            if ($scope.news.title) {
+                Meta.setTitle($scope.news.title);
+            }
+            if ($scope.news.formatted) {
+                Meta.setDescription($scope.news.formatted.replace(/<(?:.|\n)*?>/gm, '').substring(0, 400));
+            }
         });
 
     }]);

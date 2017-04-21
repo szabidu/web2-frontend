@@ -41,6 +41,8 @@ var tilos = angular.module('tilosApp',
         auth.name,
     ]);
 
+require('services/MetaService');
+
 tilos.config(['growlProvider', function (growlProvider) {
     growlProvider.globalTimeToLive(3000);
     growlProvider.globalPosition('top-left');
@@ -74,18 +76,6 @@ tilos.weekStart = function (date) {
     return new Date(date.setDate(first));
 };
 
-
-tilos.factory('Meta', function ($rootScope) {
-    return {
-        setTitle: function (newTitle) {
-            $rootScope.pageTitle = newTitle;
-        },
-        setDescription: function (newDesc) {
-            $rootScope.pageDescription = newDesc;
-        }
-
-    };
-});
 
 tilos.run(function () {
     Date.prototype.setToNoon = function () {
@@ -154,8 +144,8 @@ tilos.run(function ($rootScope) {
 });
 tilos.run(['$rootScope', 'Meta', '$http', 'API_SERVER_ENDPOINT', '$auth', function ($rootScope, Meta, $http, API_SERVER_ENDPOINT, satellizer) {
     $rootScope.$on('$locationChangeStart', function () {
-        Meta.setTitle('');
-        Meta.setDescription('');
+        Meta.setTitle();
+        Meta.setDescription();
 
     });
 
