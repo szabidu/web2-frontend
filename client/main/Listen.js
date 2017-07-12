@@ -11,6 +11,7 @@ angularModule.component('listenNow', {
                <a href="/archive" class="btn btn-lg col-xs-12 btn-info">Archívum</a>\
                <p>További streamek:</p>\
                <a href="http://stream.tilos.hu/jazz" class="btn btn-lg col-xs-12 btn-danger"> jazz is dead? </a>\
+               <a href="http://stream.tilos.hu/szoveg" class="btn btn-lg col-xs-12 btn-danger"> Okosodj! </a>\
                <a href="http://stream.tilos.hu/mese" class="btn btn-lg col-xs-12 btn-danger">Tilos Mesék </a>\
                <a href="http://stream.tilos.hu/tordas_radio_online" class="btn btn-lg col-xs-12 btn-danger">Tordas Rádió </a>\
                </div>\
