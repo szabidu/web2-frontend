@@ -39,3 +39,5 @@ vagrant up
 check http://localhost:8080
 
 The backend queries are redirected to the live https://tilos.hu
+
+
