@@ -9,17 +9,6 @@
 
 </section>
 
-<aside class="col-md-pull-3 col-md-3">
-    <div class="box">
-        <h2><a href="" target="_blank">Tilos hírek</a></h2>
-        <article class="news-lead" ng-repeat="text in news">
-            <h3><a ng-href="/news/{{text.id}}">{{text.title}}</a></h3>
-            <span ng-bind-html="text.leadFormatted"></span></p>
-            <a ng-show="text.longText" class="btn btn-small btn-info pull-right" ng-href="/news/{{text.id}}">Részletek...</a>
-        </article>
-    </div>
-</aside>
-
 <aside class="col-md-3">
     <div ng-include src="'main/sidebar_right.html'"></div>
 </aside>
