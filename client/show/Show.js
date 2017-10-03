@@ -11,6 +11,7 @@ require("show/show-contact.html");
 require("show/sidebar_show.html");
 require("show/show.scss");
 
+
 angularModule.config(function ($stateProvider) {
 
     $stateProvider.state('show', {
@@ -21,7 +22,7 @@ angularModule.config(function ($stateProvider) {
             $scope.show = show.data;
         },
         resolve: {
-            show: function ($http, API_SERVER_ENDPOINT, $stateParams) {
+            show: function ($http, API_SERVER_ENDPOINT, $stateParams, $state) {
                 var addIcon = function (data) {
                     if (data.type === 'facebook') {
                         data.icon = 'icon-facebook2';
@@ -40,6 +41,8 @@ angularModule.config(function ($stateProvider) {
                         addIcon(url);
                     });
                     return data;
+                }).catch(function(error) {
+                    $state.go('notfound');
                 });
             }
         }
@@ -140,5 +143,6 @@ angularModule
     }
 );
 module.exports = angularModule;
+
 require("show/AllShow");
 require("show/ShowLabel");
