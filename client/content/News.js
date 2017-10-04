@@ -12,9 +12,11 @@ angularModule.config(function ($stateProvider) {
 });
 
 angularModule
-    .controller('NewsCtrl', ['$scope', '$stateParams', 'API_SERVER_ENDPOINT', '$http', 'validateUrl', function ($scope, $stateParams, $server, $http) {
+    .controller('NewsCtrl', ['$scope', '$state', '$stateParams', 'API_SERVER_ENDPOINT', '$http', 'validateUrl', function ($scope, $state, $stateParams, $server, $http) {
         $http.get($server + '/api/v1/text/news/' + $stateParams.id, {cache: true}).success(function (data) {
             $scope.news = data;
+        }).error(function (err) {
+            $state.go('notfound');
         });
 
     }]);

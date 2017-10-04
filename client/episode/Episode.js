@@ -5,7 +5,6 @@ var angularModule = angular.module("episode", []);
 require("episode/episode.html");
 
 
-
 angularModule.factory('dateUtil', function () {
     return {
         toHourMin: function (epoch) {
@@ -47,11 +46,21 @@ angularModule.config(function ($stateProvider) {
         templateUrl: 'episode/episode.html',
         controller: 'EpisodeCtrl',
         resolve: {
-            data: function ($stateParams, $http, API_SERVER_ENDPOINT) {
-                return $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/' + $stateParams.show + '/' + $stateParams.year + '/' + $stateParams.month + '/' + $stateParams.day);
+            data: function ($state, $stateParams, $http, API_SERVER_ENDPOINT, $q) {
+                return $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/' + $stateParams.show + '/' + $stateParams.year + '/' + $stateParams.month + '/' + $stateParams.day)
+                .then($q.resolve)
+                .catch(function (err) {
+                    $state.go('notfound');
+                });
+
             },
-            show: function ($stateParams, $http, API_SERVER_ENDPOINT) {
-                return $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $stateParams.show);
+            show: function ($state, $stateParams, $http, API_SERVER_ENDPOINT, $q) {
+                return $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $stateParams.show)
+                    .then($q.resolve)
+                    .catch(function (err) {
+                        $state.go('notfound');
+                    });
+
             }
         }
     });
@@ -59,6 +68,16 @@ angularModule.config(function ($stateProvider) {
 
 
 angularModule.controller('EpisodeCtrl', function ($scope, data, show, $sce, Meta, $location, dateUtil, $http, API_SERVER_ENDPOINT) {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://tilos.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+
+        window.disqus_config = function () {
+            this.page.url = 'https://tilos.hu' + data.data.url;
+            this.page.identifier = data.data.url;
+        };
+
         $scope.absUrl = $location.absUrl();
         $scope.episode = data.data;
         $scope.show = show.data;

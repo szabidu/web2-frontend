@@ -61,6 +61,8 @@ tilos.config(function ($locationProvider, $httpProvider) {
                 }
                 if (rejection.status == 50)
                     return $q.reject(rejection);
+
+                return $q.reject(rejection);
             }
         };
     })
