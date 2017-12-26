@@ -9,9 +9,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
     <h2 class="bordered top">
+        <listen-button ng-show="episode.m3uUrl !== null" link="{{episode.m3uUrl}}"></listen-button>
         <show-label show="currentShow"></show-label>
         {{episode.plannedFrom | date:'yyyy. MMMM dd.'}}
-        <listen-button ng-show="episode.m3uUrl !== null" link="{{episode.m3uUrl}}"></listen-button>
     </h2>
 
     <h1 class="ubuntu">{{episode.text.title}}<span ng-show="!episode.original">*</span></h1>
