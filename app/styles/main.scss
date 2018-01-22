@@ -1332,7 +1332,7 @@ input.ng-invalid {
     width: 60px;
     margin-top: 30px;
     margin-right: 10px;
-    position: absolute;
+    position: static; //absolute volt, amikor a listen-button jobbra volt igazítva;
     top: -18px;
     left: 10px;
 }
@@ -1372,3 +1372,6 @@ input.ng-invalid {
     line-height: 1.55;
 }
 
+listen-button.pull-left {
+    margin-right: 1em;
+}

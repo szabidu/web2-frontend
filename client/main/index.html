@@ -58,13 +58,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 class="blue top">Az elmúlt hét adásai</h2>
 
         <div class="episode-last episode-list" data-ng-repeat="episode in lastWeek">
-            <p>
-
             <h3>
-                <listen-button class="pull-right" link="{{episode.m3uUrl}}"></listen-button>
+                <listen-button class="pull-left" link="{{episode.m3uUrl}}"></listen-button>
                 <a ng-href="{{episode.url}}">{{episode.text.title}}</a>
             </h3>
-            </p>
             <p>
                 <show-label show="episode.show"></show-label>
                 <span class="pull-right main-date hidden-xs">{{episode.plannedFrom | date:'yyyy. MMMM dd.'}}</span>
@@ -75,13 +72,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 class="blue top">Legfrissebb adásnaplók</h2>
 
         <div class="episode-last episode-list" data-ng-repeat="episode in last">
-            <p>
-
             <h3>
-                <listen-button class="pull-right" link="{{episode.m3uUrl}}"></listen-button>
+                <listen-button class="pull-left" link="{{episode.m3uUrl}}"></listen-button>
                 <a ng-href="{{episode.url}}">{{episode.text.title}}</a>
             </h3>
-            </p>
             <p>
                 <show-label show="episode.show"></show-label>
                 <span class="pull-right main-date hidden-xs">{{episode.plannedFrom | date:'yyyy. MMMM dd.'}}</span>

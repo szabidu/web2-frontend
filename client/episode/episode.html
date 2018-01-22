@@ -9,7 +9,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
     <h2 class="bordered top">
-        <listen-button ng-show="episode.m3uUrl !== null" link="{{episode.m3uUrl}}"></listen-button>
+        <listen-button class="pull-left" ng-show="episode.m3uUrl !== null" link="{{episode.m3uUrl}}"></listen-button>
         <show-label show="currentShow"></show-label>
         {{episode.plannedFrom | date:'yyyy. MMMM dd.'}}
     </h2>
@@ -31,7 +31,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="panel panel-default episode-box" ng-repeat="bookmark in episode.bookmarks">
             <div class="panel-heading">
-                <listen-button class="pull-right" link="{{bookmark.m3uUrl}}"></listen-button>
+                <listen-button class="pull-left" link="{{bookmark.m3uUrl}}"></listen-button>
                 <div class="episode-title">
                     <span>{{bookmark.from| date: 'HH:mm'}}-{{bookmark.to| date: 'HH:mm'}}</span>
                     <b>{{bookmark.title}}</b> ({{bookmark.creator.username}})

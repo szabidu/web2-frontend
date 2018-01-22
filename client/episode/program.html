@@ -41,8 +41,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <table class="table table-hover" id="archiveTable">
         <div class="panel program" ng-repeat="episode in episodes">
             <div class="panel-heading">
+                <span><listen-button class="pull-left" ng-show="episode.m3uUrl" link="{{episode.m3uUrl}}"/></span>
                 <span class="time">{{episode.plannedFrom | date: 'HH:mm'}}</span>
-                <span><listen-button class="listen" ng-show="episode.m3uUrl" link="{{episode.m3uUrl}}"/></span>
                 <span>
                     <show-label show="episode.show"></show-label>
                 <span ng-show="episode.extra" class="label label-small label-danger">extra</span>
