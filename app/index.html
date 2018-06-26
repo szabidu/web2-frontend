@@ -62,8 +62,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
     
     <!-- Maraton mutato -->
-    <link rel="stylesheet" type="text/css" href="styles/maraton-mutato-styles.css" />
-    <script src="../client/main/dntn-ind.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="styles/maraton-mutato-styles.css" /> -->
+    <!-- <script src="../client/main/dntn-ind.js"></script> -->
     <!-- END Maraton mutato -->
 
 </head>
@@ -236,18 +236,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 </div>  -->
-    <div id="maraton" style="margin-bottom: 2px;">
+    <!-- <div id="maraton" style="margin-bottom: 2px;">
         <center>
             <img src="https://maraton.tilos.hu/images/maraton_mutato.png"/>
         </center>
-    </div>    
+    </div> -->    
         <!-- div id="maraton" style="margin-bottom: 12px;">
         <center>
             <a href="https://maraton.tilos.hu/"><img src="https://maraton.tilos.hu/images/maraton-oldal.png"/></a>
         </center>
     </div -->
     
-    <!-- div id="maraton" style="margin-bottom: 12px;">
+    <div id="maraton" style="margin-bottom: 12px;" ng-controller="MaratonCtrl">
         <center>
         <div id="donation--indicator--wrapper">
             <div id="title">
@@ -263,7 +263,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </div>
         </center>
-    </div -->
+    </div> 
     
 <main class="container" id="mainIndex">
 
@@ -333,19 +333,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <!-- footer-holder -->
 	
-    <!-- Maraton mutato script -->
-<script>
-var params = {
-segmentStep: 500,	
-major: 2,			//every nth
-min: 0,
-max: 14500,
-value: 14403
-}
-var target = document.getElementById("donation--indicator--wrapper");
-indicator = new Indicator(params, target);	
-</script>
-    <!-- END Maraton mutato script -->
     
 <script>
     (function (b, o, i, l, e, r) {
