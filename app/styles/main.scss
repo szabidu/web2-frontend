@@ -1375,6 +1375,9 @@ listen-button.pull-left {
     margin-right: 1em;
 }
 
+#maraton {
+    height: 95px;
+
 #donation--indicator--wrapper {
             margin-left: 3em;
 
@@ -1425,21 +1428,21 @@ listen-button.pull-left {
 
      #donation--indicator--container {
         font-family: "Open Sans", sans-serif;
-        max-width: 100%;
         text-align: center;
-        width: 85%;
+        width: calc(96% - 120px);
         float: left;
-        margin-left: 50px;
-        width: 90%;
-        height: 5em;
+        margin-left: 29px;
+        margin-right: 18px;
+        height: 88px;
      }
 
      #title {
-        width: 4%;
+        width: 72px;
         font-size: 12px;
         float: left;
         text-align: justify;
         text-justify: inter-character;
+        height: 88px;
      }
 
      #income-box {
@@ -1474,4 +1477,12 @@ listen-button.pull-left {
         border-width: 16px 0 16px 24px;
         border-color: transparent transparent transparent red;
     }
-            }
+
+    @media only screen and (max-width: 900px) {
+        .small-tick {
+            display: none;
+        }
+    }
+
+}
+}
