@@ -48,4 +48,5 @@ require("main/404");
 require("main/Index");
 require("main/Static");
 require("main/Listen");
+require("main/Maraton");
 
