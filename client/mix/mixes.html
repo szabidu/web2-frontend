@@ -19,17 +19,29 @@
 </div>
 <table class="table">
     <thead>
-    <tr>
+    <tr ng-show="{{tab == 'dj' || tab == 'guestdj'}}">
         <th>Dátum</th>
+        <th>Előadó</th>
         <th>Mix</th>
+        <th>Meghallgat</th>
+    </tr>
+    <tr ng-show="{{tab == 'show'}}">
+        <th>Dátum</th>
+        <th>Műsor</th>
+        <th>Adás</th>
+        <th>Meghallgat</th>
+    </tr>
+    <tr ng-show="{{tab == 'tale'}}">
+        <th>Mese Címe</th>
         <th>Meghallgat</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="mix in mixes | filter: quicksearch">
-        <td>{{mix.date}}</td>
-        <td><b>{{mix.author}}</b>: {{mix.title}}</td>
-        <td class="pull-right">
+        <td ng-hide="{{tab == 'tale'}}" style="white-space: nowrap;">{{mix.date}}</td>
+        <td ng-hide="{{tab == 'tale'}}">{{mix.author}}</td>
+        <td>{{mix.title}}</td>
+        <td style="text-align: right; white-space: nowrap;">
             <a ng-show="{{mix.withContent}}" class="label label-info label-episode" ng-href="/mix/{{mix.id}}">Tracklista</a>
             <a class="label label-episode episode" ng-href="{{mix.link}}">Meghallgat</a>
         </td>
