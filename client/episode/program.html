@@ -14,7 +14,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="cursorPointer"><a ng-click="prev()">&larr; Előző nap</a></li>
             <li class="cursorPointer" ng-click="open()">
                 <div class="DatePicker form-horizontald" id="datapicker">
-
                     <button class="btn ChooseDate" ng-click="open()">
                         <i class="icon-calendar"></i>
                     </button>
@@ -27,28 +26,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </li>
             <li class="cursorPointer"><a ng-click="next()">Következő nap &rarr;</a></li>
         </ul>
-
     </nav>
 
 
-    <div class="clearfix">
+    <div class="clearfix"> </div>
 
-
-    </div>
-
-
-    </div>
-    <table class="table table-hover" id="archiveTable">
-        <div class="panel program" ng-repeat="episode in episodes">
-            <div class="panel-heading">
-                <span><listen-button class="pull-left" ng-show="episode.m3uUrl" link="{{episode.m3uUrl}}"/></span>
-                <span class="time">{{episode.plannedFrom | date: 'HH:mm'}}</span>
-                <span>
-                    <show-label show="episode.show"></show-label>
-                <span ng-show="episode.extra" class="label label-small label-danger">extra</span>
-                <a class="title" ng-href="{{episode.url}}">{{episode.text.title}}</a>
-                </span>
-            </div>
+    <div class="panel program" ng-repeat="episode in episodes">
+        <div class="panel-heading">
+            <span><listen-button class="pull-left" ng-show="episode.m3uUrl && episode.plannedFrom >= 1270072800000" link="{{episode.m3uUrl}}"/></span>
+            <span class="time">{{episode.plannedFrom | date: 'HH:mm'}}</span>
+            <span><show-label show="episode.show"></show-label>
+            <span ng-show="episode.extra" class="label label-small label-danger">extra</span>
+            <a class="title" ng-href="{{episode.url}}">{{episode.text.title}}</a>
+            </span>
         </div>
-    </table>
+    </div>
 </section>
