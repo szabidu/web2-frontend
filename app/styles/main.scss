@@ -1375,6 +1375,19 @@ listen-button.pull-left {
     margin-right: 1em;
 }
 
+.table {
+    th {
+        &.sortorder {
+            &:after {
+                content: '\25b2';   // BLACK UP-POINTING TRIANGLE
+            }
+            &.reverse:after {
+                content: '\25bc';   // BLACK DOWN-POINTING TRIANGLE
+            }
+        }
+    }
+}
+
 #maraton {
     height: 95px;
 

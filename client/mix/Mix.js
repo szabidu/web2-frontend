@@ -23,14 +23,28 @@ angularModule.config(function ($stateProvider) {
     });
 });
 
+
 angularModule.controller('MixListCtrl', function ($http, $stateParams, API_SERVER_ENDPOINT, $scope, enumMixType) {
+        $scope.localeSensitiveComparator = function(v1, v2) {
+            if (v1.type !== 'string' || v2.type !== 'string') {
+            return (v1.index < v2.index) ? -1 : 1;
+            }
+            return v1.value.localeCompare(v2.value);
+        };
+
         $scope.tab = $stateParams.category;
         var category = $stateParams.category.toUpperCase();
+
         $http.get(API_SERVER_ENDPOINT + '/api/v1/mix?category=' + category).success(function (data) {
+            $scope.propertyName = category === 'TALE' ? 'title' : 'date' ;
+            $scope.reverse = category !== 'TALE';
             $scope.mixes = data;
         });
         $scope.mixType = enumMixType;
-
+        $scope.sortBy = function(propertyName) {
+            $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+            $scope.propertyName = propertyName;
+          };
     }
 );
 

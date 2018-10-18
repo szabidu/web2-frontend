@@ -1,14 +1,5 @@
-<div class="form-horizontal row instant-search" role="form">
-    <div class="form-group col-sm-6">
-        <label for="quicksearch" class="col-xs-2 control-label">Keresés</label>
 
-        <div class="col-xs-10">
-            <input type="search" id="quicksearch" class="form-control" placeholder="Keresés a mixek között"
-                   ng-model="quicksearch">
-        </div>
-    </div>
-</div>
-
+<h1 class="ubuntu">Hangtár</h1>
 <div>
     <ul class="nav nav-tabs" role="tablist">
         <li ng-class="{active: tab == 'dj'}"><a ng-href="/mixes/dj">Tilos DJ Mix</a></li>
@@ -17,27 +8,44 @@
         <li ng-class="{active: tab == 'tale'}"><a href="/mixes/tale">Tilos Mese</a></li>
     </ul>
 </div>
-<table class="table">
+<div class="form-horizontal row instant-search" role="form" style="margin-top: 20px;">
+    <div class="form-group col-sm-6">
+        <label for="quicksearch" class="col-xs-2 control-label">Keresés</label>
+
+        <div class="col-xs-10">
+            <input type="search" id="quicksearch" class="form-control" placeholder="Keresés a Hangtárban"
+                   ng-model="quicksearch">
+        </div>
+    </div>
+</div>
+<table class="table mixies">
     <thead>
-    <tr ng-show="{{tab == 'dj' || tab == 'guestdj'}}">
-        <th>Dátum</th>
-        <th>Előadó</th>
-        <th>Mix</th>
+        <tr>
+            <th class="cursorPointer"
+                ng-hide="{{tab == 'tale'}}"
+                ng-click="sortBy('date')"
+                ng-class="{ 'sortorder': propertyName === 'date', 'reverse': reverse }">
+                Dátum
+            </th>
+            <th class="cursorPointer"
+                ng-hide="{{tab == 'tale'}}"
+                ng-click="sortBy('author')"
+                ng-class="{ 'sortorder': propertyName === 'author', 'reverse': reverse }">
+                <span ng-show="{{tab == 'dj' || tab == 'guestdj'}}">Előadó</span>
+                <span ng-show="{{tab == 'show'}}">Műsor</span>
+            </th>
+            <th class="cursorPointer"
+                ng-click="sortBy('title')"
+                ng-class="{ 'sortorder': propertyName === 'title', 'reverse': reverse }">
+                <span ng-show="{{tab == 'dj' || tab == 'guestdj'}}">Mix</span>
+                <span ng-show="{{tab == 'show'}}">Adás</span>
+                <span ng-show="{{tab == 'tale'}}">Mese</span>
+            </th>
         <th>Meghallgat</th>
-    </tr>
-    <tr ng-show="{{tab == 'show'}}">
-        <th>Dátum</th>
-        <th>Műsor</th>
-        <th>Adás</th>
-        <th>Meghallgat</th>
-    </tr>
-    <tr ng-show="{{tab == 'tale'}}">
-        <th>Mese Címe</th>
-        <th>Meghallgat</th>
-    </tr>
+        </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="mix in mixes | filter: quicksearch">
+    <tr ng-repeat="mix in mixes | filter: quicksearch | orderBy:propertyName:reverse:localeSensitiveComparator">
         <td ng-hide="{{tab == 'tale'}}" style="white-space: nowrap;">{{mix.date}}</td>
         <td ng-hide="{{tab == 'tale'}}">{{mix.author}}</td>
         <td>{{mix.title}}</td>
