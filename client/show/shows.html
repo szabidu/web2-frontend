@@ -28,12 +28,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <table class="table">
                 <tr ng-repeat="show in shows['talk'] | filter:simpleShowSearch">
                     <td>
-                        <show-label show="show"></show-label>
+                        <div style="margin: 15px 0;"><show-label show="show"></show-label></div>
+                        <i>{{show.definition | truncate:true:140:'...' }}</i>
                     </td>
-                    <td><i>{{show.definition}}</i></td>
                 </tr>
             </table>
-
         </section>
 
         <section class="col-md-6 main" role="main">
@@ -41,10 +40,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <table class="table">
                 <tr ng-repeat="show in shows['sound'] | filter:simpleShowSearch">
                     <td>
-                        <show-label show="show"></show-label>
+                        <div style="margin: 15px 0;"><show-label show="show"></show-label></div>
+                        <i>{{show.definition}}</i>
                     </td>
-
-                    <td><i>{{show.definition}}</i></td>
                 </tr>
             </table>
         </section>
