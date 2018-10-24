@@ -1,0 +1,34 @@
+<h1>Test Page</h1>
+
+<h2>Dialog</h2>
+
+<ul>
+  <li><b>dialog</b>: must be same as id on dialog</li>
+</ul>
+<pre>
+<code>
+&lt;tilos-dialog-handler <mark>dialog=&quot;#dialog-mikulas&quot;</mark>&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;Tilos Mikul&aacute;s&lt;/button&gt;
+&lt;/tilos-dialog-handler&gt;
+</code>
+</pre>
+
+<ul>
+    <li><b>header</b>: Title of the popup</li>
+    <li><b>default-open</b>: The dialog show if page loader, without any user action</li>
+    <li><b>id</b>: Handler use for matching dialog, also key for store if user check default open false</li>
+  </ul>
+<pre><code>
+&lt;tilos-dialog <mark>header=&quot;J&ouml;n a Tilos Mikul&aacute;s&quot;</mark> <mark>default-open</mark> <mark>id=&quot;dialog-mikulas&quot;</mark>&gt;
+  &lt;tilos-dialog-content&gt;
+      Kaptok aj&aacute;nd&eacute;kot Az ad&oacute; 1+1% felaj&aacute;nl&aacute;s&aacute;r&oacute;l az &uacute;j online fel&uuml;leten, vagy a 16SZJA EGYSZA lapj&aacute;n, illetve az erre a c&eacute;lra kialak&iacute;tott 16EGYSZA jel&udblac; nyomtatv&aacute;nyon is rendelkezhetsz.
+  &lt;/tilos-dialog-content&gt;
+&lt;/tilos-dialog&gt;
+</code>
+</pre>
+<tilos-dialog-handler dialog="#dialog-mikulas"><button type="button" class="btn btn-danger">Tilos Mikulás</button></tilos-dialog-handler>
+<tilos-dialog header="Jön a Tilos Mikulás" default-open id="dialog-mikulas">
+  <tilos-dialog-content>
+      Kaptok ajándékot Az adó 1+1% felajánlásáról az új online felületen, vagy a 16SZJA EGYSZA lapján, illetve az erre a célra kialakított 16EGYSZA jelű nyomtatványon is rendelkezhetsz.
+  </tilos-dialog-content>
+</tilos-dialog>

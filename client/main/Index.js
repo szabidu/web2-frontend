@@ -1,6 +1,7 @@
 'use strict';
 
 require("main/404.html")
+require("main/test.html")
 var angularModule = require("main/Main")
 
 
@@ -18,6 +19,14 @@ angularModule .config(function ($stateProvider) {
     });
 
 });
+
+angularModule.config(function ($stateProvider) {
+    $stateProvider.state('testpage', {
+        url: '/testpage',
+        templateUrl: 'main/test.html'
+    });
+});
+
 
 angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOINT, $sce, $timeout) {
 

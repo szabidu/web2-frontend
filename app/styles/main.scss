@@ -7,6 +7,7 @@ $icon-font-path: "fonts/";
 @import "icons";
 @import "howto";
 @import "comment";
+@import "tilos-dialog";
 
 // Marton Ronyai, we remember.
 
@@ -189,6 +190,8 @@ img {
 }
 
 .navbar {
+    border-radius: 0;
+
     .scrolled & {
         min-height: 34px;
     }

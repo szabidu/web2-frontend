@@ -13,6 +13,7 @@ var ttt = require("ttt/TTT");
 var tag = require("tag/Tag");
 var comment = require("comment/Comment");
 var auth = require("auth/Auth");
+require('./frameworkless');
 
 require('script!angular-growl-v2');
 require('angular-easyfb')
