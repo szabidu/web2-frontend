@@ -94,4 +94,5 @@ gulp serve
 ```
 Open you browser and navigate to http://localhost:3000
 
-Now smile :)
+Now smile :) :)
+
