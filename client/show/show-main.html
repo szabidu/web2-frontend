@@ -6,6 +6,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- End Google Tag Manager (noscript) -->
 <div class="episode-tab">
+    <ul class="pager episode-box-pager">
+        <li class="cursorPointer prev-link" ng-hide="prevDisabled"><a ng-click="prev()">&larr; Korábbi adások</a></li>
+        <li class="cursorPointer next-link" ng-hide="nextDisabled"><a ng-click="next()">Későbbi adások &rarr;</a></li>
+    </ul>
     <div class="panel panel-default episode-box" ng-repeat="episode in show.episodes">
         <div class="panel-heading">
             <listen-button class="pull-left" link="{{episode.m3uUrl}}"> </listen-button>
@@ -18,9 +22,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </div>
 <ul class="pager episode-box-pager">
-    <li class="cursorPointer prev-link"><a ng-click="prev()">&larr; Korábbi adások</a></li>
-    <li class="cursorPointer next-link" ng-if="currentShowPage != 0"><a ng-click="next()">Későbbi adások &rarr;</a>
-    </li>
+    <li class="cursorPointer prev-link" ng-hide="prevDisabled"><a ng-click="prev()">&larr; Korábbi adások</a></li>
+    <li class="cursorPointer next-link" ng-hide="nextDisabled"><a ng-click="next()">Későbbi adások &rarr;</a></li>
 </ul>
-
-

@@ -10,6 +10,7 @@ require("show/show-bookmarks.html");
 require("show/show-contact.html");
 require("show/sidebar_show.html");
 require("show/show.scss");
+const dateFns = require('date-fns');
 
 
 angularModule.config(function ($stateProvider) {
@@ -54,6 +55,12 @@ angularModule.config(function ($stateProvider) {
         controller: 'ShowCtrl'
     });
 
+    $stateProvider.state('show.archive', {
+        url: '/archive/:year/:quarter',
+        templateUrl: 'show/show-main.html',
+        controller: 'ShowArchiveCtrl'
+    });
+
     $stateProvider.state('show.intro', {
         url: '/intro',
         templateUrl: 'show/show-intro.html',
@@ -79,8 +86,7 @@ angularModule.config(function ($stateProvider) {
     });
 });
 
-angularModule.controller('ShowIntroCtrl', function () {
-});
+angularModule.controller('ShowIntroCtrl', function () {});
 
 
 angularModule.controller('ShowContactCtrl', function ($state, vcRecaptchaService, growl, $scope, $stateParams, API_SERVER_ENDPOINT, $http) {
@@ -104,7 +110,26 @@ angularModule
 
 
 angularModule
-    .controller('ShowCtrl', function ($scope, $stateParams, API_SERVER_ENDPOINT, $http, validateUrl, $rootScope, $location, Meta) {
+.controller('ShowCtrl', function ($scope, $state, $stateParams, Meta) {
+    Meta.setTitle($scope.show.name);
+    if ($scope.show.definition) {
+        Meta.setDescription($scope.show.definition);
+    } else if ($scope.show.description) {
+        Meta.setDescription($scope.show.description.substring(0, 400));
+    }
+    var today = new Date();
+
+    $state.go('show.archive', {
+        id: $stateParams.id,
+        year: dateFns.getYear(today),
+        quarter: dateFns.getQuarter(today)
+    });
+}
+);
+
+
+angularModule
+    .controller('ShowArchiveCtrl', function ($scope, $state, $stateParams, API_SERVER_ENDPOINT, $http, Meta) {
         $scope.server = API_SERVER_ENDPOINT;
         Meta.setTitle($scope.show.name);
         if ($scope.show.definition) {
@@ -113,35 +138,50 @@ angularModule
             Meta.setDescription($scope.show.description.substring(0, 400));
         }
 
-        $scope.currentShowPage = 0;
+        var year = parseInt($stateParams.year);
+        var quarter = parseInt($stateParams.quarter);
+        $scope.prevDisabled = false;
+        $scope.nextDisabled = false;
 
-        var to = new Date().getTime();
-        var from = to - ( 6 * 30 * 24 * 3600 * 1000);
-        $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $scope.show.id + '/episodes?start=' + from + '&end=' + to).success(function (data) {
-            $scope.show.episodes = data;
+        var firstDayOfQuarter = dateFns.setQuarter(new Date(year, 0, 1), quarter);
+        if(dateFns.isAfter($scope.show.firstShowDate, firstDayOfQuarter)) {
+            firstDayOfQuarter = $scope.show.firstShowDate;
+            $scope.prevDisabled = true;
+        }
+
+        var lastDayOfQuarter = dateFns.endOfQuarter(firstDayOfQuarter);
+
+        if(dateFns.isAfter(lastDayOfQuarter, $scope.show.lastShowDate)) {
+            lastDayOfQuarter = $scope.show.lastShowDate;
+            firstDayOfQuarter = dateFns.startOfQuarter(lastDayOfQuarter);
+            $scope.nextDisabled = true;
+        }
+
+        $state.go('show.archive', {
+            id: $stateParams.id,
+            year: dateFns.getYear(firstDayOfQuarter),
+            quarter: dateFns.getQuarter(firstDayOfQuarter)
         });
 
-        $scope.prev = function () {
-            $scope.currentShowPage--;
-            var to = $scope.show.episodes[$scope.show.episodes.length - 1].plannedFrom - 60000;
-            var from = to - 60 * 24 * 60 * 60 * 1000;
-            $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $scope.show.id + '/episodes?start=' + from + '&end=' + to).success(function (data) {
+
+        $http.get(`${API_SERVER_ENDPOINT}/api/v1/show/${$scope.show.id}/episodes?start=${dateFns.getTime(firstDayOfQuarter)}&end=${dateFns.getTime(lastDayOfQuarter)}`)
+            .success(function (data) {
                 $scope.show.episodes = data;
             });
+
+        $scope.prev = function () {
+            var newYear = quarter === 1 ? year - 1 : year;
+            var newQ = quarter === 1 ? 4 : quarter - 1;
+            $state.go('show.archive', {id: $stateParams.id , year: newYear , quarter: newQ})
 
         };
         $scope.next = function () {
-            $scope.currentShowPage++;
-            var from = $scope.show.episodes[0].plannedTo + 60000;
-            var to = from + 60 * 24 * 60 * 60 * 1000;
-            $http.get(API_SERVER_ENDPOINT + '/api/v1/show/' + $scope.show.id + '/episodes?start=' + from + '&end=' + to).success(function (data) {
-                $scope.show.episodes = data;
-            });
+            var newYear = quarter === 4 ? year + 1 : year;
+            var newQ = quarter === 4 ? 1 :  quarter + 1;
+            $state.go('show.archive', {id: $stateParams.id , year: newYear , quarter: newQ})
         };
+    });
 
-
-    }
-);
 module.exports = angularModule;
 
 require("show/AllShow");
