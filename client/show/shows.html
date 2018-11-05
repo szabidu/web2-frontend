@@ -21,12 +21,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-
+    <ul class="nav nav-tabs" role="tablist">
+            <li ng-class="{'active': statusSet === 'active'}" ui-sref-active="active"><a ng-click="statusSet = 'active'">Aktív műsorok</a></li>
+            <li ng-class="{'active': statusSet === 'archive'}"><a ng-click="statusSet = 'archive'">Régi műsorok</a></li>
+    </ul>
+    </div>
     <div class="row">
         <section class="col-md-6 main" role="main">
-            <h1>Beszélgetős műsorok</h1>
+            <h1>Beszélgetős</h1>
             <table class="table">
-                <tr ng-repeat="show in shows['talk'] | filter:simpleShowSearch">
+                <tr ng-repeat="show in shows['talk'] | statusFilter:statusSet | filter:simpleShowSearch">
                     <td>
                         <div style="margin: 15px 0;"><show-label show="show"></show-label></div>
                         <i>{{show.definition | truncate:true:140:'...' }}</i>
@@ -36,9 +40,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </section>
 
         <section class="col-md-6 main" role="main">
-            <h1>Zenés műsorok</h1>
+            <h1>Zenés</h1>
             <table class="table">
-                <tr ng-repeat="show in shows['sound'] | filter:simpleShowSearch">
+                <tr ng-repeat="show in shows['sound'] | statusFilter:statusSet | filter:simpleShowSearch">
                     <td>
                         <div style="margin: 15px 0;"><show-label show="show"></show-label></div>
                         <i>{{show.definition}}</i>

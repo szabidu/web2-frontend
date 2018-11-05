@@ -12,8 +12,10 @@ angularModule.config(function ($stateProvider) {
     });
 });
 
-angularModule.controller('AllshowCtrl', function ($scope, API_SERVER_ENDPOINT, $http) {
-    $http.get(API_SERVER_ENDPOINT + '/api/v1/show', {cache: true}).success(function (data) {
+angularModule.controller('AllshowCtrl', function ($scope, $stateParams, API_SERVER_ENDPOINT, $http) {
+    $scope.statusSet = 'active';
+
+    $http.get(API_SERVER_ENDPOINT + '/api/v1/show?status=all', {cache: true}).success(function (data) {
         var res = {
             talk: [],
             sound: []

@@ -66,6 +66,18 @@ tilos.filter('truncate', function () {
 });
 
 
+tilos.filter('statusFilter', () => {
+    return function (value, type) {
+        console.log(type);
+        if(!value) return;
+        console.log(value);
+        return value.filter(show =>
+            type === 'archive' ? show.status !== 'ACTIVE' : show.status === 'ACTIVE'
+        );
+    };
+});
+
+
 tilos.config(function ($locationProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
 

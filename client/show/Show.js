@@ -89,7 +89,7 @@ angularModule.config(function ($stateProvider) {
 angularModule.controller('ShowIntroCtrl', function () {});
 
 
-angularModule.controller('ShowContactCtrl', function ($state, vcRecaptchaService, growl, $scope, $stateParams, API_SERVER_ENDPOINT, $http) {
+angularModule.controller('ShowContactCtrl', function ($state, growl, $scope, $stateParams, API_SERVER_ENDPOINT, $http) {
     $scope.message = {};
     $scope.save = function () {
         $scope.message.captcha = $scope.captcha;
