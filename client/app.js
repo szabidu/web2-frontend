@@ -256,6 +256,19 @@ tilos.factory('validateUrl', function ($sce) {
     };
 });
 
+tilos.config(function($stateProvider) {
+    $stateProvider.state('egyszazalek', {
+        url: '/egyszazalek',
+        controller: 'onepercentCtrl'
+    });
+});
+
+
+tilos.controller('onepercentCtrl', function ($state) {
+    $state.go('page', {id: 'egyszazalek'})
+});
+
+
 
 // require("script!./services/DateFormatUtils.js");
 // require("script!./config.js");
