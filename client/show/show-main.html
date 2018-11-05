@@ -12,7 +12,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
     <div class="panel panel-default episode-box" ng-repeat="episode in show.episodes">
         <div class="panel-heading">
-            <listen-button class="pull-left" link="{{episode.m3uUrl}}"> </listen-button>
+            <listen-button class="pull-left" link="{{episode.m3uUrl}}"  ng-show="episode.plannedFrom >= 1270072800000"></listen-button>
             <div class="episode-title">
                 <a ng-show="episode.persistent" ng-href="{{episode.url}}">{{episode.plannedFrom| date:'yyyy.MM.dd.'}} {{episode.text.title}}</a></span>
                 <span ng-hide="episode.persistent">{{episode.plannedFrom| date: 'yyyy.MM.dd.'}}</span>
