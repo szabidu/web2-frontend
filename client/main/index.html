@@ -12,22 +12,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <!-- End Facebook Page Plugin -->
+<br>
 <aside class="col-md-push-9 col-md-3">
     <div ng-include src="'main/sidebar_right.html'"></div>
 </aside>
 
 <section class="col-md-pull-3 col-md-6 main" role="main">
-
     <div ng-show="lead.formatted" class="panel panel-default">
-        <div ng-show="lead.formatted" class="panel panel-default">
-            <div class="panel-heading">
-                <b>{{lead.title}}</b>
-            </div>
-            <div class="panel-body" ng-bind-html="lead.formatted">
-            </div>
+        <div class="panel-heading">
+            <b>{{lead.title}}</b>
         </div>
-
+        <div class="panel-body" ng-bind-html="lead.formatted">
+        </div>
     </div>
+
 
     <div class="stream-banner" ng-show="extraStreams.indexOf('samsara')">
         <a href="http://stream.tilos.hu/samsara.m3u"><!--img src="https://tilos.hu/upload/content/info/samsara_banner.png"/></a>

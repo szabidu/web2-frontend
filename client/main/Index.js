@@ -30,6 +30,10 @@ angularModule.config(function ($stateProvider) {
 
 angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOINT, $sce, $timeout) {
 
+    // $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/lead').success(function (data) {
+    //     $scope.lead = data;
+    // });
+
     $http.get(API_SERVER_ENDPOINT + '/api/v1/text/news/current').success(function (data) {
         $scope.news = data;
     });
