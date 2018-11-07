@@ -152,7 +152,7 @@ angularModule
         var lastDayOfQuarter = dateFns.endOfQuarter(firstDayOfQuarter);
 
         if(dateFns.isAfter(lastDayOfQuarter, $scope.show.lastShowDate)) {
-            lastDayOfQuarter = $scope.show.lastShowDate;
+            lastDayOfQuarter = dateFns.endOfDay($scope.show.lastShowDate);
             firstDayOfQuarter = dateFns.startOfQuarter(lastDayOfQuarter);
             $scope.nextDisabled = true;
         }
