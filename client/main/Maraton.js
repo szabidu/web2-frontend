@@ -17,7 +17,7 @@ class Indicator {
         this.drawScaleStep();
         this.drawProgress();
     }
-    
+
     drawScale () {
 
         for(var i=0; i<this.params.segments+1; i++) {
@@ -27,7 +27,7 @@ class Indicator {
             if(i%this.params.major==0) {
                 currentTick.className = "tick";
             } else {
-                currentTick.className = "small-tick";   
+                currentTick.className = "small-tick";
             }
             currentTick.style.marginLeft = i*(100/this.params.segments) + "%";
             let percentStep = (this.params.max-this.params.min)/this.params.segments;
@@ -49,16 +49,16 @@ class Indicator {
 
         for(var i=this.params.min; i<this.params.max; i+=this.params.segmentStep) {
             j++;
-            
+
             let tick = document.createElement("div");
             let currentTick = this.axis.appendChild(tick);
-            
+
             if(j%this.params.major==0) {
                 currentTick.className = "tick";
             } else {
-                currentTick.className = "small-tick";   
+                currentTick.className = "small-tick";
             }
-            
+
             currentTick.style.marginLeft = j*(100/numOfSegments) + "%";
             let percentStep = (this.params.max-this.params.min)/numOfSegments;
             let val = Number(this.params.min+(j*percentStep))/1000;
@@ -82,14 +82,12 @@ class Indicator {
 angularModule.controller('MaratonCtrl', function ($scope) {
 
     var params = {
-        segmentStep: 500,   
+        segmentStep: 500,
         major: 2,
         min: 0,
         max: 15000,
-        value: ‭11300
+        value: 11300
     }
     var target = document.getElementById("donation--indicator--wrapper");
-    var indicator = new Indicator(params, target);  
+    var indicator = new Indicator(params, target);
 });
-
-
