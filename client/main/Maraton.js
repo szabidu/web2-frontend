@@ -88,7 +88,7 @@ angularModule.controller('MaratonCtrl', function ($scope) {
         max: 15000,
         value: ‭11300
     }
-    var target = document.getElementById("donation--indicator--wrapper");
+    var target = document.getElementById("donation-indicator-wrapper");
     var indicator = new Indicator(params, target);  
 });
 
