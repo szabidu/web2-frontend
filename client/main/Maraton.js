@@ -82,11 +82,11 @@ class Indicator {
 angularModule.controller('MaratonCtrl', function ($scope) {
 
     var params = {
-        segmentStep: 100,   
+        segmentStep: 500,   
         major: 2,
         min: 0,
-        max: 1500,
-        value: ‭1130
+        max: 15000,
+        value: ‭9999
     }
     var target = document.getElementById("donation--indicator--wrapper");
     var indicator = new Indicator(params, target);  
