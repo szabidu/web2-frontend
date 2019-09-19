@@ -13,6 +13,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 }(document, 'script', 'facebook-jssdk'));</script>
 <!-- End Facebook Page Plugin -->
 <br>
+<div style="border-top: 1px solid #c48282;
+margin-bottom: 1em;
+background-color: #e3e0e0;
+border-bottom: 1px solid #c48282;
+padding-left: 1em;">
+        Ez szól: 
+        <span class="artist" ng-bind="whatsPlaying.song.artist"></span>:
+        <span class="title" ng-bind="whatsPlaying.song.title"></span>
+        <button type="button" ng-click="getWhatsPlaying">frissít</button>
+    </div>
+
 <aside class="col-md-push-9 col-md-3">
     <div ng-include src="'main/sidebar_right.html'"></div>
 </aside>
