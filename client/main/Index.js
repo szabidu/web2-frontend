@@ -48,25 +48,21 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
     });
 
     function getWhatsPlaying () {
-        var url = "https://gettingstartedwithazurewebasos.azurewebsites.net/echo/";
+        var url = "https://gettingstartedwithazurewebasos.azurewebsites.net/acr/last";
         $http.get(url).success(function(data) {
-            // $scope.whatsPlaying.stream = {
-            //     streamId: data.stream_id,
-            //     streamUrl: data.stream_url,
-            // }
-
+            $scope.whatsPlaying = $scope.whatsPlaying || {};
+            $scope.whatsPlaying.song = $scope.whatsPlaying.song || {};
             try{
-                var parts = data.split(';');
-                $scope.whatsPlaying = {
-                    stream: {
-                        streamId: parts[0].split('=')[1],
-                        streamUrl: parts[1].split('=')[1],
-                    }
+                var d = data;
+                try {
+                    if (typeof data === 'string') d = JSON.parse(data);
+                } catch (ex) { 
+                    $scope.whatsPlaying.song.artist = 'ismeretlen szám';
+                    $scope.whatsPlaying.song.title = 'ismeretlen előadó';
+                    return;
                 }
-
-                //var d = data.data;
-                var d = parts[3].split('=')[1];
-                $scope.whatsPlaying.song = JSON.parse(d);
+                
+                $scope.whatsPlaying.song = d;
                 $scope.whatsPlaying.song.title = $scope.whatsPlaying.song.metadata.music[0].title;
                 $scope.whatsPlaying.song.artist = '';
                 var artists = $scope.whatsPlaying.song.metadata.music[0].artists;
