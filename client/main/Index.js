@@ -53,15 +53,16 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
             $scope.whatsPlaying = $scope.whatsPlaying || {};
             $scope.whatsPlaying.song = $scope.whatsPlaying.song || {};
             try{
-                var d = data;
+                var d = '';
                 try {
-                    if (typeof data === 'string') d = JSON.parse(data);
-                } catch (ex) { 
+                    d = typeof data === 'string' ? data : JSON.stringify(data)
+                    d = JSON.parse(d);
+                } catch (ex) {
                     $scope.whatsPlaying.song.artist = 'ismeretlen szám';
                     $scope.whatsPlaying.song.title = 'ismeretlen előadó';
                     return;
                 }
-                
+
                 $scope.whatsPlaying.song = d;
                 $scope.whatsPlaying.song.title = $scope.whatsPlaying.song.metadata.music[0].title;
                 $scope.whatsPlaying.song.artist = '';
