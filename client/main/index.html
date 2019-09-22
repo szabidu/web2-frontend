@@ -13,6 +13,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 }(document, 'script', 'facebook-jssdk'));</script>
 <!-- End Facebook Page Plugin -->
 <br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <table width="100%">
+            <tr>
+                <td width="1%" style="white-space: nowrap">
+               Most szól
+                </td>
+                <td style="padding: 0 10px;">
+                    <span class="artist" ng-bind="whatsPlaying.song.artist"></span>:
+                    <span class="title" ng-bind="whatsPlaying.song.title"></span>
+                </td>
+                <td align="right">
+                    <button type="button" ng-click="getWhatsPlaying" class="btn btn-small btn-info">Frissít</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 <aside class="col-md-push-9 col-md-3">
     <div ng-include src="'main/sidebar_right.html'"></div>
 </aside>

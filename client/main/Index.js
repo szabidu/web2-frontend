@@ -28,7 +28,7 @@ angularModule.config(function ($stateProvider) {
 });
 
 
-angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOINT, $sce, $timeout) {
+angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOINT, $interval) {
 
     // $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/lead').success(function (data) {
     //     $scope.lead = data;
@@ -46,5 +46,44 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
     $http.get(API_SERVER_ENDPOINT + '/api/v1/episode/lastWeek').success(function (data) {
         $scope.lastWeek = data;
     });
+
+    function getWhatsPlaying () {
+        var url = "https://gettingstartedwithazurewebasos.azurewebsites.net/acr/last";
+        $http.get(url).success(function(data) {
+            $scope.whatsPlaying = $scope.whatsPlaying || {};
+            $scope.whatsPlaying.song = $scope.whatsPlaying.song || {};
+            try{
+                var d = data;
+                try {
+                    if (typeof data === 'string') d = JSON.parse(data);
+                } catch (ex) { 
+                    $scope.whatsPlaying.song.artist = 'ismeretlen szám';
+                    $scope.whatsPlaying.song.title = 'ismeretlen előadó';
+                    return;
+                }
+                
+                $scope.whatsPlaying.song = d;
+                $scope.whatsPlaying.song.title = $scope.whatsPlaying.song.metadata.music[0].title;
+                $scope.whatsPlaying.song.artist = '';
+                var artists = $scope.whatsPlaying.song.metadata.music[0].artists;
+                for (var i = 0; i< artists.length; i++) {
+                    $scope.whatsPlaying.song.artist += artists[i].name + "; ";
+                }
+                $scope.whatsPlaying.song.artist = $scope.whatsPlaying.song.artist.substr(0,$scope.whatsPlaying.song.artist.length-2);
+            } catch (ex) {
+                $scope.whatsPlaying.song.artist = 'HIBA: ';
+                $scope.whatsPlaying.song.title = ex.toString();
+            }
+        }).error(function(data) {
+            console.error(data);
+            $scope.whatsPlaying.song.artist = 'HIBA: ';
+            var msg = ''; try { msg =  JSON.stringify(data); } catch(ex) {}
+            $scope.whatsPlaying.song.title = data.toString() + msg;
+    });
+    }
+
+    getWhatsPlaying();
+    $interval(getWhatsPlaying, 10000);
+    $scope.getWhatsPlaying = getWhatsPlaying;
 
 });
