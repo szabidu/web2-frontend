@@ -47,11 +47,14 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
         $scope.lastWeek = data;
     });
 
+    $scope.whatsPlaying = $scope.whatsPlaying || {};
+    $scope.whatsPlaying.song = $scope.whatsPlaying.song || {};
+    $scope.whatsPlaying.showDetails = false;
     function getWhatsPlaying () {
-        var url = "https://gettingstartedwithazurewebasos.azurewebsites.net/acr/last";
+        var url = location.port === "3000" 
+            ? "http://192.168.0.80:8001/acr/lastdev" 
+            : "https://gettingstartedwithazurewebasos.azurewebsites.net/acr/last";
         $http.get(url).success(function(data) {
-            $scope.whatsPlaying = $scope.whatsPlaying || {};
-            $scope.whatsPlaying.song = $scope.whatsPlaying.song || {};
             try{
                 var d = '';
                 try {
