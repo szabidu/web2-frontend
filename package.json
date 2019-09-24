@@ -17,6 +17,7 @@
     "custom-event": "1.0.1",
     "date-fns": "1.29.0",
     "document-register-element": "1.11.1",
+    "express-generator": "^4.16.1",
     "extract-text-webpack-plugin": "~1.0.1",
     "file-loader": "~0.8.5",
     "hyperhtml": "2.14.0",
