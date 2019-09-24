@@ -65,9 +65,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </a>    
                         </div>
                         <div ng-show="music.external_metadata.spotify.album.name">
-                            (<a ng-href="https://open.spotify.com/album/{{music.external_metadata.spotify.album.id}}">
-                                <span ng-bind="music.external_metadata.spotify.album.name || 'album'"></span>
-                            </a>)    
+                            (<a ng-href="https://open.spotify.com/album/{{music.external_metadata.spotify.album.id}}"
+                                ><span ng-bind="music.external_metadata.spotify.album.name || 'album'"></span></a>)    
                         </div>
                     </td>
                     </tr>
@@ -77,7 +76,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <div ng-show="music.external_metadata.deezer.artists.length">
                                 <span ng-repeat="artist in music.external_metadata.deezer.artists">
                                     <a ng-href="https://www.deezer.com/en/artist/{{artist.id}}">
-                                        <span ng-bind="artist.name || 'szerző/előadó'"></span>
+                                        <span ng-bind="artist.name || 'előadó'"></span>
                                     </a><span ng-hide="$last">, </span> 
                                 </span>
                             </div>
