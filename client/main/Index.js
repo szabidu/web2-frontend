@@ -51,6 +51,7 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
     $scope.whatsPlaying.song = $scope.whatsPlaying.song || {};
     $scope.whatsPlaying.showDetails = false;
     function getWhatsPlaying () {
+        if (document.hidden === true) return;
         var url = location.port === "3000" 
             ? "http://192.168.0.80:8001/acr/lastdev" 
             : "https://gettingstartedwithazurewebasos.azurewebsites.net/acr/last";
