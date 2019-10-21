@@ -28,7 +28,7 @@ angularModule.config(function ($stateProvider) {
 });
 
 
-angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOINT, $interval) {
+angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOINT, $interval, currentEpisodes) {
 
     // $http.get(API_SERVER_ENDPOINT + '/api/v1/text/page/lead').success(function (data) {
     //     $scope.lead = data;
@@ -50,17 +50,17 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
     $scope.whatsPlaying = $scope.whatsPlaying || {};
     $scope.whatsPlaying.song = $scope.whatsPlaying.song || {};
     $scope.whatsPlaying.showDetails = false;
-    function getWhatsPlaying () {
+    $scope.whatsPlaying.get = function () {
         if (document.hidden === true) return;
         var url = location.port === "3000" 
             ? "http://192.168.0.80:8001/acr/lastdev" 
-            : "https://gettingstartedwithazurewebasos.azurewebsites.net/acr/last";
+            : "https://acrcloudtilos.azurewebsites.net/acr/last";
         $http.get(url).success(function(data) {
             try{
                 var d = '';
                 try {
                     d = typeof data === 'string' ? data : JSON.stringify(data)
-                    d = JSON.parse(d);
+                    d = JSON.parse(d.Data);
                 } catch (ex) {
                     $scope.whatsPlaying.song.artist = 'ismeretlen szám';
                     $scope.whatsPlaying.song.title = 'ismeretlen előadó';
@@ -80,15 +80,26 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
                 $scope.whatsPlaying.song.title = ex.toString();
             }
         }).error(function(data) {
-            console.error(data);
-            $scope.whatsPlaying.song.artist = 'HIBA: ';
+            $scope.whatsPlaying.song.artist = '';
+            $scope.whatsPlaying.song.title = '';
+            if (!data) return;
+             console.error(data);
             var msg = ''; try { msg =  JSON.stringify(data); } catch(ex) {}
-            $scope.whatsPlaying.song.title = data.toString() + msg;
-    });
+        });
     }
 
-    getWhatsPlaying();
-    $interval(getWhatsPlaying, 10000);
-    $scope.getWhatsPlaying = getWhatsPlaying;
+    $scope.whatsPlaying.subscription = currentEpisodes.current().subscribe(
+        function (x) {
+            $scope.$apply(function () {
+                $scope.whatsPlaying.currentEpisode = x;
+                // műsor címe == x.show.name;
+            })
+        });
+    $scope.whatsPlaying.stopAtEndOfSong = function() {
+        
+    }
+
+    $scope.whatsPlaying.get();
+    $interval($scope.whatsPlaying.get, 10000);
 
 });
