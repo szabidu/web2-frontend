@@ -60,7 +60,7 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
                 var d = '';
                 try {
                     d = typeof data === 'string' ? data : JSON.stringify(data)
-                    d = JSON.parse(d);
+                    d = JSON.parse(d.Data);
                 } catch (ex) {
                     $scope.whatsPlaying.song.artist = 'ismeretlen szám';
                     $scope.whatsPlaying.song.title = 'ismeretlen előadó';
