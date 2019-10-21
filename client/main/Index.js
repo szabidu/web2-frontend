@@ -63,6 +63,7 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
                     d = JSON.parse(d);
                     if (!Array.isArray(d) || d.length !== 1) throw "The backend did not return 1 record.";
                     if (!d[0].Data) throw "Backend did not return a Data object: " + JSON.stringify(d[0]);
+                    if (typeof d[0].Data === 'string') d[0].Data = JSON.parse(d[0].Data);
                 } catch (ex) {
                     $scope.whatsPlaying.song.artist = 'ismeretlen szám';
                     $scope.whatsPlaying.song.title = 'ismeretlen előadó';
