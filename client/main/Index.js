@@ -50,6 +50,7 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
     $scope.whatsPlaying = $scope.whatsPlaying || {};
     $scope.whatsPlaying.song = $scope.whatsPlaying.song || {};
     $scope.whatsPlaying.showDetails = false;
+    $scope.whatsPlaying.WhatsPlayingText = 'Felismerés folyamatban...';
     $scope.whatsPlaying.get = function () {
         if (document.hidden === true) return;
         var url = location.port === "3000" 
@@ -77,7 +78,14 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
                 for (var i = 0; i< artists.length; i++) {
                     $scope.whatsPlaying.song.artist += artists[i].name + "; ";
                 }
-                $scope.whatsPlaying.song.artist = $scope.whatsPlaying.song.artist.substr(0,$scope.whatsPlaying.song.artist.length-2);
+                $scope.whatsPlaying.song.artist = $scope.whatsPlaying.song.artist.substr(0, $scope.whatsPlaying.song.artist.length - 2);
+                
+                // Has the song ended?
+                var now = new Date();
+                var songEndTime = getSongEndTime();
+                if (songEndTime < now) {
+                    $scope.whatsPlaying.WhatsPlayingText = 'Utolsó felismert szám (vége lett:' + songEndTime.toLocaleTimeString() + ')';
+                }
             } catch (ex) {
                 $scope.whatsPlaying.song.artist = 'HIBA: ';
                 $scope.whatsPlaying.song.title = ex.toString();
@@ -99,7 +107,26 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
             })
         });
     $scope.whatsPlaying.stopAtEndOfSong = function() {
-        
+    }
+
+    function getSongEndTime() {
+        var sRecognitionTime = $scope.whatsPlaying.song.metadata.music[0].timestamp_utc;
+        var recognitionTime = new Date(sRecognitionTime.replaceAll('-', '/') + ' UTC');
+        var playOffset = $scope.whatsPlaying.song.metadata.music[0].play_offset_ms;
+        var duration = $scope.whatsPlaying.song.metadata.music[0].duration_ms;
+        if (isNaN(playOffset)) {
+            console.log('Invalid playOffset: ' + $scope.whatsPlaying.song.metadata.music[0].play_offset_ms.toString())
+            playOffset = 0;
+        } 
+        if (isNaN(duration) || duration < 0) {
+            console.log('Invalid duration');
+            return null;
+        }
+        if (isNaN(recognitionTime.getTime())) {
+            console.log('Invalid recognition time. Did the format change from yyyy-mm-dd hh:mm:ss? ' + sRecognitionTime);
+            return null;
+        }
+        return new Date(recognitionTime.getTime() + duration - playOffset);
     }
 
     $scope.whatsPlaying.get();
