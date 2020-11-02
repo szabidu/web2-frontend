@@ -14,24 +14,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Facebook Page Plugin -->
 <br>
 <div class="panel panel-default" ng-if=whatsPlaying.song.artist>
+    <style>
+        .whatsPlayingButtons > button { margin-bottom: 5px;}
+    </style>
     <div class="panel-heading">
-        <table width="100%">
-            <tr>
-                <td width="1%" style="white-space: nowrap">
-               <b ng-bind="whatsPlaying.whatsPlayingText">MOST SZÓL</b>
-                </td>
-                <td style="padding: 0 10px;">
-                    <span class="artist" ng-bind="whatsPlaying.song.artist"></span> -
-                    <span class="title" ng-bind="whatsPlaying.song.title"></span>
-                </td>
-                <td align="right">
-                    <button type="button" ng-click="whatsPlaying.get" class="btn btn-small btn-info">Frissít</button>
-                    <button type="button" ng-click="whatsPlaying.showDetails = !whatsPlaying.showDetails" class="btn btn-small btn-info">Részletek</button>
-                </td>
-            </tr>
-            <tr ng-show="whatsPlaying.showDetails">
-                <td colspan="2">
-                <table class="table table-sm" ng-repeat="music in whatsPlaying.song.metadata.music">
+        <div class="row">
+            <div class="col-md-2 col-sm-10">
+                <b ng-bind="whatsPlaying.whatsPlayingText">MOST SZÓL</b>
+            </div>
+            <div class="col-md-8 col-sm-10">
+                <span class="artist" ng-bind="whatsPlaying.song.artist"></span> -
+                <span class="title" ng-bind="whatsPlaying.song.title"></span>
+            </div>
+            <div class="col-md-2 whatsPlayingButtons" align="right">
+                <button type="button" ng-click="whatsPlaying.get()" class="btn btn-small btn-info">Frissít</button>
+                <button type="button" ng-click="whatsPlaying.showDetails = !whatsPlaying.showDetails" class="btn btn-small btn-info">Részletek</button>
+            </div>
+        </div>
+                <table class="table table-sm" 
+                    ng-repeat="music in whatsPlaying.song.metadata.music"
+                    ng-show="whatsPlaying.showDetails">
                     <tr ng-show="music.title">
                         <td><b>Cím:</b></td>
                         <td><span ng-bind="music.title"></span></td>
@@ -96,9 +98,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <td><a ng-href="https://youtube.com/watch?v={{music.external_metadata.youtube.vid}}">videó</a></td>
                     </tr>
                 </table>     
-                </td>                       
-            </tr>
-        </table>
     </div>
 </div>
 
@@ -152,16 +151,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <br><strong>Rendelkezésed akkor érvényes, ha befizetted az adód és nincs adótartozásod!</strong></p></div>
     <div><a href="https://tilos.hu/page/egyszazalek"><strong> << 1% face borítók, egyéb segédinformációk >> </strong></div-->
     <!--div><a href="https://www.facebook.com/events/1079527849104625/"><img src="https://tilos.hu/upload/egyszazalek/tamogass.jpg"></a-->
-    <!-- <div><a href="https://maraton.tilos.hu/"><img src="https://maraton.tilos.hu/images/2020-Maraton.png"></a>
-    </div> -->
+    <!--div><a href="https://maraton.tilos.hu/"><img src="https://maraton.tilos.hu/images/2020-Maraton.png"></a>
+    </div-->
     <!-- div>
 <p>A Tilos Maratont, rádiónk éves adománygyűjtő fesztiválját hagyományosan az év utolsó tanítási hetében szoktuk megrendezni, ám ezt is felülírta a COVID -19 krízis.   
 Az egyhetes rádiós esemény indulásával párhuzamosan megújítjuk a webes Tilos adományplázát, ahol számos korábbi kedvelt minta mellett, az alkalomra készült vadiúj pólókat is találtok.</p></div-->
 <!-- div><p><strong>A szokott időben és helyszínen, a Dürer Kertben nem tudjuk megtartani közösségi eseményünket. Ám ha fesztivált nem is, a Tilos Rádióban az FM 90.3 frekvencián, és a rádió online felületein elMaraton jelszóval támogatásgyűjtő műsorfolyamot indítunk, június 8-tól kezdődően.</strong></p></div>
 <div><p>A Dürerrel közösen úgy tervezzük, hogy szeptember elején azért bepótolunk valamit a Maratonból, és a Tilos szülinapot egész hetes eseménnyé bővítjük.</p></div-->
 <!--div><p>A részletes napi program bontást megtaláljátok a <a href="https://www.facebook.com/events/1209215349247072"><strong>facebook esemény</strong></a> leírásában.</p></div-->
-<!--div><p>Csatlakozzatok és osszátok a <strong><a href="https://www.facebook.com/events/1193946704289592/">facebook eseményt</a></strong> amelyben folyamatosan érkeznek a maratonos hírek. A részletes programot pedig megtaláljátok a <a href="https://maraton.tilos.hu/"><strong>https://maraton.tilos.hu</strong></a> oldalon is!</p></div-->
-<!-- <div><a href="https://tilos.hu/page/tamogass"><img src="https://maraton.tilos.hu/images/2020-banner-donation.png"></a></div> -->
+<!--div><p>Csatlakozzatok és osszátok a <strong><a href="https://www.facebook.com/events/1193946704289592/">facebook eseményt</a></strong> amelyben folyamatosan érkeznek a maratonos hírek. A részletes programot pedig megtaláljátok a <a href="https://maraton.tilos.hu/"><strong>https://maraton.tilos.hu</strong></a> oldalon is!</p></div>
+<!--div><a href="https://tilos.hu/page/tamogass"><img src="https://maraton.tilos.hu/images/2020-banner-donation.png"></a></div-->
 <!--div><a href="https://tixa.hu/tilos-adomany-bogracs"><img src="https://maraton.tilos.hu/images/2020-banner-bogracs.png"></a></div-->
 <!--div><a href="http://plaza.tilos.hu"><img src="https://maraton.tilos.hu/images/2020-banner-plaza.png"></a></div>
 <div><a href="https://tilos.hu/page/aukcio"><img src="https://maraton.tilos.hu/images/2020-banner-aukcio.png"></a></div-->
