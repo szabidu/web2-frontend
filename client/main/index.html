@@ -109,7 +109,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="box">
         <!-- <h2>Tilos hírek</h2> -->
         <article class="news-lead" ng-repeat="text in news" ng-if="!$index"> 
-            <h3><a ng-href="/news/{{text.id}}">{{text.title}}</a></h3>
+            <h2 class="blue"><a ng-href="/news/{{text.id}}">{{text.title}}</a></h2>
             <span ng-bind-html="text.leadFormatted"></span></p>
             <a ng-show="text.longText" class="btn btn-small btn-info pull-right" ng-href="/news/{{text.id}}">Részletek...</a>
         </article>
@@ -173,12 +173,12 @@ Az egyhetes rádiós esemény indulásával párhuzamosan megújítjuk a webes T
         <h2 class="blue">Műsorajánló</h2>
         <div class="episode-next episode-list" data-ng-repeat="episode in next">
             <h3><a ng-href="{{episode.url}}">{{episode.text.title | truncate:true:100:'...'}}</a></h3>
-            <div ng-bind-html="episode.text.formatted | truncate:true:240:'...'"></div>
             <p>
                 <show-label show="episode.show"></show-label>
                 <span class="pull-right main-date">{{episode.plannedFrom | date:'MMMM dd. - HH:mm'}}</span>
 
             </p>
+            <div ng-bind-html="episode.text.formatted | truncate:true:240:'...'"></div>
         </div>
     </div>
     <div class="recent-broadcast-schedule">
