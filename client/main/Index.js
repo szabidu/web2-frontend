@@ -140,4 +140,34 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
     $scope.whatsPlaying.get();
     $interval($scope.whatsPlaying.get, 10000);
 
+    $scope.hasPic = function(episode) {
+        var re = /<img([\w\W]+?)\/>/;
+        var html = episode.text.formatted;
+        return re.test(html);
+    }
+
+    $scope.getShowPic = function(episode) {
+        var alias = episode.show.alias || 'tilos-radio';
+        if (episode.show.alias) console.log(alias);
+        return "https://tilos.hu/upload/episode/"+ alias+ ".jpg";
+    }
+});
+
+angularModule.directive('ensurePic', function() {
+    return {
+        link: function(scope, element, attrs) {
+            var placeholder = 'https://tilos.hu/upload/episode/tilos-radio.jpg';
+            scope.$watch(function() {
+                return attrs.ngSrc;
+            }, function (value) {
+                if (!value) {
+                    element.attr('src', placeholder);  
+                }
+            });
+
+            element.bind('error', function() {
+                element.attr('src', placeholder);  
+            });
+        }
+    };
 });

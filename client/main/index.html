@@ -172,27 +172,35 @@ Az egyhetes rádiós esemény indulásával párhuzamosan megújítjuk a webes T
     <div ng-show="next.length" class="program-guides">
         <h2 class="blue">Műsorajánló</h2>
         <div class="episode-next episode-list" data-ng-repeat="episode in next">
-            <p>
-                <show-label show="episode.show"></show-label>
-                <span class="main-date">{{episode.plannedFrom | date:'MMMM dd. - HH:mm'}}</span>
-            </p>
-            <h3><a ng-href="{{episode.url}}">{{episode.text.title | truncate:true:100:'...'}}</a></h3>
+            <div class="spacer">
+                <p>
+                    <show-label show="episode.show"></show-label>
+                    <span class="main-date">{{episode.plannedFrom | date:'MMMM dd. - HH:mm'}}</span>
+                </p>
+                <h3><a ng-href="{{episode.url}}">{{episode.text.title | truncate:true:100:'...'}}</a></h3>
 
-            <div ng-bind-html="episode.text.formatted | truncate:true:240:'...'"></div>
+                <div ng-bind-html="episode.text.formatted | truncate:true:240:'...'"></div>
+            </div>
         </div>
     </div>
-    <div class="recent-broadcast-schedule">
+    <div class="row recent-broadcast-schedule">
         <h2 class="blue top">Az elmúlt hét adásai</h2>
-        <div class="episode-last episode-list" data-ng-repeat="episode in lastWeek">
-            <p>
-                <show-label show="episode.show"></show-label>
-                <span class="main-date hidden-xs">{{episode.plannedFrom | date:'yyyy. MMMM dd.'}}</span>
-            </p>
-            <h3>
-                <listen-button class="pull-left" link="{{episode.m3uUrl}}"></listen-button>
-                <a ng-href="{{episode.url}}">{{episode.text.title | truncate:true:100:'...'}}</a>
-            </h3>
-            <div ng-bind-html="episode.text.formatted | truncate:true:240:'...'"></div>
+        <div class="col-md-6 episode-last episode-list" data-ng-repeat="episode in lastWeek">
+            <div class="spacer">
+                <p>
+                    <show-label show="episode.show"></show-label>
+                    <div class="main-date hidden-xs">{{episode.plannedFrom | date:'yyyy. MMMM dd.'}}</div>
+                </p>
+                <h3>
+                    <listen-button class="pull-left" link="{{episode.m3uUrl}}"></listen-button>
+                    <a ng-href="{{episode.url}}">{{episode.text.title | truncate:true:100:'...'}}</a>
+                </h3>
+                <div class="show-pic" ng-if="!hasPic(episode)">
+                    <img ng-src="{{ getShowPic(episode) }}" ensure-pic alt="Adás borító" />
+                </div>
+                <div ng-bind-html="episode.text.formatted | truncate:true:240:'...'"></div>
+                <fade/>
+            </div>
         </div>
     </div>
         
