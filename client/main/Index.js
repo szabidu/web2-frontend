@@ -151,23 +151,17 @@ angularModule.controller('MainCtrl', function ($scope, $http, API_SERVER_ENDPOIN
         if (episode.show.alias) console.log(alias);
         return "https://tilos.hu/upload/episode/"+ alias+ ".jpg";
     }
-});
 
-angularModule.directive('ensurePic', function() {
-    return {
-        link: function(scope, element, attrs) {
-            var placeholder = 'https://tilos.hu/upload/episode/tilos-radio.jpg';
-            scope.$watch(function() {
-                return attrs.ngSrc;
-            }, function (value) {
-                if (!value) {
-                    element.attr('src', placeholder);  
-                }
-            });
-
-            element.bind('error', function() {
-                element.attr('src', placeholder);  
-            });
+    $scope.getPicFront = function(episode) {
+        if (!episode || !episode.text || !episode.text.formatted) return null;
+        var re = /(.*)(<img\s[\w\W]+?\/>)(.*)/;
+        var html = episode.text.formatted;
+        if (re.test(html)) {
+            var wrapper1 = '<p class="image-wrapper">';
+            var wrapper2 = '</p>';
+            episode.text.formatted = html.replace(re, "$2$1$3");
+            return wrapper1 + episode.text.formatted + wrapper2;
         }
-    };
+    }
 });
+
