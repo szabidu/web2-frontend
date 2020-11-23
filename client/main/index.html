@@ -169,9 +169,9 @@ Az egyhetes rádiós esemény indulásával párhuzamosan megújítjuk a webes T
 <!-- div><a href="https://tilos.hu/page/tematikusnap-exyu"><img src="https://tilos.hu/upload/content/info/tematikus-ex-yu.jpg"></div-->
 
 
-    <div ng-show="next.length" class="row program-guides">
+    <div ng-show="next.length" class="program-guides">
         <h2 class="blue">Műsorajánló</h2>
-        <div class="col-md-6 episode-next episode-list" data-ng-repeat="episode in next">
+        <div class="episode-next episode-list" data-ng-repeat="episode in next">
             <div class="spacer">
                 <p>
                     <show-label show="episode.show"></show-label>
@@ -199,6 +199,7 @@ Az egyhetes rádiós esemény indulásával párhuzamosan megújítjuk a webes T
                     <img ng-src="{{ getShowPic(episode) }}" ensure-pic alt="Adás borító" />
                 </div>
                 <div ng-bind-html="episode.text.formatted | truncate:true:240:'...'"></div>
+                <fade/>
             </div>
         </div>
     </div>

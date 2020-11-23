@@ -1195,12 +1195,16 @@ input.datepicker {
     margin-bottom: 10px;
 }
 
-.episode-last.episode-list {
-    padding: 1%;
+.episode-last.episode-list:nth-child(2n) {
+    padding: 0 1% 0 0;
+    margin: -0;
+}
+.episode-last.episode-list:nth-child(2n+1) {
+    padding: 0 0 0 1%;
 }
 
 .episode-last.episode-list > .spacer {
-    padding: 2%;
+    padding: 5% 2% 2%;
     border: 1px #35aadc solid;
     vertical-align: top;
     border-radius: 3px;
@@ -1214,6 +1218,21 @@ input.datepicker {
     max-height: 19em;
     margin: 0 auto;
     display: block;
+    
+}
+
+fade {
+    position: absolute;
+    bottom: 1px;
+    display: block;
+    width: 95%;
+    height: 50px;
+    background-image: linear-gradient(to bottom, rgba(237, 237, 235, 0), rgba(237, 237, 235, 0.9) 100%);
+}
+
+.episode-last.episode-list h3 {
+    font-size: 1.3em;
+    min-height: 50px;
 }
 
 .episode-title {
