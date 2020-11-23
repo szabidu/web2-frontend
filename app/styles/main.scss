@@ -1213,10 +1213,11 @@ input.datepicker {
 }
 
 .episode-list img,
-.show-pic img {
+.image-wrapper img {
     width: auto;
-    max-height: 19em;
-    margin: 0 auto;
+    height: 19em;
+    overflow: hidden;
+    object-fit: cover;    margin: 0 auto;
     display: block;
     
 }

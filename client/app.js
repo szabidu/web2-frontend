@@ -75,6 +75,25 @@ tilos.filter('statusFilter', () => {
     };
 });
 
+tilos.directive('ensurePic', function() {
+    return {
+        link: function(scope, element, attrs) {
+            var placeholder = 'https://tilos.hu/upload/episode/tilos-radio.jpg';
+            scope.$watch(function() {
+                return attrs.ngSrc;
+            }, function (value) {
+                if (!value) {
+                    element.attr('src', placeholder);  
+                }
+            });
+
+            element.bind('error', function() {
+                element.attr('src', placeholder);  
+            });
+        }
+    };
+});
+
 
 tilos.config(function ($locationProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
