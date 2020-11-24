@@ -195,11 +195,13 @@ Az egyhetes rádiós esemény indulásával párhuzamosan megújítjuk a webes T
                     <listen-button class="pull-left" link="{{episode.m3uUrl}}"></listen-button>
                     <a ng-href="{{episode.url}}">{{episode.text.title | truncate:true:55:'...'}}</a>
                 </h3>
-                <div class="image-wrapper" ng-if="!hasPic(episode)">
+                <a ng-href="/show/{{episode.show.alias}}" class="div-link image-wrapper" ng-if="!hasPic(episode)">
                     <img ng-src="{{ getShowPic(episode) }}" ensure-pic alt="Adás borító" />
-                </div>
-                <div ng-bind-html="getPicFront(episode)"></div>
-                <fade/>
+                </a  class="div-link" ng-href="/show/{{episode.show.alias}}">
+                <a ng-bind-html="getPicFront(episode)" class="div-link" ng-href="/show/{{episode.show.alias}}"></a>
+                <a class="div-link" ng-href="/show/{{episode.show.alias}}" >
+                    <fade/>
+                </a>
             </div>
         </div>
     </div>
