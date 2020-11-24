@@ -1197,10 +1197,11 @@ input.datepicker {
 
 .episode-last.episode-list:nth-child(2n) {
     padding: 0 1% 0 0;
-    margin: -0;
+    overflow: hidden;
 }
 .episode-last.episode-list:nth-child(2n+1) {
     padding: 0 0 0 1%;
+    overflow: hidden;
 }
 
 .episode-last.episode-list > .spacer {
@@ -1217,7 +1218,8 @@ input.datepicker {
     width: auto;
     height: 19em;
     overflow: hidden;
-    object-fit: cover;    margin: 0 auto;
+    object-fit: cover;    
+    margin: 0 auto;
     display: block;
     
 }
@@ -1227,13 +1229,23 @@ fade {
     bottom: 1px;
     display: block;
     width: 95%;
-    height: 50px;
+    height: 67px;
     background-image: linear-gradient(to bottom, rgba(237, 237, 235, 0), rgba(237, 237, 235, 0.9) 100%);
 }
 
 .episode-last.episode-list h3 {
     font-size: 1.3em;
     min-height: 50px;
+}
+
+a.div-link {
+    display: block;
+    cursor: pointer;
+    color: inherit;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 .episode-title {
